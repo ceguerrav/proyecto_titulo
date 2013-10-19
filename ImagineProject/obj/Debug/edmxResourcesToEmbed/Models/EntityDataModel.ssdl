@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Db_ImagineModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Db_ImagineModelStoreContainer">
+    <EntitySet Name="Barco" EntityType="Db_ImagineModel.Store.Barco" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ciudad" EntityType="Db_ImagineModel.Store.Ciudad" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DivisionAdministrativa" EntityType="Db_ImagineModel.Store.DivisionAdministrativa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LineaNaviera" EntityType="Db_ImagineModel.Store.LineaNaviera" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Movimiento" EntityType="Db_ImagineModel.Store.Movimiento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrigenDestino" EntityType="Db_ImagineModel.Store.OrigenDestino" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pais" EntityType="Db_ImagineModel.Store.Pais" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pasaje" EntityType="Db_ImagineModel.Store.Pasaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pasajero" EntityType="Db_ImagineModel.Store.Pasajero" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Portico" EntityType="Db_ImagineModel.Store.Portico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Puerto" EntityType="Db_ImagineModel.Store.Puerto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recinto" EntityType="Db_ImagineModel.Store.Recinto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecintoPortico" EntityType="Db_ImagineModel.Store.RecintoPortico" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="Db_ImagineModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoAmbiente" EntityType="Db_ImagineModel.Store.TipoAmbiente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoBarco" EntityType="Db_ImagineModel.Store.TipoBarco" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoDivision" EntityType="Db_ImagineModel.Store.TipoDivision" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoMovimiento" EntityType="Db_ImagineModel.Store.TipoMovimiento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoPasaje" EntityType="Db_ImagineModel.Store.TipoPasaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoRecinto" EntityType="Db_ImagineModel.Store.TipoRecinto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoViaje" EntityType="Db_ImagineModel.Store.TipoViaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoZona" EntityType="Db_ImagineModel.Store.TipoZona" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Viaje" EntityType="Db_ImagineModel.Store.Viaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zona" EntityType="Db_ImagineModel.Store.Zona" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZonaPais" EntityType="Db_ImagineModel.Store.ZonaPais" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Barco_LineaNaviera" Association="Db_ImagineModel.Store.FK_Barco_LineaNaviera">
+      <End Role="LineaNaviera" EntitySet="LineaNaviera" />
+      <End Role="Barco" EntitySet="Barco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Barco_TipoBarco" Association="Db_ImagineModel.Store.FK_Barco_TipoBarco">
+      <End Role="TipoBarco" EntitySet="TipoBarco" />
+      <End Role="Barco" EntitySet="Barco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ciudad_DivisionAdministrativa" Association="Db_ImagineModel.Store.FK_Ciudad_DivisionAdministrativa">
+      <End Role="DivisionAdministrativa" EntitySet="DivisionAdministrativa" />
+      <End Role="Ciudad" EntitySet="Ciudad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DivisionAdministrativa_Pais" Association="Db_ImagineModel.Store.FK_DivisionAdministrativa_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="DivisionAdministrativa" EntitySet="DivisionAdministrativa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movimiento_Portico" Association="Db_ImagineModel.Store.FK_Movimiento_Portico">
+      <End Role="Portico" EntitySet="Portico" />
+      <End Role="Movimiento" EntitySet="Movimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movimiento_Tag" Association="Db_ImagineModel.Store.FK_Movimiento_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="Movimiento" EntitySet="Movimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movimiento_TipoMovimiento" Association="Db_ImagineModel.Store.FK_Movimiento_TipoMovimiento">
+      <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
+      <End Role="Movimiento" EntitySet="Movimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrigenDestino_Puerto" Association="Db_ImagineModel.Store.FK_OrigenDestino_Puerto">
+      <End Role="Puerto" EntitySet="Puerto" />
+      <End Role="OrigenDestino" EntitySet="OrigenDestino" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrigenDestino_Viaje" Association="Db_ImagineModel.Store.FK_OrigenDestino_Viaje">
+      <End Role="Viaje" EntitySet="Viaje" />
+      <End Role="OrigenDestino" EntitySet="OrigenDestino" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pais_TipoDivision" Association="Db_ImagineModel.Store.FK_Pais_TipoDivision">
+      <End Role="TipoDivision" EntitySet="TipoDivision" />
+      <End Role="Pais" EntitySet="Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pasaje_Pasajero" Association="Db_ImagineModel.Store.FK_Pasaje_Pasajero">
+      <End Role="Pasajero" EntitySet="Pasajero" />
+      <End Role="Pasaje" EntitySet="Pasaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pasaje_TipoPasaje" Association="Db_ImagineModel.Store.FK_Pasaje_TipoPasaje">
+      <End Role="TipoPasaje" EntitySet="TipoPasaje" />
+      <End Role="Pasaje" EntitySet="Pasaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pasaje_Viaje" Association="Db_ImagineModel.Store.FK_Pasaje_Viaje">
+      <End Role="Viaje" EntitySet="Viaje" />
+      <End Role="Pasaje" EntitySet="Pasaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pasajero_Ciudad" Association="Db_ImagineModel.Store.FK_Pasajero_Ciudad">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Pasajero" EntitySet="Pasajero" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Puerto_Ciudad" Association="Db_ImagineModel.Store.FK_Puerto_Ciudad">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Puerto" EntitySet="Puerto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecintoPortico_Portico" Association="Db_ImagineModel.Store.FK_RecintoPortico_Portico">
+      <End Role="Portico" EntitySet="Portico" />
+      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecintoPortico_Recinto" Association="Db_ImagineModel.Store.FK_RecintoPortico_Recinto">
+      <End Role="Recinto" EntitySet="Recinto" />
+      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recinto_Barco" Association="Db_ImagineModel.Store.FK_Recinto_Barco">
+      <End Role="Barco" EntitySet="Barco" />
+      <End Role="Recinto" EntitySet="Recinto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recinto_TipoAmbiente" Association="Db_ImagineModel.Store.FK_Recinto_TipoAmbiente">
+      <End Role="TipoAmbiente" EntitySet="TipoAmbiente" />
+      <End Role="Recinto" EntitySet="Recinto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recinto_TipoRecinto" Association="Db_ImagineModel.Store.FK_Recinto_TipoRecinto">
+      <End Role="TipoRecinto" EntitySet="TipoRecinto" />
+      <End Role="Recinto" EntitySet="Recinto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tag_Pasajero" Association="Db_ImagineModel.Store.FK_Tag_Pasajero">
+      <End Role="Pasajero" EntitySet="Pasajero" />
+      <End Role="Tag" EntitySet="Tag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Viaje_Barco" Association="Db_ImagineModel.Store.FK_Viaje_Barco">
+      <End Role="Barco" EntitySet="Barco" />
+      <End Role="Viaje" EntitySet="Viaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Viaje_TipoViaje" Association="Db_ImagineModel.Store.FK_Viaje_TipoViaje">
+      <End Role="TipoViaje" EntitySet="TipoViaje" />
+      <End Role="Viaje" EntitySet="Viaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZonaPais_Pais" Association="Db_ImagineModel.Store.FK_ZonaPais_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="ZonaPais" EntitySet="ZonaPais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZonaPais_Zona" Association="Db_ImagineModel.Store.FK_ZonaPais_Zona">
+      <End Role="Zona" EntitySet="Zona" />
+      <End Role="ZonaPais" EntitySet="ZonaPais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zona_TipoZona" Association="Db_ImagineModel.Store.FK_Zona_TipoZona">
+      <End Role="TipoZona" EntitySet="TipoZona" />
+      <End Role="Zona" EntitySet="Zona" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Barco">
+    <Key>
+      <PropertyRef Name="id_barco" />
+    </Key>
+    <Property Name="id_barco" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_barco" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+    <Property Name="id_tipo_barco" Type="smallint" Nullable="false" />
+    <Property Name="id_linea_naviera" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="id_ciudad" />
+    </Key>
+    <Property Name="id_ciudad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="id_division_administrativa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DivisionAdministrativa">
+    <Key>
+      <PropertyRef Name="id_division_administrativa" />
+    </Key>
+    <Property Name="id_division_administrativa" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="id_pais" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LineaNaviera">
+    <Key>
+      <PropertyRef Name="id_linea_naviera" />
+    </Key>
+    <Property Name="id_linea_naviera" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="linea_naviera" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="id_movimiento" />
+    </Key>
+    <Property Name="id_movimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_hora" Type="datetime" Nullable="false" />
+    <Property Name="id_portico" Type="int" Nullable="false" />
+    <Property Name="id_tipo_movimiento" Type="smallint" Nullable="false" />
+    <Property Name="id_tag" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrigenDestino">
+    <Key>
+      <PropertyRef Name="id_orgen_detino" />
+    </Key>
+    <Property Name="id_orgen_detino" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="prioridad" Type="int" Nullable="false" />
+    <Property Name="fecha_llegada" Type="datetime" Nullable="false" />
+    <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+    <Property Name="id_puerto" Type="int" Nullable="false" />
+    <Property Name="id_viaje" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="id_pais" />
+    </Key>
+    <Property Name="id_pais" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_oficial" Type="varchar" MaxLength="100" />
+    <Property Name="nombre_pais" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="cod_iso" Type="varchar" MaxLength="3" />
+    <Property Name="id_tipo_division" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pasaje">
+    <Key>
+      <PropertyRef Name="id_pasaje" />
+    </Key>
+    <Property Name="id_pasaje" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="numero_boleto" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="id_viaje" Type="int" Nullable="false" />
+    <Property Name="id_tipo_pasaje" Type="smallint" Nullable="false" />
+    <Property Name="id_pasajero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pasajero">
+    <Key>
+      <PropertyRef Name="id_pasajero" />
+    </Key>
+    <Property Name="id_pasajero" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="pasaporte" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="nombres" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="apellidos" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="direccion" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="numero_contacto" Type="varchar" MaxLength="50" />
+    <Property Name="e_mail" Type="varchar" MaxLength="255" />
+    <Property Name="sexo" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="fecha_nac" Type="date" Nullable="false" />
+    <Property Name="id_ciudad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Portico">
+    <Key>
+      <PropertyRef Name="id_portico" />
+    </Key>
+    <Property Name="id_portico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="numero_portico" Type="int" Nullable="false" />
+    <Property Name="descripcion_portico" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Puerto">
+    <Key>
+      <PropertyRef Name="id_puerto" />
+    </Key>
+    <Property Name="id_puerto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_puerto" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="id_ciudad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recinto">
+    <Key>
+      <PropertyRef Name="id_recinto" />
+    </Key>
+    <Property Name="id_recinto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_recinto" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="id_barco" Type="int" Nullable="false" />
+    <Property Name="id_tipo_recinto" Type="smallint" Nullable="false" />
+    <Property Name="id_tipo_ambiente" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecintoPortico">
+    <Key>
+      <PropertyRef Name="id_portico" />
+      <PropertyRef Name="id_recinto" />
+    </Key>
+    <Property Name="id_portico" Type="int" Nullable="false" />
+    <Property Name="id_recinto" Type="int" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="id_tag" />
+    </Key>
+    <Property Name="id_tag" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="identificador" Type="varchar" MaxLength="255" />
+    <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="id_pasajero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoAmbiente">
+    <Key>
+      <PropertyRef Name="id_tipo_ambiente" />
+    </Key>
+    <Property Name="id_tipo_ambiente" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_ambiente" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TipoBarco">
+    <Key>
+      <PropertyRef Name="id_tipo_barco" />
+    </Key>
+    <Property Name="id_tipo_barco" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_barco" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TipoDivision">
+    <Key>
+      <PropertyRef Name="id_tipo_division" />
+    </Key>
+    <Property Name="id_tipo_division" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_division" Type="varchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="TipoMovimiento">
+    <Key>
+      <PropertyRef Name="id_tipo_movimiento" />
+    </Key>
+    <Property Name="id_tipo_movimiento" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_movimiento" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TipoPasaje">
+    <Key>
+      <PropertyRef Name="id_tipo_pasaje" />
+    </Key>
+    <Property Name="id_tipo_pasaje" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_pasaje" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TipoRecinto">
+    <Key>
+      <PropertyRef Name="id_tipo_recinto" />
+    </Key>
+    <Property Name="id_tipo_recinto" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_recinto" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TipoViaje">
+    <Key>
+      <PropertyRef Name="id_tipo_viaje" />
+    </Key>
+    <Property Name="id_tipo_viaje" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_viaje" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TipoZona">
+    <Key>
+      <PropertyRef Name="id_tipo_zona" />
+    </Key>
+    <Property Name="id_tipo_zona" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_zona" Type="varchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Viaje">
+    <Key>
+      <PropertyRef Name="id_viaje" />
+    </Key>
+    <Property Name="id_viaje" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+    <Property Name="fecha_llegada" Type="datetime" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="id_barco" Type="int" Nullable="false" />
+    <Property Name="id_tipo_viaje" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zona">
+    <Key>
+      <PropertyRef Name="id_zona" />
+    </Key>
+    <Property Name="id_zona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_zona" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="id_tipo_zona" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZonaPais">
+    <Key>
+      <PropertyRef Name="id_zona" />
+      <PropertyRef Name="id_pais" />
+    </Key>
+    <Property Name="id_zona" Type="int" Nullable="false" />
+    <Property Name="id_pais" Type="int" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Barco_LineaNaviera">
+    <End Role="LineaNaviera" Type="Db_ImagineModel.Store.LineaNaviera" Multiplicity="1" />
+    <End Role="Barco" Type="Db_ImagineModel.Store.Barco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LineaNaviera">
+        <PropertyRef Name="id_linea_naviera" />
+      </Principal>
+      <Dependent Role="Barco">
+        <PropertyRef Name="id_linea_naviera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Barco_TipoBarco">
+    <End Role="TipoBarco" Type="Db_ImagineModel.Store.TipoBarco" Multiplicity="1" />
+    <End Role="Barco" Type="Db_ImagineModel.Store.Barco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoBarco">
+        <PropertyRef Name="id_tipo_barco" />
+      </Principal>
+      <Dependent Role="Barco">
+        <PropertyRef Name="id_tipo_barco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ciudad_DivisionAdministrativa">
+    <End Role="DivisionAdministrativa" Type="Db_ImagineModel.Store.DivisionAdministrativa" Multiplicity="1" />
+    <End Role="Ciudad" Type="Db_ImagineModel.Store.Ciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DivisionAdministrativa">
+        <PropertyRef Name="id_division_administrativa" />
+      </Principal>
+      <Dependent Role="Ciudad">
+        <PropertyRef Name="id_division_administrativa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DivisionAdministrativa_Pais">
+    <End Role="Pais" Type="Db_ImagineModel.Store.Pais" Multiplicity="1" />
+    <End Role="DivisionAdministrativa" Type="Db_ImagineModel.Store.DivisionAdministrativa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id_pais" />
+      </Principal>
+      <Dependent Role="DivisionAdministrativa">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movimiento_Portico">
+    <End Role="Portico" Type="Db_ImagineModel.Store.Portico" Multiplicity="1" />
+    <End Role="Movimiento" Type="Db_ImagineModel.Store.Movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portico">
+        <PropertyRef Name="id_portico" />
+      </Principal>
+      <Dependent Role="Movimiento">
+        <PropertyRef Name="id_portico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movimiento_Tag">
+    <End Role="Tag" Type="Db_ImagineModel.Store.Tag" Multiplicity="1" />
+    <End Role="Movimiento" Type="Db_ImagineModel.Store.Movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="id_tag" />
+      </Principal>
+      <Dependent Role="Movimiento">
+        <PropertyRef Name="id_tag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movimiento_TipoMovimiento">
+    <End Role="TipoMovimiento" Type="Db_ImagineModel.Store.TipoMovimiento" Multiplicity="1" />
+    <End Role="Movimiento" Type="Db_ImagineModel.Store.Movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMovimiento">
+        <PropertyRef Name="id_tipo_movimiento" />
+      </Principal>
+      <Dependent Role="Movimiento">
+        <PropertyRef Name="id_tipo_movimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrigenDestino_Puerto">
+    <End Role="Puerto" Type="Db_ImagineModel.Store.Puerto" Multiplicity="1" />
+    <End Role="OrigenDestino" Type="Db_ImagineModel.Store.OrigenDestino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puerto">
+        <PropertyRef Name="id_puerto" />
+      </Principal>
+      <Dependent Role="OrigenDestino">
+        <PropertyRef Name="id_puerto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrigenDestino_Viaje">
+    <End Role="Viaje" Type="Db_ImagineModel.Store.Viaje" Multiplicity="1" />
+    <End Role="OrigenDestino" Type="Db_ImagineModel.Store.OrigenDestino" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viaje">
+        <PropertyRef Name="id_viaje" />
+      </Principal>
+      <Dependent Role="OrigenDestino">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pais_TipoDivision">
+    <End Role="TipoDivision" Type="Db_ImagineModel.Store.TipoDivision" Multiplicity="1" />
+    <End Role="Pais" Type="Db_ImagineModel.Store.Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDivision">
+        <PropertyRef Name="id_tipo_division" />
+      </Principal>
+      <Dependent Role="Pais">
+        <PropertyRef Name="id_tipo_division" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pasaje_Pasajero">
+    <End Role="Pasajero" Type="Db_ImagineModel.Store.Pasajero" Multiplicity="1" />
+    <End Role="Pasaje" Type="Db_ImagineModel.Store.Pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pasajero">
+        <PropertyRef Name="id_pasajero" />
+      </Principal>
+      <Dependent Role="Pasaje">
+        <PropertyRef Name="id_pasajero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pasaje_TipoPasaje">
+    <End Role="TipoPasaje" Type="Db_ImagineModel.Store.TipoPasaje" Multiplicity="1" />
+    <End Role="Pasaje" Type="Db_ImagineModel.Store.Pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPasaje">
+        <PropertyRef Name="id_tipo_pasaje" />
+      </Principal>
+      <Dependent Role="Pasaje">
+        <PropertyRef Name="id_tipo_pasaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pasaje_Viaje">
+    <End Role="Viaje" Type="Db_ImagineModel.Store.Viaje" Multiplicity="1" />
+    <End Role="Pasaje" Type="Db_ImagineModel.Store.Pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Viaje">
+        <PropertyRef Name="id_viaje" />
+      </Principal>
+      <Dependent Role="Pasaje">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pasajero_Ciudad">
+    <End Role="Ciudad" Type="Db_ImagineModel.Store.Ciudad" Multiplicity="1" />
+    <End Role="Pasajero" Type="Db_ImagineModel.Store.Pasajero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="id_ciudad" />
+      </Principal>
+      <Dependent Role="Pasajero">
+        <PropertyRef Name="id_ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Puerto_Ciudad">
+    <End Role="Ciudad" Type="Db_ImagineModel.Store.Ciudad" Multiplicity="1" />
+    <End Role="Puerto" Type="Db_ImagineModel.Store.Puerto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="id_ciudad" />
+      </Principal>
+      <Dependent Role="Puerto">
+        <PropertyRef Name="id_ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecintoPortico_Portico">
+    <End Role="Portico" Type="Db_ImagineModel.Store.Portico" Multiplicity="1" />
+    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portico">
+        <PropertyRef Name="id_portico" />
+      </Principal>
+      <Dependent Role="RecintoPortico">
+        <PropertyRef Name="id_portico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecintoPortico_Recinto">
+    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="1" />
+    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recinto">
+        <PropertyRef Name="id_recinto" />
+      </Principal>
+      <Dependent Role="RecintoPortico">
+        <PropertyRef Name="id_recinto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recinto_Barco">
+    <End Role="Barco" Type="Db_ImagineModel.Store.Barco" Multiplicity="1" />
+    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Barco">
+        <PropertyRef Name="id_barco" />
+      </Principal>
+      <Dependent Role="Recinto">
+        <PropertyRef Name="id_barco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recinto_TipoAmbiente">
+    <End Role="TipoAmbiente" Type="Db_ImagineModel.Store.TipoAmbiente" Multiplicity="1" />
+    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAmbiente">
+        <PropertyRef Name="id_tipo_ambiente" />
+      </Principal>
+      <Dependent Role="Recinto">
+        <PropertyRef Name="id_tipo_ambiente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recinto_TipoRecinto">
+    <End Role="TipoRecinto" Type="Db_ImagineModel.Store.TipoRecinto" Multiplicity="1" />
+    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoRecinto">
+        <PropertyRef Name="id_tipo_recinto" />
+      </Principal>
+      <Dependent Role="Recinto">
+        <PropertyRef Name="id_tipo_recinto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tag_Pasajero">
+    <End Role="Pasajero" Type="Db_ImagineModel.Store.Pasajero" Multiplicity="1" />
+    <End Role="Tag" Type="Db_ImagineModel.Store.Tag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pasajero">
+        <PropertyRef Name="id_pasajero" />
+      </Principal>
+      <Dependent Role="Tag">
+        <PropertyRef Name="id_pasajero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Viaje_Barco">
+    <End Role="Barco" Type="Db_ImagineModel.Store.Barco" Multiplicity="1" />
+    <End Role="Viaje" Type="Db_ImagineModel.Store.Viaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Barco">
+        <PropertyRef Name="id_barco" />
+      </Principal>
+      <Dependent Role="Viaje">
+        <PropertyRef Name="id_barco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Viaje_TipoViaje">
+    <End Role="TipoViaje" Type="Db_ImagineModel.Store.TipoViaje" Multiplicity="1" />
+    <End Role="Viaje" Type="Db_ImagineModel.Store.Viaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoViaje">
+        <PropertyRef Name="id_tipo_viaje" />
+      </Principal>
+      <Dependent Role="Viaje">
+        <PropertyRef Name="id_tipo_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZonaPais_Pais">
+    <End Role="Pais" Type="Db_ImagineModel.Store.Pais" Multiplicity="1" />
+    <End Role="ZonaPais" Type="Db_ImagineModel.Store.ZonaPais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id_pais" />
+      </Principal>
+      <Dependent Role="ZonaPais">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZonaPais_Zona">
+    <End Role="Zona" Type="Db_ImagineModel.Store.Zona" Multiplicity="1" />
+    <End Role="ZonaPais" Type="Db_ImagineModel.Store.ZonaPais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zona">
+        <PropertyRef Name="id_zona" />
+      </Principal>
+      <Dependent Role="ZonaPais">
+        <PropertyRef Name="id_zona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zona_TipoZona">
+    <End Role="TipoZona" Type="Db_ImagineModel.Store.TipoZona" Multiplicity="1" />
+    <End Role="Zona" Type="Db_ImagineModel.Store.Zona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoZona">
+        <PropertyRef Name="id_tipo_zona" />
+      </Principal>
+      <Dependent Role="Zona">
+        <PropertyRef Name="id_tipo_zona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

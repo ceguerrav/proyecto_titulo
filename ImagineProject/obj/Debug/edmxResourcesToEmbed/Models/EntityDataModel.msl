@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Db_ImagineModelStoreContainer" CdmEntityContainer="Db_ImagineEntities">
+    <EntitySetMapping Name="Barcos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Barco">
+        <MappingFragment StoreEntitySet="Barco">
+          <ScalarProperty Name="id_barco" ColumnName="id_barco" />
+          <ScalarProperty Name="nombre_barco" ColumnName="nombre_barco" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="id_tipo_barco" ColumnName="id_tipo_barco" />
+          <ScalarProperty Name="id_linea_naviera" ColumnName="id_linea_naviera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudades">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_division_administrativa" ColumnName="id_division_administrativa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DivisionesAdministrativas">
+      <EntityTypeMapping TypeName="Db_ImagineModel.DivisionAdministrativa">
+        <MappingFragment StoreEntitySet="DivisionAdministrativa">
+          <ScalarProperty Name="id_division_administrativa" ColumnName="id_division_administrativa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineasNavieras">
+      <EntityTypeMapping TypeName="Db_ImagineModel.LineaNaviera">
+        <MappingFragment StoreEntitySet="LineaNaviera">
+          <ScalarProperty Name="id_linea_naviera" ColumnName="id_linea_naviera" />
+          <ScalarProperty Name="linea_naviera" ColumnName="linea_naviera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movimientos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Movimiento">
+        <MappingFragment StoreEntitySet="Movimiento">
+          <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+          <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+          <ScalarProperty Name="id_portico" ColumnName="id_portico" />
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrigenDestinos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.OrigenDestino">
+        <MappingFragment StoreEntitySet="OrigenDestino">
+          <ScalarProperty Name="id_orgen_detino" ColumnName="id_orgen_detino" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+          <ScalarProperty Name="id_puerto" ColumnName="id_puerto" />
+          <ScalarProperty Name="id_viaje" ColumnName="id_viaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paises">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="nombre_oficial" ColumnName="nombre_oficial" />
+          <ScalarProperty Name="nombre_pais" ColumnName="nombre_pais" />
+          <ScalarProperty Name="cod_iso" ColumnName="cod_iso" />
+          <ScalarProperty Name="id_tipo_division" ColumnName="id_tipo_division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasajes">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Pasaje">
+        <MappingFragment StoreEntitySet="Pasaje">
+          <ScalarProperty Name="id_pasaje" ColumnName="id_pasaje" />
+          <ScalarProperty Name="numero_boleto" ColumnName="numero_boleto" />
+          <ScalarProperty Name="id_viaje" ColumnName="id_viaje" />
+          <ScalarProperty Name="id_tipo_pasaje" ColumnName="id_tipo_pasaje" />
+          <ScalarProperty Name="id_pasajero" ColumnName="id_pasajero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pasajeros">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Pasajero">
+        <MappingFragment StoreEntitySet="Pasajero">
+          <ScalarProperty Name="id_pasajero" ColumnName="id_pasajero" />
+          <ScalarProperty Name="pasaporte" ColumnName="pasaporte" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="numero_contacto" ColumnName="numero_contacto" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="fecha_nac" ColumnName="fecha_nac" />
+          <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Porticos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Portico">
+        <MappingFragment StoreEntitySet="Portico">
+          <ScalarProperty Name="id_portico" ColumnName="id_portico" />
+          <ScalarProperty Name="numero_portico" ColumnName="numero_portico" />
+          <ScalarProperty Name="descripcion_portico" ColumnName="descripcion_portico" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puertos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Puerto">
+        <MappingFragment StoreEntitySet="Puerto">
+          <ScalarProperty Name="id_puerto" ColumnName="id_puerto" />
+          <ScalarProperty Name="nombre_puerto" ColumnName="nombre_puerto" />
+          <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recintos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Recinto">
+        <MappingFragment StoreEntitySet="Recinto">
+          <ScalarProperty Name="id_recinto" ColumnName="id_recinto" />
+          <ScalarProperty Name="nombre_recinto" ColumnName="nombre_recinto" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_barco" ColumnName="id_barco" />
+          <ScalarProperty Name="id_tipo_recinto" ColumnName="id_tipo_recinto" />
+          <ScalarProperty Name="id_tipo_ambiente" ColumnName="id_tipo_ambiente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecintoPorticos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.RecintoPortico">
+        <MappingFragment StoreEntitySet="RecintoPortico">
+          <ScalarProperty Name="id_portico" ColumnName="id_portico" />
+          <ScalarProperty Name="id_recinto" ColumnName="id_recinto" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="id_tag" ColumnName="id_tag" />
+          <ScalarProperty Name="identificador" ColumnName="identificador" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+          <ScalarProperty Name="id_pasajero" ColumnName="id_pasajero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposAmbientes">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoAmbiente">
+        <MappingFragment StoreEntitySet="TipoAmbiente">
+          <ScalarProperty Name="id_tipo_ambiente" ColumnName="id_tipo_ambiente" />
+          <ScalarProperty Name="tipo_ambiente" ColumnName="tipo_ambiente" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposBarcos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoBarco">
+        <MappingFragment StoreEntitySet="TipoBarco">
+          <ScalarProperty Name="id_tipo_barco" ColumnName="id_tipo_barco" />
+          <ScalarProperty Name="tipo_barco" ColumnName="tipo_barco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposDivisiones">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoDivision">
+        <MappingFragment StoreEntitySet="TipoDivision">
+          <ScalarProperty Name="id_tipo_division" ColumnName="id_tipo_division" />
+          <ScalarProperty Name="tipo_division" ColumnName="tipo_division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposMovimientos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoMovimiento">
+        <MappingFragment StoreEntitySet="TipoMovimiento">
+          <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposPasajes">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoPasaje">
+        <MappingFragment StoreEntitySet="TipoPasaje">
+          <ScalarProperty Name="id_tipo_pasaje" ColumnName="id_tipo_pasaje" />
+          <ScalarProperty Name="tipo_pasaje" ColumnName="tipo_pasaje" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposRecintos">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoRecinto">
+        <MappingFragment StoreEntitySet="TipoRecinto">
+          <ScalarProperty Name="id_tipo_recinto" ColumnName="id_tipo_recinto" />
+          <ScalarProperty Name="tipo_recinto" ColumnName="tipo_recinto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposViajes">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoViaje">
+        <MappingFragment StoreEntitySet="TipoViaje">
+          <ScalarProperty Name="id_tipo_viaje" ColumnName="id_tipo_viaje" />
+          <ScalarProperty Name="tipo_viaje" ColumnName="tipo_viaje" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoZonas">
+      <EntityTypeMapping TypeName="Db_ImagineModel.TipoZona">
+        <MappingFragment StoreEntitySet="TipoZona">
+          <ScalarProperty Name="id_tipo_zona" ColumnName="id_tipo_zona" />
+          <ScalarProperty Name="tipo_zona" ColumnName="tipo_zona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Viajes">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Viaje">
+        <MappingFragment StoreEntitySet="Viaje">
+          <ScalarProperty Name="id_viaje" ColumnName="id_viaje" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+          <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_barco" ColumnName="id_barco" />
+          <ScalarProperty Name="id_tipo_viaje" ColumnName="id_tipo_viaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zonas">
+      <EntityTypeMapping TypeName="Db_ImagineModel.Zona">
+        <MappingFragment StoreEntitySet="Zona">
+          <ScalarProperty Name="id_zona" ColumnName="id_zona" />
+          <ScalarProperty Name="nombre_zona" ColumnName="nombre_zona" />
+          <ScalarProperty Name="id_tipo_zona" ColumnName="id_tipo_zona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZonaPaises">
+      <EntityTypeMapping TypeName="Db_ImagineModel.ZonaPais">
+        <MappingFragment StoreEntitySet="ZonaPais">
+          <ScalarProperty Name="id_zona" ColumnName="id_zona" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
