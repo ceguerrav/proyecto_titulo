@@ -9,9 +9,13 @@ using ImagineProject.Models;
 
 namespace ImagineProject.Controllers
 {
+    // Clase que implementa la autenticación de usuarios por roles
+    // de ASP.NET MVC3 Framework, utilizando .NET Framework 4.
+  
     public class AccountController : Controller
     {
 
+        /********************** LOG ON/OFF  ********************************************************************/
         //
         // GET: /Account/LogOn
 
@@ -60,39 +64,50 @@ namespace ImagineProject.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        /*******************************************************************************************************/
 
+        /********************** Usuarios ***********************************************************************/
         //
         // GET: /Account/Register
-
-        public ActionResult Register()
+        [Authorize]   
+        public ActionResult RegisterUser()
         {
+            // Crea un DropDownList (List HTML) con los roles disponibles
+            ViewBag.RoleName = new SelectList(Roles.GetAllRoles().ToList());
             return View();
         }
 
         //
         // POST: /Account/Register
-
-        [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        [Authorize]
+        [HttpPost]// Recibo por Method POST una instancia de Usuario (RegisterUserModel) y el nombre del Rol.
+        public ActionResult RegisterUser(RegisterUserModel model,string RoleName)
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                if (!RoleName.Equals("") && !RoleName.Equals(String.Empty) && !RoleName.Equals(null))
+                {
+                    // Attempt to register the user
+                    MembershipCreateStatus createStatus;
+                    Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
-                if (createStatus == MembershipCreateStatus.Success)
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    if (createStatus == MembershipCreateStatus.Success)
+                    {
+                        // Si El estado es succesfull, agrego al usuario actual al rol seleccionado.
+                        Roles.AddUserToRole(model.UserName, RoleName);
+
+                        FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    }
                 }
             }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.RoleName = new SelectList(Roles.GetAllRoles().ToList());
             return View(model);
         }
 
@@ -145,10 +160,233 @@ namespace ImagineProject.Controllers
         //
         // GET: /Account/ChangePasswordSuccess
 
+        //
+        // GET: /Account/EditUser/5
+
+        public ActionResult EditUser(string userName)
+        {
+            MembershipUser membershipUser = Membership.GetUser(userName);
+            RegisterUserModel model = new RegisterUserModel();
+            model.UserName = membershipUser.UserName;
+            model.Email = membershipUser.Email;
+            string [] roles = Roles.GetRolesForUser(membershipUser.UserName);
+            model.RoleName = roles[0].ToString();
+            ViewBag.RoleName = new SelectList(Roles.GetAllRoles().ToList()/*,model.RoleName*/);
+            return View(model);
+        }
+
+        //
+        // POST: /Barco/EditUser/5
+
+        [HttpPost]
+        public ActionResult EditUser(RegisterUserModel model, string RoleName)
+        {
+            MembershipUser membershipUser = Membership.GetUser(model.UserName);
+            // Actualiza informaión del usuario. El UserName NO es editable.
+            if (!model.Email.Equals("") && !model.Email.Equals(String.Empty) && !model.Email.Equals(null))
+            {
+                // Asigno a Permanentemente el e-mail ingresado, al usuario actual
+                membershipUser.Email = model.Email;
+                // Obtengo el Rol del usuario actual
+                string oldRole = (Roles.GetRolesForUser(membershipUser.UserName).ToArray<String>())[0];
+
+                if (!RoleName.Equals(String.Empty) && !RoleName.Equals("") && !RoleName.Equals(null))
+                {
+                    if (this.UpdateRoleForUser(membershipUser.UserName, oldRole, RoleName))
+                    {
+                        Membership.UpdateUser(membershipUser);
+                        return RedirectToAction("ListUsers");
+                    }
+                    else 
+                    {
+                        ModelState.AddModelError("", "Ha ocurrido un error");
+                    }
+                }                
+            }
+            ViewBag.RoleName = new SelectList(Roles.GetAllRoles().ToList());
+            return View(model);
+        }
         public ActionResult ChangePasswordSuccess()
         {
             return View();
         }
+        public Boolean UpdateRoleForUser(string UserName, string OldRoleName, string NewRoleName)
+        {
+            bool resultado = false;
+            try 
+            {
+                Roles.RemoveUserFromRole(UserName, OldRoleName);
+                Roles.AddUserToRole(UserName, NewRoleName);
+                resultado = true;
+            }
+            catch 
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+        //
+        // GET: /Account/DeleteUser
+
+        public ActionResult DeleteUser(string userName)
+        {
+            MembershipUser membershipUser = Membership.GetUser(userName);
+            RegisterUserModel model = new RegisterUserModel();
+            model.UserName = membershipUser.UserName;
+            model.Email = membershipUser.Email;
+            string [] roles = Roles.GetRolesForUser(membershipUser.UserName);
+            model.RoleName = roles[0].ToString();
+            ViewBag.RoleName = new SelectList(Roles.GetAllRoles().ToList()/*,model.RoleName*/);
+            return View(model);
+        }
+
+        //
+        // POST: /Account/DeleteUser
+
+        [HttpPost, ActionName("DeleteUser")]
+        public ActionResult DeleteUserConfirmed(string userName)
+        {
+            bool deleted = Membership.DeleteUser(userName);
+            if (!deleted)
+            {
+                ModelState.AddModelError("", "El usuario no se puede eliminar.");
+            }
+            return RedirectToAction("ListUsers");
+        }
+
+        public ViewResult ListUsers()
+        {
+            var users = Membership.GetAllUsers();
+            return View(users);
+        }
+
+        /*******************************************************************************************************/
+
+        /*******************  Roles  ***************************************************************************/
+        //
+        // GET: /Roles/RegisterRole
+
+        [Authorize]
+        public ActionResult RegisterRole()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/RegisterRole
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult RegisterRole(RegisterRoleModel model)
+        {
+
+            if (!Roles.RoleExists(model.RoleName))
+            {
+                Roles.CreateRole(model.RoleName);
+            }
+            else 
+            {
+                ModelState.AddModelError("","El rol que intenta crear ya existe.");
+            }
+            return View(model);
+            //return RedirectToAction("Index", "Home");
+        }
+
+        //
+        // GET: /Account/DetailsRole/
+
+        public ActionResult DetailsRole(string RoleName)
+        {
+            RegisterRoleModel model = new RegisterRoleModel();
+            String[] usuarios;
+            if (Roles.RoleExists(RoleName))
+            {
+                model.RoleName = RoleName;
+                usuarios = Roles.GetUsersInRole(RoleName);
+                //Roles.AddUsersToRole(usuarios, model.RoleName);
+                ViewBag.usuarios = usuarios;
+            }
+            else
+            {
+                return RedirectToAction("ListRoles");
+            }
+            return View(model);
+        }
+
+        //
+        // GET: /Account/EditRole/
+
+        public ActionResult EditRole(string RoleName)
+        {
+            RegisterRoleModel model = new RegisterRoleModel();
+            String[] usuarios;
+            if (Roles.RoleExists(RoleName))
+            {
+                model.RoleName = RoleName;
+                usuarios = Roles.GetUsersInRole(RoleName);
+                //Roles.AddUsersToRole(usuarios, model.RoleName);
+                ViewBag.usuarios = usuarios;
+            }
+            else
+            {
+                return RedirectToAction("ListRoles");
+            }
+            return View(model);
+        }
+
+        //
+        // GET: /Account/DeleteRole/
+        public ActionResult DeleteRole(string RoleName)
+        {
+            RegisterRoleModel model = new RegisterRoleModel();
+            String[] usuarios;
+            if (Roles.RoleExists(RoleName) && (!RoleName.Equals("") && !RoleName.Equals(String.Empty) && !RoleName.Equals(null)))
+            {
+                model.RoleName = RoleName;
+                usuarios = Roles.GetUsersInRole(RoleName);
+                ViewBag.usuarios = usuarios;
+            }
+            else
+            {
+                return RedirectToAction("ListRoles");
+            }
+            return View(model);
+        }
+
+        //
+        // POST: /Account/DeleteRole
+
+        [HttpPost, ActionName("DeleteRole")]
+        public ActionResult DeleteRoleConfirmed(string RoleName)
+        {
+            if (Roles.RoleExists(RoleName) && (!RoleName.Equals("") && !RoleName.Equals(String.Empty) && !RoleName.Equals(null)))
+            {
+                String[] users = Roles.GetUsersInRole(RoleName.Trim());
+                if (users.Length == 0)
+                {
+                    Roles.DeleteRole(RoleName);
+                }
+                if (users.Length > 0) 
+                {
+                    ModelState.AddModelError("", "El Rol " + RoleName + " no se puede eliminar porque tiene ususarios asociados.");
+                    System.Threading.Thread.Sleep(5000);
+                }
+            }
+            return RedirectToAction("ListRoles");
+        }
+
+        public ViewResult ListRoles()
+        {            
+            List<RegisterRoleModel> lista = new List<RegisterRoleModel>();
+            foreach (string rol in Roles.GetAllRoles()) 
+            {
+                RegisterRoleModel model = new RegisterRoleModel();
+                model.RoleName = rol;
+                lista.Add(model);
+            }
+            return View(lista);
+        }
+        /*******************************************************************************************************/
 
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
@@ -158,7 +396,7 @@ namespace ImagineProject.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "User name already exists. Please enter a different user name.";
+                    return "El nombre de usuario ya existe. Por favor, introduzca un nombre de usuario diferente.";
 
                 case MembershipCreateStatus.DuplicateEmail:
                     return "A user name for that e-mail address already exists. Please enter a different e-mail address.";

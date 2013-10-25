@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Inicio.Master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.RegisterModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.RegisterUserModel>" %>
 
 <asp:Content ID="registerTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Register
@@ -22,6 +22,14 @@
             <fieldset>
                 <legend>Información de la cuenta</legend>
                 
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.RoleName)%>
+                </div>
+                <div class="editor-field">
+                    <%: Html.DropDownList("RoleName", ViewBag.RoleName as SelectList,"--- Seleccione un rol ---")%>
+                    <%: Html.ValidationMessageFor(m => m.RoleName) %>
+                </div>
+
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>

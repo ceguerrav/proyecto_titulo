@@ -12,13 +12,6 @@ C:\Users\ce.guerra\Documents\GitHub\proyecto_titulo\ImagineProject\bin\EntityFra
 C:\Users\ce.guerra\Documents\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\ce.guerra\Documents\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
 C:\Users\ce.guerra\Documents\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb
-E:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.dll
-E:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.pdb
-E:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.dll
-E:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.xml
-E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cache
-E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
-E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\bin\ImagineProject.dll
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\bin\ImagineProject.pdb
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\bin\EntityFramework.dll
@@ -26,3 +19,10 @@ C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\bin\EntityFramework.xm
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
 C:\Users\ce.guerra\Desktop\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb
+E:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.dll
+E:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.pdb
+E:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.dll
+E:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.xml
+E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
+E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb

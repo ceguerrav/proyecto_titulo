@@ -62,12 +62,20 @@
                              <li class='last'><%: Html.ActionLink("Pasajes", "Index", "Pasaje")%></li>
                           </ul>
                        </li>
-                       <li class='has-sub last'><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%>
+                       <li class='last'><%: Html.ActionLink("Reportes", "", "")%></li>
+                       <li class='has-sub'><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%>
                           <ul>
                              <li class='last'><%: Html.ActionLink("Cambiar contraseña", "ChangePassword", "Account")%></li>
                           </ul>
                        </li>
-                       <li class='last'><%: Html.ActionLink("Reportes", "", "")%></li>
+                       <li class='has-sub'><%: Html.ActionLink("Administración", "RegisterRole", "Account")%>
+                            <ul>
+                                <li><%: Html.ActionLink("Agregar Rol", "RegisterRole", "Account")%></li>
+                                <li><%: Html.ActionLink("Roles", "ListRoles", "Account")%></li>
+                                <li><%: Html.ActionLink("Agregar Usuario", "RegisterUser", "Account")%></li>
+                                <li class='last'><%: Html.ActionLink("Usuarios", "ListUsers", "Account")%></li>
+                            </ul>
+                       </li>
                     </ul>
                 </div>
             </nav>

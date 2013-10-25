@@ -47,7 +47,7 @@
         </div>
         <div class="editor-field">
             <%: Html.DropDownList("ddl_pais",ViewBag.ddl_pais as SelectList,"--- Seleccione país ---",new { id = "id_pais"})%>
-             <%: Html.ValidationMessageFor(model => model.Ciudad.DivisionAdministrativa.id_pais)%>
+            <%: Html.ValidationMessageFor(model => model.Ciudad.DivisionAdministrativa.id_pais)%>
         </div>
 
         <div class="editor-label">

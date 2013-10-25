@@ -225,6 +225,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Views\Account\DeleteRole.aspx" />
+    <Content Include="Views\Account\DeleteUser.aspx" />
+    <Content Include="Views\Account\DetailsRole.aspx" />
+    <Content Include="Views\Account\EditRole.aspx" />
+    <Content Include="Views\Account\EditUser.aspx" />
+    <Content Include="Views\Account\ListRoles.aspx" />
+    <Content Include="Views\Account\ListUsers.aspx" />
     <Content Include="Views\Barco\Create.aspx" />
     <Content Include="Views\Barco\Delete.aspx" />
     <Content Include="Views\Barco\Details.aspx" />
@@ -265,6 +272,7 @@
     <Content Include="Views\Pasaje\Details.aspx" />
     <Content Include="Views\Pasaje\Edit.aspx" />
     <Content Include="Views\Pasaje\Index.aspx" />
+    <Content Include="Views\Account\RegisterRole.aspx" />
     <Content Include="Views\Portico\Create.aspx" />
     <Content Include="Views\Portico\Delete.aspx" />
     <Content Include="Views\Portico\Details.aspx" />
@@ -363,7 +371,7 @@
     <Content Include="Views\Account\ChangePassword.aspx" />
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
-    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Account\RegisterUser.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />

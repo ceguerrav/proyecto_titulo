@@ -42,8 +42,12 @@ namespace ImagineProject.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel
+    public class RegisterUserModel
     {
+        [Required(ErrorMessage = "Seleccione un Rol")]
+        [Display(Name = "Enlazar a un rol.")]
+        public string RoleName { get; set; }
+
         [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
         [Display(Name = "Nombre de usuario")]
         public string UserName { get; set; }
@@ -63,5 +67,13 @@ namespace ImagineProject.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña confirmada y la contraseña nueva no coinciden.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class RegisterRoleModel
+    {
+        [Required(ErrorMessage = "El rol es obligatorio")]
+        [Display(Name = "Rol")]
+        [StringLength(255, ErrorMessage = "El {0} debe tener menos de 255 carácteres.")]
+        public string RoleName { get; set; }
     }
 }
