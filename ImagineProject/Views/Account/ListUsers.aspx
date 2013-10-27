@@ -10,7 +10,8 @@
 <p>
     <%: Html.ActionLink("Agregar nuevo", "RegisterUser") %>
 </p>
-<table>
+<table class="display" id="tabla">
+    <thead>
     <tr>
         <th>
             Rol
@@ -29,7 +30,9 @@
         </th>
         <th></th>
     </tr>
+    </thead>
 
+    <tbody>
 <% foreach (MembershipUser user in Model) { %>
     <tr>
         <td>
@@ -53,6 +56,7 @@
         </td>
     </tr>
 <% } %>
+</tbody>
 </table>
 
 </asp:Content>

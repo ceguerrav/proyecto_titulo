@@ -5,10 +5,10 @@
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Iniciar sesión</h2>
+    <%--<h2>Iniciar sesión</h2>
     <p>
         Introduzca su nombre de usuario y contraseña. <%: Html.ActionLink("Registrar", "RegisterUser") %> si no tiene una cuenta.
-    </p>
+    </p>--%>
 
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>

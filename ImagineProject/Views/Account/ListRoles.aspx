@@ -11,7 +11,8 @@
 <p>
     <%: Html.ActionLink("Agregar nuevo", "RegisterRole") %>
 </p>
-<table>
+<table class="display" id="tabla">
+    <thead>
     <tr>
         <th>
             Rol
@@ -21,7 +22,9 @@
         </th>
         <th></th>
     </tr>
+    </thead>
 
+    <tbody>
 <% foreach (var item in Model) { %>
     <tr>
         <td>
@@ -35,7 +38,7 @@
         </td>
     </tr>
 <% } %>
-
+</tbody>
 </table>
 
 </asp:Content>

@@ -13,7 +13,7 @@
     <div class="page">
         <header>
             <div id="title">
-                <h1>Imagine</h1>
+                <img src="../../Content/themes/base/images/Logo.png" alt="CruiseCheck" />
             </div>
             <div id="logindisplay">
                 <% Html.RenderPartial("LogOnUserControl"); %>
@@ -21,7 +21,7 @@
             <nav>
             </nav>
         </header>
-        <section id="main">
+        <section id="mainLogin">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             <footer>
             </footer>
