@@ -261,11 +261,14 @@
     <Content Include="Content\DataTables-1.9.4\media\images\sort_both.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\style_login.css" />
     <Content Include="Content\style_menu.css" />
     <Content Include="Content\style_menu1.css" />
     <Content Include="Content\themes\base\images\bg01.jpg" />
+    <Content Include="Content\themes\base\images\fondo1.jpg" />
     <Content Include="Content\themes\base\images\logo.jpg" />
     <Content Include="Content\themes\base\images\Logo.png" />
+    <Content Include="Content\themes\base\images\Logo1.png" />
     <Content Include="Content\themes\base\images\main_bg.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -560,7 +563,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63068</DevelopmentServerPort>
+          <DevelopmentServerPort>52746</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

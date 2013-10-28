@@ -8,7 +8,7 @@ body {
     background-color: #164871;
     background:#e2ded4 url(/content/themes/base/images/main_bg.jpg) repeat-x center top;
     */
-    background: #002F43 url(/content/themes/base/images/bg01.jpg) repeat-x;    
+    background: #002F43 url(/content/themes/base/images/fondo1.jpg) repeat-x;    
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -17,8 +17,8 @@ body {
 }
 
 img{
-    width: 30%;
-    height: 15%
+    width: 35%;
+    height: 18%;
 }
 
 a:link {
@@ -133,7 +133,7 @@ header h1, #header h1 {
     text-shadow: 1px 1px 2px #111;
 }
 
-#mainLogin {
+/**#mainLogin {
     padding: 15px 15px 0px 15px;
     border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -144,7 +144,7 @@ header h1, #header h1 {
     text-align:center;
     color: #000000;
     background-color: #fff;
-}
+}*/
 
 #main {
     padding: 15px 15px 0px 15px;
