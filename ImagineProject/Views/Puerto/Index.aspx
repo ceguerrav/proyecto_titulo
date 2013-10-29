@@ -9,7 +9,10 @@
 <h2>Puertos</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar puerto", "Create") %>
+    <a href="<%: Url.Action("Create", "Puerto") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar puerto", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

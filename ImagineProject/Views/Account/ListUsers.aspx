@@ -8,7 +8,10 @@
 
 <h2>Usuarios</h2>
 <p>
-    <%: Html.ActionLink("Agregar nuevo", "RegisterUser") %>
+    <a href="<%: Url.Action("RegisterUser", "Account") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar nuevo", "RegisterUser") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

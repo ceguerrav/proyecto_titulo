@@ -9,7 +9,10 @@
 <h2>Roles</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar nuevo", "RegisterRole") %>
+    <a href="<%: Url.Action("RegisterRole", "Account") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar nuevo", "RegisterRole") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

@@ -13,7 +13,7 @@
     <div class="page">
         <header>
             <div id="title">
-                <img src="../../Content/themes/base/images/Logo1.png" alt="CruiseCheck" />
+                <img src="../../Content/themes/base/images/Logo.png" alt="CruiseCheck" />
             </div>
             <%--<div id="logindisplay">
                 <% Html.RenderPartial("LogOnUserControl"); %>

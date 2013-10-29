@@ -60,7 +60,6 @@
                        <li><div><%: Html.ActionLink("Home", "Index", "Home")%></div></li>
                        <li><div>Geografía</div>
                           <ul>
-                             <li><%: Html.ActionLink("Geografía", "Index", "Pais")%></li>
                              <li><%: Html.ActionLink("Tipo de zona", "Index", "TipoZona")%></li>
                              <li><%: Html.ActionLink("Zona", "Index", "Zona")%></li>
                              <li><%: Html.ActionLink("Paises de zona", "Index", "ZonaPais")%></li>
@@ -81,7 +80,6 @@
                              <li><%: Html.ActionLink("Barcos", "Index", "Barco")%></li>
                              <li><%: Html.ActionLink("Tipo de barco", "Index", "TipoBarco")%></li>
                              <li><%: Html.ActionLink("Línea naviera", "Index", "LineaNaviera")%></li>
-                             <li><%: Html.ActionLink("Barco", "Index", "Barco")%></li>
                              <li><%: Html.ActionLink("Tipo de recinto", "Index", "TipoRecinto")%></li>
                              <li><%: Html.ActionLink("Tipo de ambiente", "Index", "TipoAmbiente")%></li>
                              <li><%: Html.ActionLink("Recinto", "Index", "Recinto")%></li>
@@ -93,7 +91,6 @@
                           <ul>
                              <li><%: Html.ActionLink("Viajes", "Index", "Viaje")%></li>
                              <li><%: Html.ActionLink("Tipo de viaje", "Index", "TipoViaje")%></li>
-                             <li><%: Html.ActionLink("Viaje", "Index", "Viaje")%></li>
                              <li><%: Html.ActionLink("Puerto", "Index", "Puerto")%></li>
                              <li><%: Html.ActionLink("Escalas", "Index", "OrigenDestino")%></li>
                              <li><%: Html.ActionLink("Tipo de pasaje", "Index", "TipoPasaje")%></li>
