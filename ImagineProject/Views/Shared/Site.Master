@@ -79,7 +79,6 @@
                           <ul>
                              <li><%: Html.ActionLink("Tipo de barco", "Index", "TipoBarco")%></li>
                              <li><%: Html.ActionLink("Línea naviera", "Index", "LineaNaviera")%></li>
-                             <li><%: Html.ActionLink("Barco", "Index", "Barco")%></li>
                              <li><%: Html.ActionLink("Tipo de recinto", "Index", "TipoRecinto")%></li>
                              <li><%: Html.ActionLink("Tipo de ambiente", "Index", "TipoAmbiente")%></li>
                              <li><%: Html.ActionLink("Recinto", "Index", "Recinto")%></li>
