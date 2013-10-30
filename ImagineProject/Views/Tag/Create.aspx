@@ -11,6 +11,15 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
+<script type="text/jscript">
+    $('#btn_generarID').click(function () {
+        var url = "/Tag/GenerateID";
+        $.get(url, null, function (data) {
+            $("#txt_id").html(data);
+        });
+    })
+</script>
+
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
@@ -22,14 +31,6 @@
         <div class="editor-field">
             <%: Html.DropDownList("id_pasajero", String.Empty) %>
             <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.identificador) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.identificador) %>
-            <%: Html.ValidationMessageFor(model => model.identificador) %>
         </div>
 
         <p>

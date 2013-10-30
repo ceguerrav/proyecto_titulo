@@ -10,19 +10,30 @@
 
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/CascadeDropDownListCiudad.js") %>" type="text/javascript"></script>
 
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
         <legend>Ciudad</legend>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.id_division_administrativa, "División administrativa") %>
+        <!--- Cascade DropDownList --->
+         <div class="editor-label">
+            <%: Html.LabelFor(model => model.DivisionAdministrativa.id_pais) %>
         </div>
         <div class="editor-field">
-            <%: Html.DropDownList("id_division_administrativa", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.id_division_administrativa) %>
+            <%: Html.DropDownList("ddl_pais",ViewBag.ddl_pais as SelectList,"--- Seleccione país ---",new { id = "id_pais"})%>
+            <%: Html.ValidationMessageFor(model => model.DivisionAdministrativa.id_pais)%>
         </div>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.id_division_administrativa, "División adminsitrativa") %>
+        </div>
+        <div class="editor-field">
+            <%: Html.DropDownList("id_division_administrativa", ViewBag.ddl_division as SelectList, new { id = "id_division" })%>
+            <%: Html.ValidationMessageFor(model => model.id_division_administrativa)%>
+        </div>
+        <!--- Cascade DropDownList --->
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.nombre) %>

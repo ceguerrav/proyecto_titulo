@@ -9,7 +9,10 @@
 <h2>Viajes</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar nuevo", "Create") %>
+    <a href="<%: Url.Action("Create", "Viaje") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar nuevo", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

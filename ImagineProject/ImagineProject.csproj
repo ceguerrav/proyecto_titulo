@@ -143,6 +143,7 @@
     <Compile Include="Models\RecintoPortico.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RfidModel.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
@@ -261,9 +262,11 @@
     <Content Include="Content\DataTables-1.9.4\media\images\sort_both.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\style_login.css" />
     <Content Include="Content\style_menu.css" />
     <Content Include="Content\style_menu1.css" />
     <Content Include="Content\themes\base\images\bg01.jpg" />
+    <Content Include="Content\themes\base\images\fondo1.jpg" />
     <Content Include="Content\themes\base\images\logo.jpg" />
     <Content Include="Content\themes\base\images\Logo.png" />
     <Content Include="Content\themes\base\images\main_bg.jpg" />
@@ -295,7 +298,9 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\CascadeDropDownListDireccion.js" />
+    <Content Include="Scripts\CascadeDropDownListPasajero.js" />
+    <Content Include="Scripts\CascadeDropDownListPuerto.js" />
+    <Content Include="Scripts\CascadeDropDownListCiudad.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\jquery.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\shBrushJScript.js" />
@@ -349,6 +354,7 @@
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\LeerID.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Views\Account\DeleteRole.aspx" />
@@ -542,6 +548,28 @@
     <None Include="Scripts\DataTables-1.9.4\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.min.js.gz" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modulos_RFID\RfidZControl\RfidZControl.csproj">
+      <Project>{116474B6-41B5-41F6-9F98-DB8EF4634DED}</Project>
+      <Name>RfidZControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modulos_RFID\RfidZOperadorAcsii\RfidZOperadorAscii.csproj">
+      <Project>{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}</Project>
+      <Name>RfidZOperadorAscii</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modulos_RFID\RfidZOperadorCommandos\RfidZOperadorCommandos.csproj">
+      <Project>{951074A5-7517-44F6-8745-9609D39E8BF0}</Project>
+      <Name>RfidZOperadorCommandos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modulos_RFID\RfidZOperador\RfidZOperador.csproj">
+      <Project>{E0C1127A-54D8-4CC3-B606-321939265EB8}</Project>
+      <Name>RfidZOperador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modulos_RFID\RfidZ\RfidZ.csproj">
+      <Project>{AD13FC12-635B-424C-96D7-1FC746506277}</Project>
+      <Name>RfidZ</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -9,7 +9,10 @@
 <h2>Tipos de zona</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar nuevo", "Create") %>
+    <a href="<%: Url.Action("Create", "TipoZona") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar nuevo", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

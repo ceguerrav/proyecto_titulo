@@ -1,0 +1,5 @@
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorAcsii\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorAcsii\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorAcsii\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorAcsii\obj\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorAcsii\obj\Debug\RfidZOperadorAcsii.pdb

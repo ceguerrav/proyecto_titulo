@@ -10,20 +10,23 @@
         Introduzca su nombre de usuario y contraseña. <%: Html.ActionLink("Registrar", "RegisterUser") %> si no tiene una cuenta.
     </p>--%>
 
+    <link href="../../Content/style_login.css" rel="stylesheet" type="text/css" />
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
+    <section class="container">
+    <div class="login">
+    <h1>Ingresar a CruiseCheck</h1>
     <% using (Html.BeginForm()) { %>
         <%: Html.ValidationSummary(true, "¿No puedes inciar sesión?")%>
         <div>
             <fieldset>
-                <legend>Información de la cuenta</legend>
                 
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.UserName) %>
+                    <p><%: Html.TextBoxFor(m => m.UserName) %></p>
                     <%: Html.ValidationMessageFor(m => m.UserName) %>
                 </div>
                 
@@ -31,7 +34,7 @@
                     <%: Html.LabelFor(m => m.Password) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.PasswordFor(m => m.Password) %>
+                    <p><%: Html.PasswordFor(m => m.Password) %></p>
                     <%: Html.ValidationMessageFor(m => m.Password) %>
                 </div>
                 
@@ -40,7 +43,7 @@
                     <%: Html.LabelFor(m => m.RememberMe) %>
                 </div>
                 
-                <p>
+                <p class="submit">
                     <input type="submit" value="Iniciar sesión" />
                 </p>
             </fieldset>

@@ -46,7 +46,7 @@
             <%: Html.LabelFor(model => model.capacidad) %>
         </div>
         <div class="editor-field">
-            <%: Html.TextAreaFor(model => model.capacidad)%>
+            <%: Html.EditorFor(model => model.capacidad)%>
             <%: Html.ValidationMessageFor(model => model.capacidad)%>
         </div>
 

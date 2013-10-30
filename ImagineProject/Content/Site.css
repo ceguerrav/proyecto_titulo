@@ -8,7 +8,7 @@ body {
     background-color: #164871;
     background:#e2ded4 url(/content/themes/base/images/main_bg.jpg) repeat-x center top;
     */
-    background: #002F43 url(/content/themes/base/images/bg01.jpg) repeat-x;    
+    background: #002F43 url(/content/themes/base/images/fondo1.jpg) repeat-x;    
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -17,9 +17,42 @@ body {
 }
 
 img{
-    width: 30%;
-    height: 15%
+    width: 35%;
+    height: 18%;
 }
+
+.linkAgregar
+{
+border:1px solid #cacaca; 
+-webkit-border-radius: 12px; 
+-moz-border-radius: 12px;
+border-radius: 12px;
+font-size:12px;
+font-family:arial, helvetica, sans-serif; 
+padding: 8px 8px 8px 8px; 
+text-decoration:none; 
+display:inline-block;
+
+font-weight:bold; color: #727070;
+ background-color: #E6E6E6; 
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#E6E6E6), to(#CCCCCC));
+ background-image: -webkit-linear-gradient(top, #E6E6E6, #CCCCCC);
+ background-image: -moz-linear-gradient(top, #E6E6E6, #CCCCCC);
+ background-image: -ms-linear-gradient(top, #E6E6E6, #CCCCCC);
+ background-image: -o-linear-gradient(top, #E6E6E6, #CCCCCC);
+ background-image: linear-gradient(to bottom, #E6E6E6, #CCCCCC);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#E6E6E6, endColorstr=#CCCCCC);
+ }
+
+.linkAgregar:hover{
+  border:1px solid #b3b3b3;
+ background-color: #cdcdcd; background-image: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#b3b3b3));
+ background-image: -webkit-linear-gradient(top, #cdcdcd, #b3b3b3);
+ background-image: -moz-linear-gradient(top, #cdcdcd, #b3b3b3);
+ background-image: -ms-linear-gradient(top, #cdcdcd, #b3b3b3);
+ background-image: -o-linear-gradient(top, #cdcdcd, #b3b3b3);
+ background-image: linear-gradient(to bottom, #cdcdcd, #b3b3b3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#cdcdcd, endColorstr=#b3b3b3);
+ }
 
 a:link {
     color: #034af3;
@@ -133,7 +166,7 @@ header h1, #header h1 {
     text-shadow: 1px 1px 2px #111;
 }
 
-#mainLogin {
+/**#mainLogin {
     padding: 15px 15px 0px 15px;
     border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -144,7 +177,7 @@ header h1, #header h1 {
     text-align:center;
     color: #000000;
     background-color: #fff;
-}
+}*/
 
 #main {
     padding: 15px 15px 0px 15px;

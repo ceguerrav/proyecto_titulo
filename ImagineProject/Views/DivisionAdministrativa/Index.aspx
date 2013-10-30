@@ -9,7 +9,10 @@
 <h2>Divisiones administrativas</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar Nueva", "Create") %>
+    <a href="<%: Url.Action("Create", "DivisionAdministrativa") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar Nueva", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

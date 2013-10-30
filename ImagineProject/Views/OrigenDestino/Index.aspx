@@ -9,7 +9,10 @@
 <h2>Origen, destino y escalas</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar", "Create") %>
+    <a href="<%: Url.Action("Create", "OrigenDestino") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+   <%-- <%: Html.ActionLink("Agregar", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>

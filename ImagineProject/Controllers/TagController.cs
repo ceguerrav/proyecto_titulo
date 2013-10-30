@@ -7,11 +7,53 @@ using System.Web;
 using System.Web.Mvc;
 using ImagineProject.Models;
 
+using RfidZControl;
+
 namespace ImagineProject.Controllers
 {
     [Authorize(Roles = "Administrador")]   
     public class TagController : Controller
     {
+
+        
+        /************************************************************************************************/
+        private static bool isCursorBusy;
+        private ControlConexion conn;
+
+        public static bool IsCursorBusy { get; set; }
+
+        private ControlConexion contrCon
+        {
+            get
+            {
+                if (this.conn == null)
+                {
+                    this.conn = new ControlConexion();
+                    IsCursorBusy = this.conn.IsBusy;
+                }
+                return this.conn;
+            }
+        }
+
+
+        private int LastIdInserted()
+        {
+            int lastId = 0;
+            int cant = db.Tags.Count();
+
+            if (cant == 0)
+            {
+                lastId = 1;
+            }
+            if (cant > 0)
+            {
+                lastId = cant;
+                lastId = lastId + 1;
+            }               
+            return lastId;
+        }
+
+        /************************************************************************************************/
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
         //
@@ -32,6 +74,15 @@ namespace ImagineProject.Controllers
             return View(tag);
         }
 
+        public String GenerateID() 
+        {
+            int lastId = LastIdInserted();
+            RfidModel auxGrabar = new RfidModel();
+            auxGrabar.CodigoRFID = lastId.ToString();
+            string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
+            return cod_rfid;
+        }
+
         //
         // GET: /Tag/Create
 
@@ -45,13 +96,45 @@ namespace ImagineProject.Controllers
         // POST: /Tag/Create
 
         [HttpPost]
-        public ActionResult Create(Tag tag)
+        public ActionResult Create(Tag tag,FormCollection form)
         {
+            // Conexión automática al puerto COM6
+            this.contrCon.Selected = "COM6";
+            this.contrCon.Connect();
+            string estado = "";
+            int lastId = LastIdInserted();
+
             if (ModelState.IsValid)
             {
-                tag.fecha_registro = DateTime.Now;
-                db.Tags.Add(tag);
-                db.SaveChanges();
+                RfidModel auxGrabar = new RfidModel();
+                auxGrabar.PuertoCOM = "COM10";
+                auxGrabar.CodigoRFID = lastId.ToString();
+
+                estado = auxGrabar.graba();
+
+                if (estado == "001")
+                {
+                    string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
+                    tag.identificador = cod_rfid;
+
+
+                    tag.fecha_registro = DateTime.Now;
+                    db.Tags.Add(tag);
+                    db.SaveChanges();
+                }
+                else if (estado == "002")
+                {
+                    
+                }
+                else if (estado == "003")
+                {
+
+                }
+                else if (estado == "005")
+                {
+
+                }
+                contrCon.Disconnect();
                 return RedirectToAction("Index");  
             }
 

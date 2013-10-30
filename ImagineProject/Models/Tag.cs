@@ -23,9 +23,12 @@ namespace ImagineProject.Models
         [ScaffoldColumn(false)]
         public int id_tag { get; set; }
 
+        /*
         [Required(ErrorMessage = "Identificador es obligatorio")]
         [Display(Name = "Identificador")]
         [StringLength(255, ErrorMessage = "El {0} no debe exceder los 255 caracteres.")]
+        */
+        [ScaffoldColumn(false)]
         public string identificador { get; set; }
 
         [ScaffoldColumn(false)]

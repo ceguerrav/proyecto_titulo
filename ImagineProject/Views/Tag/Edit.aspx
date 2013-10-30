@@ -27,14 +27,6 @@
             <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
         </div>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.identificador) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.identificador) %>
-            <%: Html.ValidationMessageFor(model => model.identificador) %>
-        </div>
-
         <p>
             <input type="submit" value="Guardar" />
         </p>

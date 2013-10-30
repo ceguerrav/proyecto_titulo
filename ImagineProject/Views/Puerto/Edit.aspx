@@ -10,12 +10,14 @@
 
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
-<script src="<%: Url.Content("~/Scripts/CascadeDropDownListDireccion.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/CascadeDropDownListPuerto.js") %>" type="text/javascript"></script>
 
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
         <legend>Puerto</legend>
+
+            <%: Html.HiddenFor(model => model.id_puerto) %>
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.nombre_puerto) %>

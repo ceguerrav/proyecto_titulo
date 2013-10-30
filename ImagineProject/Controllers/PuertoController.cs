@@ -109,11 +109,11 @@ namespace ImagineProject.Controllers
  
         public ActionResult Edit(int id)
         {
-            var consulta = (from pa in db.Pasajeros
+            var consulta = (from pa in db.Puertos
                             join c in db.Ciudades on pa.id_ciudad equals c.id_ciudad
                             join d in db.DivisionesAdministrativas on c.id_division_administrativa equals d.id_division_administrativa
                             join p in db.Paises on d.id_pais equals p.id_pais
-                            where pa.id_pasajero == id
+                            where pa.id_puerto == id
                             select new
                             {
                                 id_ciudad = c.id_ciudad,
@@ -129,6 +129,7 @@ namespace ImagineProject.Controllers
             ViewBag.ddl_pais = new SelectList(db.Paises, "id_pais", "nombre_pais", id_pais).OrderBy(p => p.Text);
             ViewBag.ddl_division = DivisionBinding(id_pais, id_division_administrativa);
             ViewBag.id_ciudad = CiudadBinding(id_division_administrativa, id_ciudad).OrderBy(c => c.Text);
+
             return View(puerto);
         }
 

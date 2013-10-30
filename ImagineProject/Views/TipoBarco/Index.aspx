@@ -9,7 +9,10 @@
 <h2>Tipos de barco</h2>
 
 <p>
-    <%: Html.ActionLink("Agregar nuevo", "Create") %>
+    <a href="<%: Url.Action("Create", "TipoBarco") %>">
+        <button class="linkAgregar">Agregar Nuevo</button>
+    </a>
+    <%--<%: Html.ActionLink("Agregar nuevo", "Create") %>--%>
 </p>
 <table class="display" id="tabla">
     <thead>
