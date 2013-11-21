@@ -11,30 +11,42 @@
 <fieldset>
     <legend>Recinto</legend>
 
-    <div class="display-label">Nombre del recinto</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Nombre del recinto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_recinto) %>
+        <td><%: Html.DisplayFor(model => model.nombre_recinto) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción</div>
+    <tr>
+    <div class="display-label"><td><b>Descripción: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.descripcion) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Barco</div>
+    <tr>
+    <div class="display-label"><td><b>Barco: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Barco.nombre_barco) %>
+        <td><%: Html.DisplayFor(model => model.Barco.nombre_barco) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Tipo de recinto</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de recinto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoRecinto.tipo_recinto) %>
+        <td><%: Html.DisplayFor(model => model.TipoRecinto.tipo_recinto) %></td>
     </div>
-
-    <div class="display-label">Tipo de ambiente</div>
+    </tr>
+    
+    <tr>
+    <div class="display-label"><td><b>Tipo de ambiente: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoAmbiente.tipo_ambiente) %>
+        <td><%: Html.DisplayFor(model => model.TipoAmbiente.tipo_ambiente) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_recinto }) %> |

@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Tipo de ambiente</legend>
 
-    <div class="display-label">Tipo de ambiente</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Tipo de ambiente: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.tipo_ambiente) %>
+        <td><%: Html.DisplayFor(model => model.tipo_ambiente) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción</div>
+    <tr>
+    <div class="display-label"><td><b>Descripción: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.descripcion) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_ambiente }) %> |

@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Tag</legend>
 
-    <div class="display-label">Identificador</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Identificador: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.identificador) %>
+        <td><%: Html.DisplayFor(model => model.identificador) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Pasajero</div>
+    <tr>
+    <div class="display-label"><td><b>Pasajero: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Pasajero.pasaporte) %>
+        <td><%: Html.DisplayFor(model => model.Pasajero.pasaporte) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tag }) %> |

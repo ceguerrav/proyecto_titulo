@@ -11,10 +11,14 @@
 <fieldset>
     <legend>Tipo de barco</legend>
 
-    <div class="display-label">Tipo de barco</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Tipo de barco: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.tipo_barco) %>
+        <td><%: Html.DisplayFor(model => model.tipo_barco) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_barco }) %> |

@@ -13,7 +13,8 @@
 
 <!-- date_picker -->
 <script src="<%: Url.Content("~/Script/jquery-1.6.4.min.js") %>" type="text/javascript"></script>	
-<link href="/Scripts/date_picker/themes/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet"  type="text/css" />
+<!--<link href="/Scripts/date_picker/themes/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet"  type="text/css" />-->
+    <link href="../../Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" type="text/css" />
 <!-- <link rel="stylesheet" href="/Scripts/date_picker/estilos-datepicker.css"> -->
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.core.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.datepicker.js") %>" type="text/javascript"></script>

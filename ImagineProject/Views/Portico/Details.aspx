@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Portico</legend>
 
-    <div class="display-label">Número de portico</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Número de portico: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.numero_portico) %>
+        <td><%: Html.DisplayFor(model => model.numero_portico) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción del portico</div>
+    <tr>
+    <div class="display-label"><td><b>Descripción del portico: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion_portico) %>
+        <td><%: Html.DisplayFor(model => model.descripcion_portico) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_portico }) %> |

@@ -11,25 +11,33 @@
 <fieldset>
     <legend>Pasaje</legend>
 
-    <div class="display-label">Número de boleto</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Número de boleto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.numero_boleto) %>
+        <td><%: Html.DisplayFor(model => model.numero_boleto) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Viaje</div>
+    <tr>
+    <div class="display-label"><td><b>Viaje</b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Viaje.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.Viaje.descripcion) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Tipo de pasaje</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de pasaje: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoPasaje.tipo_pasaje) %>
+        <td><%: Html.DisplayFor(model => model.TipoPasaje.tipo_pasaje) %></td>
     </div>
+    </tr>
 
     <div class="display-label">Pasajero</div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.Pasajero.pasaporte) %>
     </div>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_pasaje }) %> |

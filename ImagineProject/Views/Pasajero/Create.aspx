@@ -12,6 +12,23 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/CascadeDropDownListDireccion.js") %>" type="text/javascript"></script>
 
+<!-- date_picker -->
+<script src="<%: Url.Content("~/Script/jquery-1.6.4.min.js") %>" type="text/javascript"></script>	
+<link href="../../Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" type="text/css" />
+<script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.core.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.datepicker.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/date_picker/ui/i18n/jquery.ui.datepicker-es.js") %>" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#fecha_nac").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1940:' + new Date().getFullYear()
+        });
+    });
+</script>
+<!-- date_picker -->
+
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
@@ -95,7 +112,12 @@
             <%: Html.LabelFor(model => model.sexo) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.sexo) %>
+            <%--<%: Html.RadioButtonFor(model => model.sexo, true, new { id = "sexo_femenino" })%>
+            <label for="sexo_femenino">F</label>
+            <%: Html.RadioButtonFor(model => model.sexo, false, new { id = "sexo_masculino" })%>
+            <label for="sexo_masculino">M</label>--%>
+            <%= Html.RadioButton("sexo", "F", true) %> Femenino </br>
+            <%= Html.RadioButton("sexo", "M", true) %> Masculino
             <%: Html.ValidationMessageFor(model => model.sexo) %>
         </div>
 
@@ -103,7 +125,7 @@
             <%: Html.LabelFor(model => model.fecha_nac) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.fecha_nac) %>
+            <%: Html.EditorFor(model => model.fecha_nac, new { id = "fecha_nac" })%>
             <%: Html.ValidationMessageFor(model => model.fecha_nac) %>
         </div>
 

@@ -11,30 +11,43 @@
 <fieldset>
     <legend>Barco</legend>
 
-    <div class="display-label">Tipo de barco</div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoBarco.tipo_barco) %>
-    </div>
+    <table>
 
-    <div class="display-label">Linea naviera</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de barco:</b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.LineaNaviera.linea_naviera) %>
+        <td><%: Html.DisplayFor(model => model.TipoBarco.tipo_barco) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Nombre del barco</div>
+    <tr>
+    <div class="display-label"><td><b>Linea naviera: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_barco) %>
+        <td><%: Html.DisplayFor(model => model.LineaNaviera.linea_naviera) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Capacidad</div>
+    <tr>
+    <div class="display-label"><td><b>Nombre del barco: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.capacidad) %>
+        <td><%: Html.DisplayFor(model => model.nombre_barco) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción</div>
+    <tr>
+    <div class="display-label"><td><b>Capacidad: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.capacidad) %></td>
     </div>
+    </tr>
+
+    <tr>
+    <div class="display-label"><td><b>Descripción: </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.descripcion) %></td>
+    </div>
+    </tr>
+    </table>
 
 </fieldset>
 <p>

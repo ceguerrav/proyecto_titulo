@@ -11,15 +11,19 @@
 <fieldset>
     <legend>Ciudad</legend>
 
-    <div class="display-label">Nombre ciudad</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Nombre ciudad: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre) %>
+        <td><%: Html.DisplayFor(model => model.nombre) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">División administrativa</div>
+    <div class="display-label"><td><b>División administrativa: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.DivisionAdministrativa.nombre) %>
+        <td><%: Html.DisplayFor(model => model.DivisionAdministrativa.nombre) %></td>
     </div>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_ciudad }) %> |

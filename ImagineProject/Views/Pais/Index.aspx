@@ -6,6 +6,32 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<%--<script type="text/javascript">
+    $.ajaxSetup({ cache: false });
+
+    $(document).ready(function () {
+        $(".detalle").live("click", function (e) {
+            e.preventDefault();
+            $("<div></div>")
+      .addClass("dialog")
+      .attr("id", $(this).attr("dialog-id"))
+      .appendTo("body")
+      .dialog({
+          title: $(this).attr("dialog-title"),
+          close: function () { $(this).remove() },
+          modal: true,
+          width: "auto"
+      })
+      .load(this.href);
+        });
+
+        $(".close").live("click", function (e) {
+            e.preventDefault();
+            $(this).closest(".dialog").dialog("close");
+        });
+    });
+</script>FUNCIONA--%>
+
 <h2>Países</h2>
 
 <p>
@@ -50,12 +76,41 @@
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id = item.id_pais })%> |
-            <%: Html.ActionLink("Detalles", "Details", new { id = item.id_pais })%> |
+            <%: Html.ActionLink("Detalles", "Details", new { id = item.id_pais }, new { @class = "detalle" })%> |
             <%: Html.ActionLink("Eliminar", "Delete", new { id=item.id_pais }) %>
         </td>
     </tr>
 <% } %>
 </tbody>
 </table>
+
+<div id="dialog"></div>
+
+<%--<script type="text/javascript">
+    $(function () {
+        $('.detalle').click(function () {
+            $('<div>Loading ...</div>').load(this.href).dialog();
+            return false;
+        });
+    });
+    </script>--%>
+
+   <%-- <script language="javascript" type="text/javascript">  
+        $(function () {  
+            $('#dialog').dialog({  
+                autoOpen: false,  
+                width: 600,  
+                buttons: {   
+                    "Ok": function () { $(this).dialog("close"); },  
+                    "Cancel": function () {$(this).dialog("close");}  
+                }  
+            });  
+            $(".detalle").button().click(function () {  
+                $('#dialog').dialog('open');  
+                return false;                  
+            });  
+        });  
+    </script> --%>
+
 
 </asp:Content>

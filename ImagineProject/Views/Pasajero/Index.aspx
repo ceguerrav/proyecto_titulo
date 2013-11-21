@@ -42,7 +42,7 @@
             Fecha de nacimiento
         </th>
         <th>
-            Ciudad
+            País
         </th>
         <th></th>
     </tr>
@@ -76,7 +76,7 @@
             <%: Html.DisplayFor(modelItem => item.fecha_nac) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Ciudad.nombre) %>
+            <%: Html.DisplayFor(modelItem => item.Ciudad.DivisionAdministrativa.Pais.nombre_pais) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_pasajero }) %> |

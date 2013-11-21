@@ -11,25 +11,35 @@
 <fieldset>
     <legend>País</legend>
 
-    <div class="display-label">Nombre oficial</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Nombre oficial: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_oficial) %>
+        <td><%: Html.DisplayFor(model => model.nombre_oficial) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Nombre país</div>
+    <tr>
+    <div class="display-label"><td><b>Nombre país: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_pais) %>
+        <td><%: Html.DisplayFor(model => model.nombre_pais) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Codigo ISO</div>
+    <tr>
+    <div class="display-label"><td><b>Codigo ISO: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.cod_iso) %>
+        <td><%: Html.DisplayFor(model => model.cod_iso) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Tipo de division</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de division: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoDivision.tipo_division) %>
+        <td><%: Html.DisplayFor(model => model.TipoDivision.tipo_division) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_pais }) %> |

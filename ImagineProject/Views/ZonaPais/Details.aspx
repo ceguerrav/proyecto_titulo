@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Paises de zona</legend>
 
-    <div class="display-label">Zona</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Zona: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Zona.nombre_zona) %>
+        <td><%: Html.DisplayFor(model => model.Zona.nombre_zona) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Pais</div>
+    <tr>
+    <div class="display-label"><td><b>Pais: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Pais.nombre_pais) %>
+        <td><%: Html.DisplayFor(model => model.Pais.nombre_pais) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new {  id_zona=Model.id_zona, id_pais=Model.id_pais }) %> |

@@ -11,30 +11,42 @@
 <fieldset>
     <legend>Origen, destino y escalas</legend>
 
-    <div class="display-label">Puerto</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Puerto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Puerto.nombre_puerto) %>
+        <td><%: Html.DisplayFor(model => model.Puerto.nombre_puerto) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Viaje</div>
+    <tr>
+    <div class="display-label"><td><b>Viaje: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Viaje.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.Viaje.descripcion) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Prioridad</div>
+    <tr>
+    <div class="display-label"><td><b>Prioridad: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.prioridad) %>
+        <td><%: Html.DisplayFor(model => model.prioridad) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Fecha de llegada</div>
+    <tr>
+    <div class="display-label"><td><b>Fecha de llegada: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.fecha_llegada) %>
+        <td><%: Html.DisplayFor(model => model.fecha_llegada) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Fecha de salida</div>
+    <tr>
+    <div class="display-label"><td><b>Fecha de salida: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.fecha_salida) %>
+        <td><%: Html.DisplayFor(model => model.fecha_salida) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_orgen_detino }) %> |

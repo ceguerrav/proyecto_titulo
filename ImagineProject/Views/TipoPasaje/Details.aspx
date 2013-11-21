@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Tipo de pasaje</legend>
 
-    <div class="display-label">Tipo de pasaje</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Tipo de pasaje: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.tipo_pasaje) %>
+        <td><%: Html.DisplayFor(model => model.tipo_pasaje) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción</div>
+    <tr>
+    <div class="display-label"><td>Descripción</td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.descripcion) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_pasaje }) %> |

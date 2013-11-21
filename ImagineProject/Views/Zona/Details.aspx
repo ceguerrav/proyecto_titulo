@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Zona</legend>
 
-    <div class="display-label">Nombre de zona</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Nombre de zona</b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_zona) %>
+        <td><%: Html.DisplayFor(model => model.nombre_zona) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Tipo de zona</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de zona: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoZona.tipo_zona) %>
+        <td><%: Html.DisplayFor(model => model.TipoZona.tipo_zona) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_zona}) %> |

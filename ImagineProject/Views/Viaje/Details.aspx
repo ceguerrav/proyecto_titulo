@@ -11,30 +11,42 @@
 <fieldset>
     <legend>Viaje</legend>
 
-    <div class="display-label">Fecha de salida</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Fecha de salida: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.fecha_salida) %>
+        <td><%: Html.DisplayFor(model => model.fecha_salida) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Fecha de llegada</div>
+    <tr>
+    <div class="display-label"><td><b>Fecha de llegada: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.fecha_llegada) %>
+        <td><%: Html.DisplayFor(model => model.fecha_llegada) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Descripción</div>
+    <tr>
+    <div class="display-label"><td><b>Descripción: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.descripcion) %>
+        <td><%: Html.DisplayFor(model => model.descripcion) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Barco</div>
+    <tr>
+    <div class="display-label"><td><b>Barco: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Barco.nombre_barco) %>
+        <td><%: Html.DisplayFor(model => model.Barco.nombre_barco) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Tipo de viaje</div>
+    <tr>
+    <div class="display-label"><td><b>Tipo de viaje</b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.TipoViaje.tipo_viaje) %>
+        <td><%: Html.DisplayFor(model => model.TipoViaje.tipo_viaje) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_viaje }) %> |

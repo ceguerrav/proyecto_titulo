@@ -11,10 +11,14 @@
 <fieldset>
     <legend>Tipo de división</legend>
 
-    <div class="display-label">Tipo de división</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Tipo de división: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.tipo_division) %>
+        <td><%: Html.DisplayFor(model => model.tipo_division) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_division }) %> |

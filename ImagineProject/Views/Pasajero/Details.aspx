@@ -11,50 +11,70 @@
 <fieldset>
     <legend>Pasajero</legend>
 
-    <div class="display-label">Pasaporte</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Pasaporte: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.pasaporte) %>
+        <td><%: Html.DisplayFor(model => model.pasaporte) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Nombres</div>
+    <tr>
+    <div class="display-label"><td><b>Nombres: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombres) %>
+        <td><%: Html.DisplayFor(model => model.nombres) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Apellidos</div>
+    <tr>
+    <div class="display-label"><td><b>Apellidos: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.apellidos) %>
+        <td><%: Html.DisplayFor(model => model.apellidos) %></td>
     </div>
+    </tr>
     
-    <div class="display-label">Ciudad</div>
+    <tr>
+    <div class="display-label"><td><b>Ciudad: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Ciudad.nombre) %>
+        <td><%: Html.DisplayFor(model => model.Ciudad.nombre) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Direccion</div>
+    <tr>
+    <div class="display-label"><td><b>Direccion: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.direccion) %>
+        <td><%: Html.DisplayFor(model => model.direccion) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Numero de contacto</div>
+    <tr>
+    <div class="display-label"><td><b>Numero de contacto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.numero_contacto) %>
+        <td><%: Html.DisplayFor(model => model.numero_contacto) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">E-mail</div>
+    <tr>
+    <div class="display-label"><td><b>E-mail: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.e_mail) %>
+        <td><%: Html.DisplayFor(model => model.e_mail) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Sexo</div>
+    <tr>
+    <div class="display-label"><td><b>Sexo: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.sexo) %>
+        <td><%: Html.DisplayFor(model => model.sexo) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Fecha_nac</div>
+    <tr>
+    <div class="display-label"><td><b>Fecha_nac: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.fecha_nac) %>
+        <td><%: Html.DisplayFor(model => model.fecha_nac) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_pasajero }) %> |

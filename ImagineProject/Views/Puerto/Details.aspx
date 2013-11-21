@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Puerto</legend>
 
-    <div class="display-label">Nombre del puerto</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Nombre del puerto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.nombre_puerto) %>
+        <td><%: Html.DisplayFor(model => model.nombre_puerto) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Ciudad</div>
+    <tr>
+    <div class="display-label"><td><b>Ciudad: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Ciudad.nombre) %>
+        <td><%: Html.DisplayFor(model => model.Ciudad.nombre) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_puerto }) %> |

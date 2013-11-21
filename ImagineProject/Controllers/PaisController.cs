@@ -29,10 +29,16 @@ namespace ImagineProject.Controllers
         //
         // GET: /Pais/Details/5
 
-        public ViewResult Details(int id)
+        //public ViewResult Details(int id)
+        //{
+        //    Pais pais = db.Paises.Find(id);
+        //    return View(pais);
+        //}
+
+        public ActionResult Details(int id)
         {
             Pais pais = db.Paises.Find(id);
-            return View(pais);
+            return PartialView(pais);
         }
 
         //

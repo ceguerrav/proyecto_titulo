@@ -11,15 +11,21 @@
 <fieldset>
     <legend>Porticos de recinto</legend>
 
-    <div class="display-label">Portico</div>
+    <table>
+    <tr>
+    <div class="display-label"><td><b>Portico: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Portico.descripcion_portico) %>
+        <td><%: Html.DisplayFor(model => model.Portico.descripcion_portico) %></td>
     </div>
+    </tr>
 
-    <div class="display-label">Recinto</div>
+    <tr>
+    <div class="display-label"><td><b>Recinto: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Recinto.nombre_recinto) %>
+        <td><%: Html.DisplayFor(model => model.Recinto.nombre_recinto) %></td>
     </div>
+    </tr>
+    </table>
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id_recinto=Model.id_recinto,id_portico=Model.id_portico}) %> |

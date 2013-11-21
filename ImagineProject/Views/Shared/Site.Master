@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html>
-<head runat="server">
+<head runat="server"><asp:ContentPlaceHolder ID="Head" runat="server" />
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/style_menu1.css" rel="stylesheet" type="text/css" />
@@ -21,7 +21,7 @@
             $('#tabla').dataTable({
                 "bJQueryUI": true,
                 "sPaginationType": "full_numbers",
-                //"sDom": "Rlfrtip"  Permite el resizing de las columnas
+                "sDom": "Rlfrtip",  
                 "oLanguage": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",
@@ -42,6 +42,37 @@
             });
         });
     </script>
+
+    <%--<script type="text/javascript">
+    $(function() {
+    $('.detalle').click(function() {
+        $('<div>Loading ...</div>').load(this.href).dialog();
+        return false;
+        });
+    });
+    </script>FUNCIONA--%>
+
+    <%--<script type="text/javascript">
+    $(function () {
+    $('.detalle').click(function () {
+    $('<div id="popupfooterdiv"/>').dialog({
+    close: function (event, ui) {
+    dialog.remove();
+    },
+    modal: true,
+    draggable: false,
+    width: 500,
+    height: 400,
+    resizable: false,
+    //open: function (event, ui) {
+    //    $(‘.ui-dialog-title’).remove();
+    //}
+    }).load(this.href, {});
+    return false;
+    });
+    });
+    </script>FUNCIONA--%>  
+
 </head>
 <body>
     <div class="page">
@@ -118,6 +149,7 @@
         </header>
         <section id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+             <div id="my-dialog"></div>
             <footer>
             </footer>
         </section>
