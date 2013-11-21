@@ -18,12 +18,6 @@
     <thead>
     <tr>
         <th>
-            fecha de salida
-        </th>
-        <th>
-            fecha de llegada
-        </th>
-        <th>
             Descripción
         </th>
         <th>
@@ -31,6 +25,12 @@
         </th>
         <th>
             Tipo de viaje
+        </th>
+        <th>
+            fecha de salida
+        </th>
+        <th>
+            fecha de llegada
         </th>
         <th></th>
     </tr>
@@ -40,12 +40,6 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.fecha_salida) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.fecha_llegada) %>
-        </td>
-        <td>
             <%: Html.DisplayFor(modelItem => item.descripcion) %>
         </td>
         <td>
@@ -53,6 +47,12 @@
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TipoViaje.tipo_viaje) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.fecha_salida) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.fecha_llegada) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_viaje }) %> |

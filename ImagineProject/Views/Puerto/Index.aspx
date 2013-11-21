@@ -18,10 +18,13 @@
     <thead>
     <tr>
         <th>
-            Nombre del puerto
+            País
         </th>
         <th>
             Ciudad
+        </th>
+        <th>
+            Nombre del puerto
         </th>
         <th></th>
     </tr>
@@ -31,10 +34,13 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.nombre_puerto) %>
+            <%: Html.DisplayFor(modelItem => item.Ciudad.DivisionAdministrativa.Pais.nombre_pais) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Ciudad.nombre) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.nombre_puerto) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_puerto }) %> |

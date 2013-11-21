@@ -17,7 +17,7 @@
         <%: Html.DisplayFor(model => model.numero_portico) %>
     </div>
 
-    <div class="display-label">Descripción del portico</div>
+    <div class="display-label">Dirección IP</div>
     <div class="display-field">
         <%: Html.DisplayFor(model => model.descripcion_portico) %>
     </div>

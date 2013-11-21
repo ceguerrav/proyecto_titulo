@@ -86,14 +86,6 @@
       <End Role="Ciudad" EntitySet="Ciudad" />
       <End Role="Puerto" EntitySet="Puerto" />
     </AssociationSet>
-    <AssociationSet Name="FK_RecintoPortico_Portico" Association="Db_ImagineModel.Store.FK_RecintoPortico_Portico">
-      <End Role="Portico" EntitySet="Portico" />
-      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RecintoPortico_Recinto" Association="Db_ImagineModel.Store.FK_RecintoPortico_Recinto">
-      <End Role="Recinto" EntitySet="Recinto" />
-      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
-    </AssociationSet>
     <AssociationSet Name="FK_Recinto_Barco" Association="Db_ImagineModel.Store.FK_Recinto_Barco">
       <End Role="Barco" EntitySet="Barco" />
       <End Role="Recinto" EntitySet="Recinto" />
@@ -105,6 +97,14 @@
     <AssociationSet Name="FK_Recinto_TipoRecinto" Association="Db_ImagineModel.Store.FK_Recinto_TipoRecinto">
       <End Role="TipoRecinto" EntitySet="TipoRecinto" />
       <End Role="Recinto" EntitySet="Recinto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecintoPortico_Portico" Association="Db_ImagineModel.Store.FK_RecintoPortico_Portico">
+      <End Role="Portico" EntitySet="Portico" />
+      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecintoPortico_Recinto" Association="Db_ImagineModel.Store.FK_RecintoPortico_Recinto">
+      <End Role="Recinto" EntitySet="Recinto" />
+      <End Role="RecintoPortico" EntitySet="RecintoPortico" />
     </AssociationSet>
     <AssociationSet Name="FK_Tag_Pasajero" Association="Db_ImagineModel.Store.FK_Tag_Pasajero">
       <End Role="Pasajero" EntitySet="Pasajero" />
@@ -118,6 +118,10 @@
       <End Role="TipoViaje" EntitySet="TipoViaje" />
       <End Role="Viaje" EntitySet="Viaje" />
     </AssociationSet>
+    <AssociationSet Name="FK_Zona_TipoZona" Association="Db_ImagineModel.Store.FK_Zona_TipoZona">
+      <End Role="TipoZona" EntitySet="TipoZona" />
+      <End Role="Zona" EntitySet="Zona" />
+    </AssociationSet>
     <AssociationSet Name="FK_ZonaPais_Pais" Association="Db_ImagineModel.Store.FK_ZonaPais_Pais">
       <End Role="Pais" EntitySet="Pais" />
       <End Role="ZonaPais" EntitySet="ZonaPais" />
@@ -125,10 +129,6 @@
     <AssociationSet Name="FK_ZonaPais_Zona" Association="Db_ImagineModel.Store.FK_ZonaPais_Zona">
       <End Role="Zona" EntitySet="Zona" />
       <End Role="ZonaPais" EntitySet="ZonaPais" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Zona_TipoZona" Association="Db_ImagineModel.Store.FK_Zona_TipoZona">
-      <End Role="TipoZona" EntitySet="TipoZona" />
-      <End Role="Zona" EntitySet="Zona" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Barco">
@@ -267,6 +267,7 @@
     <Property Name="id_tag" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="identificador" Type="varchar" MaxLength="255" />
     <Property Name="fecha_registro" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
     <Property Name="id_pasajero" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoAmbiente">
@@ -536,30 +537,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RecintoPortico_Portico">
-    <End Role="Portico" Type="Db_ImagineModel.Store.Portico" Multiplicity="1" />
-    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Portico">
-        <PropertyRef Name="id_portico" />
-      </Principal>
-      <Dependent Role="RecintoPortico">
-        <PropertyRef Name="id_portico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RecintoPortico_Recinto">
-    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="1" />
-    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Recinto">
-        <PropertyRef Name="id_recinto" />
-      </Principal>
-      <Dependent Role="RecintoPortico">
-        <PropertyRef Name="id_recinto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Recinto_Barco">
     <End Role="Barco" Type="Db_ImagineModel.Store.Barco" Multiplicity="1" />
     <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="*" />
@@ -593,6 +570,30 @@
       </Principal>
       <Dependent Role="Recinto">
         <PropertyRef Name="id_tipo_recinto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecintoPortico_Portico">
+    <End Role="Portico" Type="Db_ImagineModel.Store.Portico" Multiplicity="1" />
+    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portico">
+        <PropertyRef Name="id_portico" />
+      </Principal>
+      <Dependent Role="RecintoPortico">
+        <PropertyRef Name="id_portico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecintoPortico_Recinto">
+    <End Role="Recinto" Type="Db_ImagineModel.Store.Recinto" Multiplicity="1" />
+    <End Role="RecintoPortico" Type="Db_ImagineModel.Store.RecintoPortico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recinto">
+        <PropertyRef Name="id_recinto" />
+      </Principal>
+      <Dependent Role="RecintoPortico">
+        <PropertyRef Name="id_recinto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -632,6 +633,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Zona_TipoZona">
+    <End Role="TipoZona" Type="Db_ImagineModel.Store.TipoZona" Multiplicity="1" />
+    <End Role="Zona" Type="Db_ImagineModel.Store.Zona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoZona">
+        <PropertyRef Name="id_tipo_zona" />
+      </Principal>
+      <Dependent Role="Zona">
+        <PropertyRef Name="id_tipo_zona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ZonaPais_Pais">
     <End Role="Pais" Type="Db_ImagineModel.Store.Pais" Multiplicity="1" />
     <End Role="ZonaPais" Type="Db_ImagineModel.Store.ZonaPais" Multiplicity="*" />
@@ -653,18 +666,6 @@
       </Principal>
       <Dependent Role="ZonaPais">
         <PropertyRef Name="id_zona" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Zona_TipoZona">
-    <End Role="TipoZona" Type="Db_ImagineModel.Store.TipoZona" Multiplicity="1" />
-    <End Role="Zona" Type="Db_ImagineModel.Store.Zona" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TipoZona">
-        <PropertyRef Name="id_tipo_zona" />
-      </Principal>
-      <Dependent Role="Zona">
-        <PropertyRef Name="id_tipo_zona" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

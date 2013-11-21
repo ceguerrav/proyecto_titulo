@@ -63,6 +63,7 @@ namespace ImagineProject.Models
         public string sexo { get; set; }
 
         [Required(ErrorMessage = "Fecha de nacimiento es obligatoria")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Display(Name = "Fecha de nacimiento")]
         public System.DateTime fecha_nac { get; set; }
 

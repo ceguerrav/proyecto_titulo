@@ -18,10 +18,10 @@
     <thead>
     <tr>
         <th>
-            Puerto
+            Viaje
         </th>
         <th>
-            Viaje
+            Puerto
         </th>
         <th>
             prioridad
@@ -40,10 +40,10 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Puerto.nombre_puerto) %>
+            <%: Html.DisplayFor(modelItem => item.Viaje.descripcion) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Viaje.descripcion) %>
+            <%: Html.DisplayFor(modelItem => item.Puerto.nombre_puerto) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.prioridad) %>

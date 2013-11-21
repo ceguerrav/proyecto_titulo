@@ -32,7 +32,7 @@
             <%: Html.LabelFor(model => model.id_pais, "Pais") %>
         </div>
         <div class="editor-field">
-            <%: Html.DropDownList("id_pais", String.Empty) %>
+            <%: Html.ListBox("id_pais", ViewBag.id_pais as MultiSelectList, new { Multiple = "multiple", id = "id_pais", @class="listbox" })%>
             <%: Html.ValidationMessageFor(model => model.id_pais) %>
         </div>
 

@@ -21,7 +21,7 @@
             Número de portico
         </th>
         <th>
-            Descripcion del portico
+            Dirección IP
         </th>
         <th></th>
     </tr>

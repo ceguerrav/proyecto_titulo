@@ -18,19 +18,19 @@
     <thead>
     <tr>
         <th>
-            Nombre del recinto
-        </th>
-        <th>
-            Descripción
-        </th>
-        <th>
             Barco
+        </th>
+        <th>
+            Nombre del recinto
         </th>
         <th>
             Tipo de recinto
         </th>
         <th>
             Tipo de ambiente
+        </th>
+        <th>
+            Descripción
         </th>
         <th></th>
     </tr>
@@ -40,19 +40,19 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.nombre_recinto) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.descripcion) %>
-        </td>
-        <td>
             <%: Html.DisplayFor(modelItem => item.Barco.nombre_barco) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.nombre_recinto) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TipoRecinto.tipo_recinto) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TipoAmbiente.tipo_ambiente) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.descripcion) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_recinto }) %> |

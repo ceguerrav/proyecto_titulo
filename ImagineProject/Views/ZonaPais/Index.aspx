@@ -18,6 +18,9 @@
     <thead>
     <tr>
         <th>
+            Tipo de zona
+        </th>
+        <th>
             Zona
         </th>
         <th>
@@ -30,6 +33,9 @@
     <tbody>
 <% foreach (var item in Model) { %>
     <tr>
+     <td>
+        <%: Html.DisplayFor(modelItem => item.Zona.TipoZona.tipo_zona) %>
+        </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Zona.nombre_zona) %>
         </td>

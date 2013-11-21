@@ -21,6 +21,9 @@
             Identificador
         </th>
         <th>
+            Pasaporte
+        </th>
+        <th>
             Pasajero
         </th>
         <th></th>
@@ -35,6 +38,10 @@
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Pasajero.pasaporte) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Pasajero.nombres)%>
+            <%: Html.DisplayFor(modelItem => item.Pasajero.apellidos)%>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_tag }) %> |

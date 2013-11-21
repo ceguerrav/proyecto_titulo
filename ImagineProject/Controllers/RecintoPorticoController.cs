@@ -50,6 +50,7 @@ namespace ImagineProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                recintoportico.estado = true;
                 db.RecintoPorticos.Add(recintoportico);
                 db.SaveChanges();
                 return RedirectToAction("Index");  

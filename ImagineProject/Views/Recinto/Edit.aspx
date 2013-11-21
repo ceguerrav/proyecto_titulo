@@ -30,7 +30,7 @@
             <%: Html.LabelFor(model => model.descripcion) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.descripcion) %>
+            <%: Html.TextAreaFor(model => model.descripcion) %>
             <%: Html.ValidationMessageFor(model => model.descripcion) %>
         </div>
 

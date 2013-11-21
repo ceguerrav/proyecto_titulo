@@ -18,13 +18,16 @@
     <thead>
     <tr>
         <th>
-            Número de boleto
-        </th>
-        <th>
             Viaje
         </th>
         <th>
+            Número de boleto
+        </th>
+        <th>
             Tipo de pasaje
+        </th>
+        <th>
+            Pasaporte
         </th>
         <th>
             Pasajero
@@ -37,16 +40,20 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.numero_boleto) %>
+            <%: Html.DisplayFor(modelItem => item.Viaje.descripcion) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Viaje.descripcion) %>
+            <%: Html.DisplayFor(modelItem => item.numero_boleto) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TipoPasaje.tipo_pasaje) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Pasajero.pasaporte) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Pasajero.nombres)%>
+            <%: Html.DisplayFor(modelItem => item.Pasajero.apellidos)%>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_pasaje }) %> |

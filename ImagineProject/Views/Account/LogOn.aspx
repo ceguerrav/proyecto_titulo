@@ -21,11 +21,6 @@
         <%: Html.ValidationSummary(true, "¿No puedes inciar sesión?")%>
         <div>
             <fieldset>
-<<<<<<< HEAD
-                
-=======
-                            
->>>>>>> cf9a7313691e3fc51130b463166b61e65ef88245
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
                 </div>

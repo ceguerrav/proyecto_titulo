@@ -31,10 +31,12 @@ namespace ImagineProject.Models
         public int prioridad { get; set; }
 
         [Required(ErrorMessage = "Fecha de llegada es obligatoria")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Display(Name = "Fecha de llegada")]
         public System.DateTime fecha_llegada { get; set; }
 
         [Required(ErrorMessage = "Fecha de salida es obligatoria")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Display(Name = "Fecha de salida")]
         public System.DateTime fecha_salida { get; set; }
 

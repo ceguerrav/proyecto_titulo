@@ -53,6 +53,33 @@ namespace ImagineProject.Controllers
             return lastId;
         }
 
+        private void SetStatus(int id_pasajero)
+        {
+            var query = db.Tags.Where(t => t.id_pasajero.Equals(id_pasajero));
+            if (query.Count() > 0)
+            {
+                int ultimoId = query.Select(t => t.id_tag).Max();
+                Tag tag = db.Tags.Find(ultimoId);
+                if (ModelState.IsValid)
+                {
+                    tag.estado = false;
+                    db.Entry(tag).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        /*
+        public String GenerateID() 
+        {
+            int lastId = LastIdInserted();
+            RfidModel auxGrabar = new RfidModel();
+            auxGrabar.CodigoRFID = lastId.ToString();
+            string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
+            return cod_rfid;
+        }
+        */
+
         /************************************************************************************************/
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
@@ -72,15 +99,6 @@ namespace ImagineProject.Controllers
         {
             Tag tag = db.Tags.Find(id);
             return View(tag);
-        }
-
-        public String GenerateID() 
-        {
-            int lastId = LastIdInserted();
-            RfidModel auxGrabar = new RfidModel();
-            auxGrabar.CodigoRFID = lastId.ToString();
-            string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
-            return cod_rfid;
         }
 
         //
@@ -114,10 +132,11 @@ namespace ImagineProject.Controllers
 
                 if (estado == "001")
                 {
+                    // Dejo en estado INACTIVO el último Tag del Pasajero actual.
+                    SetStatus(tag.id_pasajero);
                     string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
                     tag.identificador = cod_rfid;
-
-
+                    tag.estado = true;
                     tag.fecha_registro = DateTime.Now;
                     db.Tags.Add(tag);
                     db.SaveChanges();

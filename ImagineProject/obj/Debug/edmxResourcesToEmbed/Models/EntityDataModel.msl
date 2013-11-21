@@ -145,6 +145,7 @@
     <EntitySetMapping Name="Tags">
       <EntityTypeMapping TypeName="Db_ImagineModel.Tag">
         <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="id_tag" ColumnName="id_tag" />
           <ScalarProperty Name="identificador" ColumnName="identificador" />
           <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />

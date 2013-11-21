@@ -304,6 +304,7 @@
     <Property Name="id_pasajero" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Movimiento" Relationship="Db_ImagineModel.FK_Movimiento_Tag" FromRole="Tag" ToRole="Movimiento" />
     <NavigationProperty Name="Pasajero" Relationship="Db_ImagineModel.FK_Tag_Pasajero" FromRole="Tag" ToRole="Pasajero" />
+    <Property Type="Boolean" Name="estado" Nullable="false" />
   </EntityType>
   <EntityType Name="TipoAmbiente">
     <Key>

@@ -34,6 +34,9 @@ namespace ImagineProject.Models
         [ScaffoldColumn(false)]
         public System.DateTime fecha_registro { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool estado { get; set; }
+
         [Required(ErrorMessage = "Seleccione pasajero")]
         [Display(Name = "Pasajero")]
         public int id_pasajero { get; set; }

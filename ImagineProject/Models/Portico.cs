@@ -28,8 +28,8 @@ namespace ImagineProject.Models
         [Display(Name = "Número de portico")]
         public int numero_portico { get; set; }
 
-        [Required(ErrorMessage = "Descripción del portico es obligatorio")]
-        [Display(Name = "Descripción del portico")]
+        [Required(ErrorMessage = "Dirección IP es obligatorio")]
+        [Display(Name = "Dirección IP")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 100 caracteres.")]
         public string descripcion_portico { get; set; }
 

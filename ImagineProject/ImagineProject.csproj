@@ -100,6 +100,11 @@
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContextModel.Context.cs" />
+    <Compile Include="Models\ContextModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ContextModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

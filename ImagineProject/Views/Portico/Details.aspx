@@ -20,7 +20,7 @@
     </tr>
 
     <tr>
-    <div class="display-label"><td><b>Descripción del portico: </b></td></div>
+    <div class="display-label"><td><b>Dirección IP: </b></td></div>
     <div class="display-field">
         <td><%: Html.DisplayFor(model => model.descripcion_portico) %></td>
     </div>

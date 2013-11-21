@@ -25,15 +25,17 @@ namespace ImagineProject.Models
         public int id_viaje { get; set; }
 
         [Required(ErrorMessage = "Fecha de salida es obligatoria")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Display(Name = "Fecha de salida")]
         public System.DateTime fecha_salida { get; set; }
 
         [Required(ErrorMessage = "Fecha de llegada es obligatoria")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         [Display(Name = "Fecha de llegada")]
         public System.DateTime fecha_llegada { get; set; }
 
-        [Required(ErrorMessage = "Descripción Viaje es obligatorio")]
-        [Display(Name = "Descripción Viaje")]
+        [Required(ErrorMessage = "Nombre del Viaje es obligatorio")]
+        [Display(Name = "Nombre del Viaje")]
         [StringLength(30, ErrorMessage = "El {0} no debe exceder los 30 caracteres.")]
         public string descripcion { get; set; }
 

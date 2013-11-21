@@ -18,10 +18,13 @@
     <thead>
     <tr>
         <th>
-            Portico
+            Barco
         </th>
         <th>
             Recinto
+        </th>
+        <th>
+            Portico
         </th>
         <th></th>
     </tr>
@@ -31,10 +34,13 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Portico.descripcion_portico) %>
+            <%: Html.DisplayFor(modelItem => item.Recinto.Barco.nombre_barco) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Recinto.nombre_recinto) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Portico.descripcion_portico) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id_recinto=item.id_recinto,id_portico = item.id_portico }) %> |

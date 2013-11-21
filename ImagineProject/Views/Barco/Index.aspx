@@ -21,16 +21,16 @@
             Nombre del barco
         </th>
         <th>
-            Capacidad
-        </th>
-        <th>
-            Descripcion
+            Linea naviera
         </th>
         <th>
             Tipo de barco
         </th>
         <th>
-            Linea naviera
+            Capacidad
+        </th>
+        <th>
+            Descripcion
         </th>
         <th></th>
     </tr>
@@ -43,16 +43,16 @@
             <%: Html.DisplayFor(modelItem => item.nombre_barco) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.capacidad) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.descripcion) %>
+            <%: Html.DisplayFor(modelItem => item.LineaNaviera.linea_naviera) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.TipoBarco.tipo_barco) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.LineaNaviera.linea_naviera) %>
+            <%: Html.DisplayFor(modelItem => item.capacidad) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.descripcion) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_barco }) %> |

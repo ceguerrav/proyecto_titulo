@@ -112,12 +112,11 @@
             <%: Html.LabelFor(model => model.sexo) %>
         </div>
         <div class="editor-field">
-            <%--<%: Html.RadioButtonFor(model => model.sexo, true, new { id = "sexo_femenino" })%>
-            <label for="sexo_femenino">F</label>
-            <%: Html.RadioButtonFor(model => model.sexo, false, new { id = "sexo_masculino" })%>
-            <label for="sexo_masculino">M</label>--%>
-            <%= Html.RadioButton("sexo", "F", true) %> Femenino </br>
-            <%= Html.RadioButton("sexo", "M", true) %> Masculino
+            <%: Html.RadioButtonFor(model => model.sexo,"M") %>
+            <%: Html.LabelFor(model => model.sexo,"Masculino") %>
+
+            <%: Html.RadioButtonFor(model => model.sexo,"F") %>
+            <%: Html.LabelFor(model => model.sexo,"Femenino") %>
             <%: Html.ValidationMessageFor(model => model.sexo) %>
         </div>
 

@@ -27,6 +27,9 @@
             Apellidos
         </th>
         <th>
+            País
+        </th>
+        <th>
             Direccion
         </th>
         <th>
@@ -40,9 +43,6 @@
         </th>
         <th>
             Fecha de nacimiento
-        </th>
-        <th>
-            País
         </th>
         <th></th>
     </tr>
@@ -61,6 +61,9 @@
             <%: Html.DisplayFor(modelItem => item.apellidos) %>
         </td>
         <td>
+            <%: Html.DisplayFor(modelItem => item.Ciudad.DivisionAdministrativa.Pais.nombre_pais) %>
+        </td>
+        <td>
             <%: Html.DisplayFor(modelItem => item.direccion) %>
         </td>
         <td>
@@ -74,9 +77,6 @@
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.fecha_nac) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Ciudad.DivisionAdministrativa.Pais.nombre_pais) %>
         </td>
         <td>
             <%: Html.ActionLink("Editar", "Edit", new { id=item.id_pasajero }) %> |
