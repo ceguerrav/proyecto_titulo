@@ -10,7 +10,7 @@
 
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
-<script src="<%: Url.Content("~/Scripts/CascadeDropDownListDireccion.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/CascadeDropDownListPasajero.js") %>" type="text/javascript"></script>
 
 <!-- date_picker -->
 <script src="<%: Url.Content("~/Script/jquery-1.6.4.min.js") %>" type="text/javascript"></script>	

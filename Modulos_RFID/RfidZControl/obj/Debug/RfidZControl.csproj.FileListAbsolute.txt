@@ -1,0 +1,130 @@
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZControl\obj\Debug\RfidZControl.pdb
+L:\asd\RfidZControl\bin\Debug\RfidZControl.dll
+L:\asd\RfidZControl\bin\Debug\RfidZControl.pdb
+L:\asd\RfidZControl\bin\Debug\RfidZ.dll
+L:\asd\RfidZControl\bin\Debug\RfidZOperador.dll
+L:\asd\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+L:\asd\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+L:\asd\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+L:\asd\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+L:\asd\RfidZControl\bin\Debug\RfidZOperador.pdb
+L:\asd\RfidZControl\bin\Debug\RfidZ.pdb
+L:\asd\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+L:\asd\RfidZControl\obj\Debug\RfidZControl.dll
+L:\asd\RfidZControl\obj\Debug\RfidZControl.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZControl.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZControl.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZ.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperador.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZOperador.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\bin\Debug\RfidZ.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\obj\Debug\RfidZControl.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZControl\obj\Debug\RfidZControl.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZControl.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZControl.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZ.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperador.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperadorAcsii.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperadorCommandos.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperadorAcsii.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperadorCommandos.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZOperador.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\bin\Debug\RfidZ.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\obj\Debug\RfidZControl.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZControl\obj\Debug\RfidZControl.pdb

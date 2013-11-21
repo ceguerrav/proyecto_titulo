@@ -14,6 +14,31 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        /*************************************************************************************/
+        /* Métodos que permiten cargar DropDownList en cascada o dinámicamente */
+
+        public List<SelectListItem> DivisionBinding(int id_pais = 0, int id_div = 0)
+        {
+            var divisiones = db.DivisionesAdministrativas.Where(d => d.id_pais == id_pais).ToList();
+            var model = divisiones.Select(d => new SelectListItem
+            {
+                Value = d.id_division_administrativa.ToString(),
+                Text = d.nombre,
+                Selected = id_div == d.id_division_administrativa ? true : false
+            }).ToList();
+            model.Insert(0, new SelectListItem { Value = "0", Text = "--- Seleccione división ---" });
+            return model;
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult GetDivisiones(int id_pais)
+        {
+            var model = DivisionBinding(id_pais);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        /*************************************************************************************/
+
         //
         // GET: /Ciudad/
 
@@ -37,7 +62,9 @@ namespace ImagineProject.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre");
+            //ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre");
+            ViewBag.ddl_pais = new SelectList(db.Paises, "id_pais", "nombre_pais").OrderBy(p => p.Text);
+            ViewBag.id_division_administrativa = DivisionBinding();
             return View();
         } 
 
@@ -54,7 +81,7 @@ namespace ImagineProject.Controllers
                 return RedirectToAction("Index");  
             }
 
-            ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre", ciudad.id_division_administrativa);
+            //ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre", ciudad.id_division_administrativa);
             return View(ciudad);
         }
         
@@ -63,8 +90,23 @@ namespace ImagineProject.Controllers
  
         public ActionResult Edit(int id)
         {
+            var consulta = (from c in db.Ciudades 
+                            join d in db.DivisionesAdministrativas on c.id_division_administrativa equals d.id_division_administrativa
+                            join p in db.Paises on d.id_pais equals p.id_pais
+                            where c.id_ciudad == id
+                            select new
+                            {
+                                id_division_administrativa = d.id_division_administrativa,
+                                id_pais = p.id_pais
+
+                            }).ToList();
+            int id_pais = consulta.FirstOrDefault().id_pais;
+            int id_division_administrativa = consulta.FirstOrDefault().id_division_administrativa;
+
             Ciudad ciudad = db.Ciudades.Find(id);
-            ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre", ciudad.id_division_administrativa);
+            ViewBag.ddl_pais = new SelectList(db.Paises, "id_pais", "nombre_pais", id_pais).OrderBy(p => p.Text);
+            ViewBag.id_division_administrativa = DivisionBinding(id_pais, id_division_administrativa);
+
             return View(ciudad);
         }
 

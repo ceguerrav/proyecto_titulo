@@ -3,6 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagineProject", "ImagineProject\ImagineProject.csproj", "{AD7E8597-936A-4FFF-BE96-C05E5CA215D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RfidZOperadorAscii", "Modulos_RFID\RfidZOperadorAcsii\RfidZOperadorAscii.csproj", "{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RfidZOperador", "Modulos_RFID\RfidZOperador\RfidZOperador.csproj", "{E0C1127A-54D8-4CC3-B606-321939265EB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RfidZ", "Modulos_RFID\RfidZ\RfidZ.csproj", "{AD13FC12-635B-424C-96D7-1FC746506277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RfidZControl", "Modulos_RFID\RfidZControl\RfidZControl.csproj", "{116474B6-41B5-41F6-9F98-DB8EF4634DED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RfidZOperadorCommandos", "Modulos_RFID\RfidZOperadorCommandos\RfidZOperadorCommandos.csproj", "{951074A5-7517-44F6-8745-9609D39E8BF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +23,26 @@ Global
 		{AD7E8597-936A-4FFF-BE96-C05E5CA215D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD7E8597-936A-4FFF-BE96-C05E5CA215D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD7E8597-936A-4FFF-BE96-C05E5CA215D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C1127A-54D8-4CC3-B606-321939265EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C1127A-54D8-4CC3-B606-321939265EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C1127A-54D8-4CC3-B606-321939265EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C1127A-54D8-4CC3-B606-321939265EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD13FC12-635B-424C-96D7-1FC746506277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD13FC12-635B-424C-96D7-1FC746506277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD13FC12-635B-424C-96D7-1FC746506277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD13FC12-635B-424C-96D7-1FC746506277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116474B6-41B5-41F6-9F98-DB8EF4634DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116474B6-41B5-41F6-9F98-DB8EF4634DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116474B6-41B5-41F6-9F98-DB8EF4634DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116474B6-41B5-41F6-9F98-DB8EF4634DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{951074A5-7517-44F6-8745-9609D39E8BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{951074A5-7517-44F6-8745-9609D39E8BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{951074A5-7517-44F6-8745-9609D39E8BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{951074A5-7517-44F6-8745-9609D39E8BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

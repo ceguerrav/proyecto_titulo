@@ -1,0 +1,90 @@
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\MIC1\Documents\Visual Studio 2010\Projects\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\ProyectoDemoRfidZ - 2.3\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\David\Desktop\appsRfid\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\daniel\Desktop\ProyectoAdminAcreditacion\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+L:\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+L:\asd\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+L:\asd\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+L:\asd\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+C:\Users\ce.guerra\Desktop\asd\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperadorCommandos.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperador.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperadorAcsii.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\bin\Debug\RfidZOperador.pdb
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\obj\Debug\ResolveAssemblyReference.cache
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.dll
+E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZOperadorCommandos\obj\Debug\RfidZOperadorCommandos.pdb
