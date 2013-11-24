@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<System.Web.Mvc.HandleErrorInfo>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Inicio.Master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.Error>" %>
 
 <asp:Content ID="errorTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Error
@@ -6,6 +6,11 @@
 
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Se ha producido un error al procesar su solicitud :P.
+        Se ha producido un error al procesar su solicitud!!
     </h2>
+    <p>
+        Detalles:<br />
+        <%: Html.DisplayFor(model => model.Message) %>
+    </p>
+     <%: Html.ActionLink("Regresar",Model.Action,Model.Controller) %>
 </asp:Content>

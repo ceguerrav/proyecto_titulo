@@ -32,11 +32,13 @@ namespace ImagineProject.Models
         [Required(ErrorMessage = "Nombres son obligatorios")]
         [Display(Name = "Nombres")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 100 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string nombres { get; set; }
 
         [Required(ErrorMessage = "Apellidos son obligatorios")]
         [Display(Name = "Apellidos")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 100 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string apellidos { get; set; }
 
         [ScaffoldColumn(false)]
@@ -55,6 +57,7 @@ namespace ImagineProject.Models
         public string numero_contacto { get; set; }
 
         [Display(Name = "E-mail")]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "E-mail no valido.")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 255 caracteres.")]
         public string e_mail { get; set; }
 

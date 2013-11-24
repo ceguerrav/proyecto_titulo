@@ -68,7 +68,12 @@ namespace ImagineProject.Controllers
                 }
             }
         }
-
+        public string GenerarID()
+        {
+            string id = "1234567890";
+            return id;
+        }
+ 
         /*
         public String GenerateID() 
         {
@@ -79,7 +84,6 @@ namespace ImagineProject.Controllers
             return cod_rfid;
         }
         */
-
         /************************************************************************************************/
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
@@ -114,7 +118,7 @@ namespace ImagineProject.Controllers
         // POST: /Tag/Create
 
         [HttpPost]
-        public ActionResult Create(Tag tag,FormCollection form)
+        public ActionResult Create(Tag tag)
         {
             // Conexión automática al puerto COM6
             this.contrCon.Selected = "COM6";
@@ -122,6 +126,7 @@ namespace ImagineProject.Controllers
             string estado = "";
             int lastId = LastIdInserted();
 
+            String mensaje;
             if (ModelState.IsValid)
             {
                 RfidModel auxGrabar = new RfidModel();
@@ -130,7 +135,7 @@ namespace ImagineProject.Controllers
 
                 estado = auxGrabar.graba();
 
-                if (estado == "001")
+                if (estado.Equals("001"))
                 {
                     // Dejo en estado INACTIVO el último Tag del Pasajero actual.
                     SetStatus(tag.id_pasajero);
@@ -140,25 +145,26 @@ namespace ImagineProject.Controllers
                     tag.fecha_registro = DateTime.Now;
                     db.Tags.Add(tag);
                     db.SaveChanges();
+                    mensaje = "Operación exitosa.";
                 }
-                else if (estado == "002")
+                else if (estado.Equals("002"))
                 {
-                    
+                    mensaje = "Error de comunicación";
                 }
-                else if (estado == "003")
+                else if (estado.Equals("003"))
                 {
-
+                    mensaje = "Error de lectura etiqueta";
                 }
-                else if (estado == "005")
+                else if (estado.Equals("005"))
                 {
-
+                    mensaje = "Error inesperado";
                 }
                 contrCon.Disconnect();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
             }
-
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);
+            //return View(tag);
         }
         
         //

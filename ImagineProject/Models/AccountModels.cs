@@ -76,4 +76,11 @@ namespace ImagineProject.Models
         [StringLength(255, ErrorMessage = "El {0} debe tener menos de 255 carácteres.")]
         public string RoleName { get; set; }
     }
+
+    public class Error
+    {
+        public string Message { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
+    }
 }

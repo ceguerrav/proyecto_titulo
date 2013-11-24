@@ -64,22 +64,33 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Create(ZonaPais zonapais, List<int> id_pais, int id_zona)
         {
-            if (ModelState.IsValid)
+            try
             {
-                List<ZonaPais> lista = new List<ZonaPais>();
-                for (int i = 0; i < id_pais.Count; i++)
+                if (ModelState.IsValid)
                 {
-                    zonapais = new ZonaPais();
-                    zonapais.estado = true;
-                    zonapais.id_zona = id_zona;
-                    zonapais.id_pais = id_pais[i];
-                    lista.Add(zonapais);
-                    db.ZonaPaises.Add(lista[i]);
+                    List<ZonaPais> lista = new List<ZonaPais>();
+                    for (int i = 0; i < id_pais.Count; i++)
+                    {
+                        zonapais = new ZonaPais();
+                        zonapais.estado = true;
+                        zonapais.id_zona = id_zona;
+                        zonapais.id_pais = id_pais[i];
+                        lista.Add(zonapais);
+                        db.ZonaPaises.Add(lista[i]);
+                    }
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(zonapais);
             }
-            return View(zonapais);
+            catch (NullReferenceException ex)
+            {
+                Error error = new Error();
+                error.Message = "Debe asociar al menos un país a una zona. Intente nuevamente.";
+                error.Action = "Create";
+                error.Controller = "ZonaPais";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         //

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using ImagineProject.Models;
+using System.Data.SqlClient;
 
 namespace ImagineProject.Controllers
 {
@@ -30,29 +31,41 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (ModelState.IsValid)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                    if (Membership.ValidateUser(model.UserName, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                            && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "El nombre de usuario o la contraseña ingresada no es correcta.");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "El nombre de usuario o la contraseña ingresada no es correcta.");
-                }
+                // If we got this far, something failed, redisplay form
+                return View(model);
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            catch(SqlException ex)
+            {
+                Error error = new Error();
+                error.Message = "Error relacionado con la red mientras se establecía una conexión con el servidor. "+
+                                "No se encontró el servidor o éste no estaba accesible. "+
+                                "Contacte al administrador del Sistema.";
+                error.Action = "LogOn";
+                error.Controller = "Account";
+                return View("~/Views/Shared/Error.aspx",error);
+            }
         }
 
         //

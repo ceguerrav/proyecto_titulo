@@ -11,33 +11,26 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
-<script type="text/jscript">
-    $('#btn_generarID').click(function () {
-        var url = "/Tag/GenerateID";
-        $.get(url, null, function (data) {
-            $("#txt_id").html(data);
-        });
-    })
-</script>
 
-<% using (Html.BeginForm()) { %>
-    <%: Html.ValidationSummary(true) %>
     <fieldset>
         <legend>Tag</legend>
 
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.id_pasajero, "Pasajero") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("id_pasajero", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
-        </div>
+            <% using (Html.BeginForm()) { %>
+                <%: Html.ValidationSummary(true) %>
 
-        <p>
-            <input type="submit" value="Agregar" />
-        </p>
+            <div class="editor-label">
+                <%: Html.LabelFor(model => model.id_pasajero, "Pasajero") %>
+            </div>
+            <div class="editor-field">
+                <%: Html.DropDownList("id_pasajero", String.Empty) %>
+                <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
+            </div>            
+            <p>
+                <input type="submit" value="Agregar" />
+            </p>
+        <% } %>
+
     </fieldset>
-<% } %>
 
 <div>
     <%: Html.ActionLink("Regresar", "Index") %>
