@@ -14,7 +14,7 @@
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
-        <legend>División Administrativa</legend>
+        <legend><%: Html.DisplayFor(model => model.Pais.TipoDivision.tipo_division) %></legend>
 
             <%: Html.HiddenFor(model => model.id_division_administrativa) %>
        

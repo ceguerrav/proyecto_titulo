@@ -13,25 +13,24 @@ namespace ImagineProject.Controllers
     public class DivisionAdministrativaController : Controller
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
-        /*
-        public String divisionPorPais(int id_pais) 
+
+        /***************************************************************************************/
+        public bool HaveReferences(int id)
         {
-            String resultado;
-            try 
+            bool resultado = false;
+            var cant = (db.Ciudades.Where(c => c.id_division_administrativa == id)).Count();
+            if (cant > 0)
             {
-                var division = from TipoDivision td in db.TipoDivision
-                               join Pais p in db.Pais on td.id_tipo_division equals p.id_tipo_division
-                               where p.id_pais == id_pais
-                               select td.tipo_division;
-                resultado = division.ToString();
+                resultado = true;
             }
-            catch(Exception ex){
-                //throw new Exception(ex.Message);
-                resultado = ex.Message;
+            else if (cant == 0)
+            {
+                resultado = false;
             }
             return resultado;
-        }
-        */
+        }       
+        /***************************************************************************************/
+
         //
         // GET: /DivisionAdministrativa/
 
@@ -116,11 +115,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            DivisionAdministrativa divisionadministrativa = db.DivisionesAdministrativas.Find(id);
-            db.DivisionesAdministrativas.Remove(divisionadministrativa);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                DivisionAdministrativa divisionadministrativa = db.DivisionesAdministrativas.Find(id);
+                db.DivisionesAdministrativas.Remove(divisionadministrativa);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar esta división administrativa porque tiene ciudades asociadas.";
+                error.Action = "Delete";
+                error.Controller = "DivisionAdministrativa";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

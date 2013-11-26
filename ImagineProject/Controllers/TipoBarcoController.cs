@@ -14,6 +14,20 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Barcos.Where(b => b.id_tipo_barco == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }       
         //
         // GET: /TipoBarco/
 
@@ -93,11 +107,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(short id)
-        {            
-            TipoBarco tipobarco = db.TiposBarcos.Find(id);
-            db.TiposBarcos.Remove(tipobarco);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                TipoBarco tipobarco = db.TiposBarcos.Find(id);
+                db.TiposBarcos.Remove(tipobarco);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este tipo de barco porque tiene barcos asociadas.";
+                error.Action = "Delete";
+                error.Controller = "TipoBarco";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

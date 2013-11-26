@@ -14,6 +14,21 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false ; 
+            var cant = (db.Paises.Where(p => p.id_tipo_division == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }   
+
         //
         // GET: /TipoDivision/
 
@@ -93,11 +108,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(short id)
-        {            
-            TipoDivision tipodivision = db.TiposDivisiones.Find(id);
-            db.TiposDivisiones.Remove(tipodivision);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                TipoDivision tipodivision = db.TiposDivisiones.Find(id);
+                db.TiposDivisiones.Remove(tipodivision);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else 
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este tipo de división porque tiene países asociados.";
+                error.Action = "Delete";
+                error.Controller = "TipoDivision";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -99,7 +99,11 @@
             <%: Html.LabelFor(model => model.sexo) %>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.sexo) %>
+            <%: Html.RadioButtonFor(model => model.sexo,"M") %>
+            <%: Html.LabelFor(model => model.sexo,"Masculino") %>
+
+            <%: Html.RadioButtonFor(model => model.sexo,"F") %>
+            <%: Html.LabelFor(model => model.sexo,"Femenino") %>
             <%: Html.ValidationMessageFor(model => model.sexo) %>
         </div>
 

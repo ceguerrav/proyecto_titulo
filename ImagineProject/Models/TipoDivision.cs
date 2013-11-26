@@ -26,6 +26,7 @@ namespace ImagineProject.Models
         [Required(ErrorMessage = "Tipo de división administrativa es obligatoria")]
         [Display(Name = "Tipo de división administrativa")]
         [StringLength(30, ErrorMessage = "{0} no debe exceder los 30 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string tipo_division { get; set; }
 
         public virtual ICollection<Pais> Pais { get; set; }

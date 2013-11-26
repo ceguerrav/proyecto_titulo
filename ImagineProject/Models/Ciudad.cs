@@ -27,6 +27,7 @@ namespace ImagineProject.Models
         [Required(ErrorMessage = "El nombre de la ciudad es obligatorio")]
         [Display(Name = "Nombre de la ciudad")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 100 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "Seleccione una división administrativa")]

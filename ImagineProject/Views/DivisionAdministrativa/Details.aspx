@@ -9,7 +9,7 @@
 <h2>Detalles</h2>
 
 <fieldset>
-    <legend>División Administrativa</legend>
+    <legend><%: Html.DisplayFor(model => model.Pais.TipoDivision.tipo_division) %></legend>
 
     <table>
     <tr>

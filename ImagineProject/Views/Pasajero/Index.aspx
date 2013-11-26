@@ -33,7 +33,7 @@
             Direccion
         </th>
         <th>
-            Numero_contacto
+            Número contacto
         </th>
         <th>
             E-mail

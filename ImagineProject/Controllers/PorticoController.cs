@@ -13,6 +13,22 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferencesRecinto(int id)
+        {
+            bool resultado = false;
+            var cant = (db.RecintoPorticos.Where(rp => rp.id_recinto == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }       
+
+
         //
         // GET: /Portico/
 
@@ -93,11 +109,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Portico portico = db.Porticos.Find(id);
-            db.Porticos.Remove(portico);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferencesRecinto(id))
+            {
+                Portico portico = db.Porticos.Find(id);
+                db.Porticos.Remove(portico);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este portico porque tiene recintos asociados.";
+                error.Action = "Delete";
+                error.Controller = "Portico";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -24,6 +24,7 @@ namespace ImagineProject.Models
         public int id_zona { get; set; }
 
         [Required(ErrorMessage = "Nombre de zona es obligatorio")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         [Display(Name = "Nombre de zona")]
         public string nombre_zona { get; set; }
 

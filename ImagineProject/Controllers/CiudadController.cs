@@ -37,6 +37,34 @@ namespace ImagineProject.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        public bool HaveReferencesPasajero(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Pasajeros.Where(p => p.id_ciudad == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+        public bool HaveReferencesPuerto(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Puertos.Where(p => p.id_ciudad == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
         /*************************************************************************************/
 
         //
@@ -140,11 +168,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Ciudad ciudad = db.Ciudades.Find(id);
-            db.Ciudades.Remove(ciudad);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferencesPasajero(id) && !HaveReferencesPuerto(id))
+            {
+                Ciudad ciudad = db.Ciudades.Find(id);
+                db.Ciudades.Remove(ciudad);
+                db.SaveChanges();
+                return RedirectToAction("Index");           
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar esta ciudad porque tiene pasajeros y/o puertos asociados.";
+                error.Action = "Delete";
+                error.Controller = "Ciudad";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

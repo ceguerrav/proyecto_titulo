@@ -14,6 +14,35 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferencesViaje(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Viajes.Where(v => v.id_barco == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+        public bool HaveReferencesRecintos(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Viajes.Where(v => v.id_barco == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }      
+
         //
         // GET: /Barco/
 
@@ -102,11 +131,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Barco barco = db.Barcos.Find(id);
-            db.Barcos.Remove(barco);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferencesViaje(id) && !HaveReferencesRecintos(id))
+            {
+                Barco barco = db.Barcos.Find(id);
+                db.Barcos.Remove(barco);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este barco porque tiene viajes y/o recintos asociados.";
+                error.Action = "Delete";
+                error.Controller = "Barco";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

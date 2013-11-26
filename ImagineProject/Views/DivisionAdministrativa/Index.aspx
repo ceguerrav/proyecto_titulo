@@ -21,6 +21,9 @@
             Pais
         </th>
         <th>
+            Tipo de división
+        </th>
+        <th>
             Nombre
         </th>
         <th></th>
@@ -32,6 +35,9 @@
     <tr>
         <td>
             <%: Html.DisplayFor(modelItem => item.Pais.nombre_pais) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Pais.TipoDivision.tipo_division) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.nombre) %>

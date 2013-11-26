@@ -26,19 +26,23 @@ namespace ImagineProject.Models
 
         [Display(Name = "Nombre oficial")]
         [StringLength(100, ErrorMessage = "{0} no debe exceder los 100 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string nombre_oficial { get; set; }
 
         [Required(ErrorMessage = "Nombre de país es obligatorio")]
         [Display(Name = "Nombre del pais")]
         [StringLength(30, ErrorMessage = "{0} no debe exceder los 30 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string nombre_pais { get; set; }
 
         [Display(Name = "Codigo ISO")]
-        [StringLength(5, ErrorMessage = "{0} no debe exceder los 5 caracteres.")]
+        [StringLength(3, ErrorMessage = "{0} no debe exceder los 3 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string cod_iso { get; set; }
 
         [Required(ErrorMessage = "Seleccione un tipo de división")]
         [Display(Name = "Tipo de división administrativa")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public short id_tipo_division { get; set; }
 
         public virtual ICollection<DivisionAdministrativa> DivisionAdministrativa { get; set; }

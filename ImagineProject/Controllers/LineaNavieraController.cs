@@ -14,6 +14,21 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Barcos.Where(b => b.id_linea_naviera == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }       
+
         //
         // GET: /LineaNaviera/
 
@@ -93,11 +108,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            LineaNaviera lineanaviera = db.LineasNavieras.Find(id);
-            db.LineasNavieras.Remove(lineanaviera);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                LineaNaviera lineanaviera = db.LineasNavieras.Find(id);
+                db.LineasNavieras.Remove(lineanaviera);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar esta línea naviera porque tiene barcos asociadas.";
+                error.Action = "Delete";
+                error.Controller = "LineaNaviera";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -15,7 +15,20 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
         /***************************************************************************************/
-
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.DivisionesAdministrativas.Where(d => d.id_pais == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }  
         /***************************************************************************************/
         //
         // GET: /Pais/
@@ -107,11 +120,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Pais pais = db.Paises.Find(id);
-            db.Paises.Remove(pais);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                Pais pais = db.Paises.Find(id);
+                db.Paises.Remove(pais);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este país porque tiene divisones administrativas asociadas.";
+                error.Action = "Delete";
+                error.Controller = "Pais";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

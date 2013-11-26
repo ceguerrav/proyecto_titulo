@@ -59,8 +59,8 @@
 </fieldset>
 <% using (Html.BeginForm()) { %>
     <p>
-        <input type="submit" value="Delete" /> |
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <input type="submit" value="Eliminar" /> |
+        <%: Html.ActionLink("Regresar", "Index") %>
     </p>
 <% } %>
 

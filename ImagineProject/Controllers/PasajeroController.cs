@@ -57,6 +57,20 @@ namespace ImagineProject.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Tags.Where(t => t.id_pasajero== id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }       
         /*************************************************************************************/
 
 
@@ -168,10 +182,21 @@ namespace ImagineProject.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pasajero pasajero = db.Pasajeros.Find(id);
-            db.Pasajeros.Remove(pasajero);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!HaveReferences(id))
+            {
+                Pasajero pasajero = db.Pasajeros.Find(id);
+                db.Pasajeros.Remove(pasajero);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este pasajero porque tiene etiquetas RFID asociadas.";
+                error.Action = "Delete";
+                error.Controller = "Pasajero";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -10,7 +10,7 @@
 
 <h3>¿Realmente desea eliminar esto?</h3>
 <fieldset>
-    <legend>DivisionAdministrativa</legend>
+    <legend><%: Html.DisplayFor(model => model.Pais.TipoDivision.tipo_division) %></legend>
 
     <div class="display-label">Nombre</div>
     <div class="display-field">

@@ -24,7 +24,8 @@
             <div class="editor-field">
                 <%: Html.DropDownList("id_pasajero", String.Empty) %>
                 <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
-            </div>            
+            </div>      
+                     
             <p>
                 <input type="submit" value="Agregar" />
             </p>

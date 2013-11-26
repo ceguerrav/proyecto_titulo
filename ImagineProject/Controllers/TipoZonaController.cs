@@ -14,6 +14,21 @@ namespace ImagineProject.Controllers
     {
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Zonas.Where(z => z.id_tipo_zona == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }  
+
         //
         // GET: /TipoZona/
 
@@ -94,10 +109,21 @@ namespace ImagineProject.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(short id)
         {
-            TipoZona tipozona = db.TipoZonas.Find(id);
-            db.TipoZonas.Remove(tipozona);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!HaveReferences(id))
+            {
+                TipoZona tipozona = db.TipoZonas.Find(id);
+                db.TipoZonas.Remove(tipozona);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar este tipo de zona porque tiene zonas asociados.";
+                error.Action = "Delete";
+                error.Controller = "TipoZona";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)

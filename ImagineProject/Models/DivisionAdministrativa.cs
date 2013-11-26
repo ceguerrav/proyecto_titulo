@@ -26,6 +26,7 @@ namespace ImagineProject.Models
         [Required(ErrorMessage = "El nombre de división es obligatorio")]
         [Display(Name = "Nombre de división")]
         [StringLength(100, ErrorMessage = "El {0} no debe exceder los 100 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "Seleccione un país")]

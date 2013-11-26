@@ -26,6 +26,7 @@ namespace ImagineProject.Models
         [Required(ErrorMessage = "Tipo de zona es obligatoria")]
         [Display(Name = "Tipo de zona")]
         [StringLength(30, ErrorMessage = "{0} no debe exceder los 30 caracteres.")]
+        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public string tipo_zona { get; set; }
 
         public virtual ICollection<Zona> Zona { get; set; }

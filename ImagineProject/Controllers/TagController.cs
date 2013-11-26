@@ -14,9 +14,22 @@ namespace ImagineProject.Controllers
     [Authorize(Roles = "Administrador")]   
     public class TagController : Controller
     {
-
         
         /************************************************************************************************/
+        public bool HaveReferences(int id)
+        {
+            bool resultado = false;
+            var cant = (db.Movimientos.Where(m => m.id_tag == id)).Count();
+            if (cant > 0)
+            {
+                resultado = true;
+            }
+            else if (cant == 0)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
         private static bool isCursorBusy;
         private ControlConexion conn;
 
@@ -207,11 +220,22 @@ namespace ImagineProject.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
-            Tag tag = db.Tags.Find(id);
-            db.Tags.Remove(tag);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {
+            if (!HaveReferences(id))
+            {
+                Tag tag = db.Tags.Find(id);
+                db.Tags.Remove(tag);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Error error = new Error();
+                error.Message = "Error: No puede eliminar esta etiqueta RFID porque tiene movimientos asociados.";
+                error.Action = "Delete";
+                error.Controller = "Tag";
+                return View("~/Views/Shared/Error.aspx", error);
+            }
         }
 
         protected override void Dispose(bool disposing)
