@@ -17,16 +17,13 @@
     </div>
 </fieldset>
 <fieldset>
-    <legend>Usuarios del rol <%: Html.DisplayFor(model => model.RoleName) %></legend>
+    <legend>Usuarios del rol "<%: Html.DisplayFor(model => model.RoleName) %>"</legend>
     <table>
-    <tr>
-        <th>
-            Usuario
-        </th>
-    </tr>
-
     <% foreach (string item in ViewBag.usuarios) { %>
     <tr>
+        <th>
+            Nombre de usuario:
+        </th>
         <td>
             <%: Html.DisplayFor(modelItem => item)  %>
         </td>

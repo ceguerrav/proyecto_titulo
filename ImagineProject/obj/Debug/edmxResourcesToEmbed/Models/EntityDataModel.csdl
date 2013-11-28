@@ -187,6 +187,8 @@
     <NavigationProperty Name="Portico" Relationship="Db_ImagineModel.FK_Movimiento_Portico" FromRole="Movimiento" ToRole="Portico" />
     <NavigationProperty Name="Tag" Relationship="Db_ImagineModel.FK_Movimiento_Tag" FromRole="Movimiento" ToRole="Tag" />
     <NavigationProperty Name="TipoMovimiento" Relationship="Db_ImagineModel.FK_Movimiento_TipoMovimiento" FromRole="Movimiento" ToRole="TipoMovimiento" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" />
+    <Property Type="Time" Name="hora" Nullable="false" />
   </EntityType>
   <EntityType Name="OrigenDestino">
     <Key>

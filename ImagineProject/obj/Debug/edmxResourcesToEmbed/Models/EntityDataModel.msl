@@ -42,6 +42,8 @@
     <EntitySetMapping Name="Movimientos">
       <EntityTypeMapping TypeName="Db_ImagineModel.Movimiento">
         <MappingFragment StoreEntitySet="Movimiento">
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
           <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
           <ScalarProperty Name="id_portico" ColumnName="id_portico" />

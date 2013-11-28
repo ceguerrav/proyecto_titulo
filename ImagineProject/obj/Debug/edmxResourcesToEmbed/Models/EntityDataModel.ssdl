@@ -170,6 +170,8 @@
       <PropertyRef Name="id_movimiento" />
     </Key>
     <Property Name="id_movimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="hora" Type="time" Nullable="false" />
     <Property Name="fecha_hora" Type="datetime" Nullable="false" />
     <Property Name="id_portico" Type="int" Nullable="false" />
     <Property Name="id_tipo_movimiento" Type="smallint" Nullable="false" />

@@ -175,6 +175,8 @@
             <PropertyRef Name="id_movimiento" />
           </Key>
           <Property Name="id_movimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="hora" Type="time" Nullable="false" />
           <Property Name="fecha_hora" Type="datetime" Nullable="false" />
           <Property Name="id_portico" Type="int" Nullable="false" />
           <Property Name="id_tipo_movimiento" Type="smallint" Nullable="false" />
@@ -865,6 +867,8 @@
           <NavigationProperty Name="Portico" Relationship="Db_ImagineModel.FK_Movimiento_Portico" FromRole="Movimiento" ToRole="Portico" />
           <NavigationProperty Name="Tag" Relationship="Db_ImagineModel.FK_Movimiento_Tag" FromRole="Movimiento" ToRole="Tag" />
           <NavigationProperty Name="TipoMovimiento" Relationship="Db_ImagineModel.FK_Movimiento_TipoMovimiento" FromRole="Movimiento" ToRole="TipoMovimiento" />
+          <Property Type="DateTime" Name="fecha" Nullable="false" />
+          <Property Type="Time" Name="hora" Nullable="false" />
         </EntityType>
         <EntityType Name="OrigenDestino">
           <Key>
@@ -1428,7 +1432,9 @@
             <ScalarProperty Name="linea_naviera" ColumnName="linea_naviera" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Movimientos"><EntityTypeMapping TypeName="Db_ImagineModel.Movimiento"><MappingFragment StoreEntitySet="Movimiento">
-            <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
+            <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_movimiento" ColumnName="id_movimiento" />
             <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
             <ScalarProperty Name="id_portico" ColumnName="id_portico" />
             <ScalarProperty Name="id_tipo_movimiento" ColumnName="id_tipo_movimiento" />
