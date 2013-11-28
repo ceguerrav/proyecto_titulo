@@ -20,7 +20,7 @@
     </tr>
 
     <tr>
-    <div class="display-label"><td>Descripción</td></div>
+    <div class="display-label"><td><b>Descripción: </b></td></div>
     <div class="display-field">
         <td><%: Html.DisplayFor(model => model.descripcion) %></td>
     </div>

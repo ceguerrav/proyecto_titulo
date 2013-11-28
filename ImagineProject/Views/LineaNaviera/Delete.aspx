@@ -10,7 +10,7 @@
 
 <h3>¿Realmente desea eliminar esto?</h3>
 <fieldset>
-    <legend>LineaNaviera</legend>
+    <legend>Linea naviera</legend>
 
     <div class="display-label">Linea naviera</div>
     <div class="display-field">

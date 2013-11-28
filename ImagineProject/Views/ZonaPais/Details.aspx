@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Detlles</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Paises de zona</legend>

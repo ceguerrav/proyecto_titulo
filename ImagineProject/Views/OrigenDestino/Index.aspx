@@ -8,6 +8,8 @@
 
 <h2>Origen, destino y escalas</h2>
 
+<p>(El primer número de escala debe ser el origen y el último destino)</p>
+
 <p>
     <a href="<%: Url.Action("Create", "OrigenDestino") %>">
         <button class="linkAgregar">Agregar Nuevo</button>
@@ -24,7 +26,7 @@
             Puerto
         </th>
         <th>
-            prioridad
+            Número escala
         </th>
         <th>
             Fecha de llegada

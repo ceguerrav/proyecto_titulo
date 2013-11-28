@@ -20,6 +20,22 @@
     </tr>
 
     <tr>
+    <div class="display-label"><td><b>País: </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.Ciudad.DivisionAdministrativa.Pais.nombre_pais) %></td>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="display-label"><td><b>
+    <%: Html.DisplayFor(model => model.Ciudad.DivisionAdministrativa.Pais.TipoDivision.tipo_division) %>: 
+    </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.Ciudad.DivisionAdministrativa.nombre) %></td>
+    </div>
+    </tr>
+
+    <tr>
     <div class="display-label"><td><b>Ciudad: </b></td></div>
     <div class="display-field">
         <td><%: Html.DisplayFor(model => model.Ciudad.nombre) %></td>

@@ -15,7 +15,8 @@
     <%: Html.ValidationSummary(true) %>
     <fieldset>
         <legend>Porticos de recinto</legend>
-
+        
+        <p>Vincule un portico al recinto de un barco</p>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.id_portico, "Portico") %>
         </div>

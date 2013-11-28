@@ -25,13 +25,13 @@ namespace ImagineProject.Controllers
 
         //
         // GET: /RecintoPortico/Details/5
-
+        /*
         public ViewResult Details(int id)
         {
             RecintoPortico recintoportico = db.RecintoPorticos.Find(id);
             return View(recintoportico);
         }
-
+        */
         //
         // GET: /RecintoPortico/Create
 
@@ -63,10 +63,10 @@ namespace ImagineProject.Controllers
         
         //
         // GET: /RecintoPortico/Edit/5
- 
-        public ActionResult Edit(int id)
+        /*
+        public ActionResult Edit(int id_portico,int id_recinto)
         {
-            RecintoPortico recintoportico = db.RecintoPorticos.Find(id);
+            RecintoPortico recintoportico = db.RecintoPorticos.Find(id_portico,id_recinto);
             ViewBag.id_portico = new SelectList(db.Porticos, "id_portico", "descripcion_portico", recintoportico.id_portico);
             ViewBag.id_recinto = new SelectList(db.Recintos, "id_recinto", "nombre_recinto", recintoportico.id_recinto);
             return View(recintoportico);
@@ -88,13 +88,13 @@ namespace ImagineProject.Controllers
             ViewBag.id_recinto = new SelectList(db.Recintos, "id_recinto", "nombre_recinto", recintoportico.id_recinto);
             return View(recintoportico);
         }
-
+        */
         //
         // GET: /RecintoPortico/Delete/5
- 
-        public ActionResult Delete(int id)
+
+        public ActionResult Delete(int id_portico, int id_recinto)
         {
-            RecintoPortico recintoportico = db.RecintoPorticos.Find(id);
+            RecintoPortico recintoportico = db.RecintoPorticos.Find(id_portico, id_recinto);
             return View(recintoportico);
         }
 
@@ -102,9 +102,9 @@ namespace ImagineProject.Controllers
         // POST: /RecintoPortico/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            RecintoPortico recintoportico = db.RecintoPorticos.Find(id);
+        public ActionResult DeleteConfirmed(int id_portico,int id_recinto)
+        {
+            RecintoPortico recintoportico = db.RecintoPorticos.Find(id_portico, id_recinto);
             db.RecintoPorticos.Remove(recintoportico);
             db.SaveChanges();
             return RedirectToAction("Index");

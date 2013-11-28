@@ -26,7 +26,9 @@
         <th>
             Pais
         </th>
-        <th></th>
+        <th>
+            Desvincular País
+        </th>
     </tr>
     </thead>
 
@@ -43,8 +45,10 @@
             <%: Html.DisplayFor(modelItem => item.Pais.nombre_pais) %>
         </td>
         <td>
+            <!--
             <%: Html.ActionLink("Editar", "Edit", new { id_zona = item.id_zona, id_pais = item.id_pais })%> |
             <%: Html.ActionLink("Detalles", "Details", new { id_zona = item.id_zona, id_pais = item.id_pais })%> |
+            -->
             <%: Html.ActionLink("Eliminar", "Delete", new { id_zona = item.id_zona, id_pais = item.id_pais })%>
         </td>
     </tr>

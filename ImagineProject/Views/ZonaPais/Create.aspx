@@ -16,6 +16,7 @@
     <fieldset>
         <legend>Paises de zona</legend>
 
+        <p>Vincule un país a una zona</p>
         <div class="editor-label">
             <%: Html.LabelFor(model => model.id_zona, "Zona") %>
         </div>

@@ -24,9 +24,14 @@
             Recinto
         </th>
         <th>
+            Numero de Portico
+        </th>
+        <th>
             Portico
         </th>
-        <th></th>
+        <th>
+            Desvincular
+        </th>
     </tr>
     </thead>
 
@@ -40,11 +45,16 @@
             <%: Html.DisplayFor(modelItem => item.Recinto.nombre_recinto) %>
         </td>
         <td>
+            <%: Html.DisplayFor(modelItem => item.Portico.numero_portico) %>
+        </td>
+        <td>
             <%: Html.DisplayFor(modelItem => item.Portico.descripcion_portico) %>
         </td>
         <td>
+        <!--
             <%: Html.ActionLink("Editar", "Edit", new { id_recinto=item.id_recinto,id_portico = item.id_portico }) %> |
             <%: Html.ActionLink("Detalles", "Details", new { id_recinto = item.id_recinto, id_portico = item.id_portico })%> |
+        -->
             <%: Html.ActionLink("Eliminar", "Delete", new { id_recinto = item.id_recinto, id_portico = item.id_portico })%>
         </td>
     </tr>

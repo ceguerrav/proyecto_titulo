@@ -8,7 +8,7 @@
 
 <h2>Eliminar</h2>
 
-<h3>¿Realmente desea eliminar esto?</h3>
+<h3>¿Realmente desea desvincular este país de su zona?</h3>
 <fieldset>
     <legend>Paises de zona</legend>
 

@@ -33,10 +33,23 @@
     </div>
     </tr>
 
-    <div class="display-label">Pasajero</div>
+    <tr>
+    <div class="display-label"><td><b>Pasajero: </b></td></div>
     <div class="display-field">
-        <%: Html.DisplayFor(model => model.Pasajero.pasaporte) %>
+        <td>
+        <%: Html.DisplayFor(model => model.Pasajero.nombres) %>
+        <%: Html.DisplayFor(model => model.Pasajero.apellidos) %>
+        </td>
     </div>
+    </tr>
+
+    <tr>
+    <div class="display-label"><td><b>Pasaporte: </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.Pasajero.pasaporte) %></td>
+    </div>
+    </tr>
+
     </table>
 </fieldset>
 <p>

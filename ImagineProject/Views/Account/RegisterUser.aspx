@@ -68,4 +68,9 @@
             </fieldset>
         </div>
     <% } %>
+
+    <div>
+    <%: Html.ActionLink("Regresar", "ListUsers") %>
+    </div>
+
 </asp:Content>

@@ -66,8 +66,8 @@ namespace ImagineProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");  
             }
-
             return View(lineanaviera);
+            
         }
         
         //

@@ -12,6 +12,22 @@
     <legend>Ciudad</legend>
 
     <table>
+    
+    <tr>
+    <div class="display-label"><td><b>País: </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.DivisionAdministrativa.Pais.nombre_pais) %></td>
+    </div>
+    </tr>
+    
+    <tr>
+        <div class="display-label"><td><b>
+        <%: Html.DisplayFor(model => model.DivisionAdministrativa.Pais.TipoDivision.tipo_division) %>: 
+        </b></td></div>
+    <div class="display-field">
+        <td><%: Html.DisplayFor(model => model.DivisionAdministrativa.nombre) %></td>
+    </div>
+
     <tr>
     <div class="display-label"><td><b>Nombre ciudad: </b></td></div>
     <div class="display-field">
@@ -19,10 +35,6 @@
     </div>
     </tr>
 
-    <div class="display-label"><td><b>División administrativa: </b></td></div>
-    <div class="display-field">
-        <td><%: Html.DisplayFor(model => model.DivisionAdministrativa.nombre) %></td>
-    </div>
     </table>
 </fieldset>
 <p>

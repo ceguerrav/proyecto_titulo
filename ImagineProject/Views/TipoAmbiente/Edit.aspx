@@ -34,7 +34,7 @@
         </div>
 
         <p>
-            <input type="submit" value="guardar" />
+            <input type="submit" value="Guardar" />
         </p>
     </fieldset>
 <% } %>

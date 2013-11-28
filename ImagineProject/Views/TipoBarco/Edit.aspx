@@ -14,7 +14,7 @@
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
-        <legend>TipoBarco</legend>
+        <legend>Tipo de barco</legend>
 
             <%: Html.HiddenFor(model => model.id_tipo_barco) %>
 

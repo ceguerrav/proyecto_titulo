@@ -10,7 +10,7 @@
 
 <h3>¿Realmente desea eliminar esto?</h3>
 <fieldset>
-    <legend>TipoPasaje</legend>
+    <legend>Tipo de pasaje</legend>
 
     <div class="display-label">Tipo de pasaje</div>
     <div class="display-field">

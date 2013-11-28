@@ -29,6 +29,12 @@
 
     <div class="display-label">Pasajero</div>
     <div class="display-field">
+        <%: Html.DisplayFor(model => model.Pasajero.nombres) %>
+        <%: Html.DisplayFor(model => model.Pasajero.apellidos) %>
+    </div>
+
+    <div class="display-label">Pasaporte</div>
+    <div class="display-field">
         <%: Html.DisplayFor(model => model.Pasajero.pasaporte) %>
     </div>
 </fieldset>
