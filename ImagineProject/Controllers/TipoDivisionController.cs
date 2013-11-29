@@ -118,7 +118,7 @@ namespace ImagineProject.Controllers
             }
             else 
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este tipo de división porque tiene países asociados.";
                 error.Action = "Delete";
                 error.Controller = "TipoDivision";

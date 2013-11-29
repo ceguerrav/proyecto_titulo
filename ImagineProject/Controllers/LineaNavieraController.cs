@@ -118,7 +118,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar esta línea naviera porque tiene barcos asociadas.";
                 error.Action = "Delete";
                 error.Controller = "LineaNaviera";

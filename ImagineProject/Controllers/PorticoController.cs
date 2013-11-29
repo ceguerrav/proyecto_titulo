@@ -119,7 +119,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este portico porque tiene recintos asociados.";
                 error.Action = "Delete";
                 error.Controller = "Portico";

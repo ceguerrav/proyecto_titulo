@@ -15,7 +15,11 @@ namespace ImagineProject.Models
     public partial class Movimiento
     {
         public int id_movimiento { get; set; }
+
+        public System.TimeSpan hora { get; set; }
+        public System.DateTime fecha { get; set; }
         public System.DateTime fecha_hora { get; set; }
+
         public int id_portico { get; set; }
         public short id_tipo_movimiento { get; set; }
         public int id_tag { get; set; }

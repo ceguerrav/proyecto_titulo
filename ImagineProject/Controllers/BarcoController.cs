@@ -141,7 +141,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este barco porque tiene viajes y/o recintos asociados.";
                 error.Action = "Delete";
                 error.Controller = "Barco";

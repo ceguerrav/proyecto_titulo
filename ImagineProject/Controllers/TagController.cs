@@ -230,7 +230,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar esta etiqueta RFID porque tiene movimientos asociados.";
                 error.Action = "Delete";
                 error.Controller = "Tag";

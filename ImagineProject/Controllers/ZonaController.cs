@@ -123,7 +123,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar esta zona porque tiene países asociados.";
                 error.Action = "Delete";
                 error.Controller = "Zona";

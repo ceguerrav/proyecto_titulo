@@ -58,7 +58,7 @@ namespace ImagineProject.Controllers
             }
             catch(SqlException ex)
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error relacionado con la red mientras se establecía una conexión con el servidor. "+
                                 "No se encontró el servidor o éste no estaba accesible. "+
                                 "Contacte al administrador del Sistema.";

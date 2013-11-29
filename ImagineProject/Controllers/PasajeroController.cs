@@ -191,7 +191,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este pasajero porque tiene etiquetas RFID asociadas.";
                 error.Action = "Delete";
                 error.Controller = "Pasajero";

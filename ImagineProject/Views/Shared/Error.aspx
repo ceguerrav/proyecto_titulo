@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Inicio.Master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.Error>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Inicio.Master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.Operacion>" %>
 
 <asp:Content ID="errorTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Error

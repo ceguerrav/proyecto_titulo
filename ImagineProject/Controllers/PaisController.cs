@@ -130,7 +130,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este país porque tiene divisones administrativas asociadas.";
                 error.Action = "Delete";
                 error.Controller = "Pais";

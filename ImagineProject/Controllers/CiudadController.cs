@@ -178,7 +178,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar esta ciudad porque tiene pasajeros y/o puertos asociados.";
                 error.Action = "Delete";
                 error.Controller = "Ciudad";

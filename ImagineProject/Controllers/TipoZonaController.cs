@@ -64,9 +64,14 @@ namespace ImagineProject.Controllers
             {
                 db.TipoZonas.Add(tipozona);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index"; //Acción de retorno (Después del mensaje OK)
+                ok.Controller = "TipoZona";//Controlador de retorno (Después del mensaje OK)
+                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido guardado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx",ok);
             }
-
+            //return View("Details", tipozona);
             return View(tipozona);
         }
 
@@ -89,7 +94,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tipozona).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index"; //Acción de retorno (Después del mensaje OK)
+                ok.Controller = "TipoZona";//Controlador de retorno (Después del mensaje OK)
+                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido guardado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipozona);
         }
@@ -118,7 +128,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar este tipo de zona porque tiene zonas asociados.";
                 error.Action = "Delete";
                 error.Controller = "TipoZona";

@@ -77,7 +77,7 @@ namespace ImagineProject.Models
         public string RoleName { get; set; }
     }
 
-    public class Error
+    public class Operacion
     {
         public string Message { get; set; }
         public string Action { get; set; }

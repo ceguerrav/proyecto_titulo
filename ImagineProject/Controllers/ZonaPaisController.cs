@@ -85,7 +85,7 @@ namespace ImagineProject.Controllers
             }
             catch (NullReferenceException ex)
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Debe asociar al menos un país a una zona. Intente nuevamente.";
                 error.Action = "Create";
                 error.Controller = "ZonaPais";

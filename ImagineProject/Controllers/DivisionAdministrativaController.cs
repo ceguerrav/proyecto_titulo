@@ -125,7 +125,7 @@ namespace ImagineProject.Controllers
             }
             else
             {
-                Error error = new Error();
+                Operacion error = new Operacion();
                 error.Message = "Error: No puede eliminar esta división administrativa porque tiene ciudades asociadas.";
                 error.Action = "Delete";
                 error.Controller = "DivisionAdministrativa";
