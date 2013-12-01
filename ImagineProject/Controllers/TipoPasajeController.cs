@@ -49,7 +49,12 @@ namespace ImagineProject.Controllers
             {
                 db.TiposPasajes.Add(tipopasaje);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoPasaje";
+                ok.Message = "El tipo de pasaje " + tipopasaje.tipo_pasaje + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(tipopasaje);
@@ -74,7 +79,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tipopasaje).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoPasaje";
+                ok.Message = "El tipo de pasaje " + tipopasaje.tipo_pasaje + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipopasaje);
         }

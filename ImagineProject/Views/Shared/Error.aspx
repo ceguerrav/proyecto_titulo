@@ -6,7 +6,7 @@
 
 <asp:Content ID="errorContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Se ha producido un error al procesar su solicitud!!
+        Se ha producido un error al procesar su solicitud!
     </h2>
     <p>
         Detalles:<br />

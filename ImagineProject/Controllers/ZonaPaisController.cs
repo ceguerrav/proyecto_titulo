@@ -79,7 +79,12 @@ namespace ImagineProject.Controllers
                         db.ZonaPaises.Add(lista[i]);
                     }
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
+                    Operacion ok = new Operacion();
+                    ok.Action = "Index";
+                    ok.Controller = "ZonaPais";
+                    ok.Message = "Se ha ingresado el siguente país " + zonapais.Pais.nombre_pais + "a la zona " + zonapais.Zona.nombre_zona;
+                    return View("~/Views/Shared/Dialog.aspx", ok);
                 }
                 return View(zonapais);
             }
@@ -115,7 +120,12 @@ namespace ImagineProject.Controllers
                 zonapais.estado = true;
                 db.Entry(zonapais).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "ZonaPais";
+                ok.Message = "Se ha ingresado el siguente país " + zonapais.Pais.nombre_pais + "a la zona " + zonapais.Zona.nombre_zona;
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "nombre_pais", zonapais.id_pais);
             ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "nombre_zona", zonapais.id_zona);

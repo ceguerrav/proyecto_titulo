@@ -81,7 +81,12 @@ namespace ImagineProject.Controllers
             {
                 db.Barcos.Add(barco);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Barco";
+                ok.Message = "El barco " + barco.nombre_barco + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_linea_naviera = new SelectList(db.LineasNavieras, "id_linea_naviera", "linea_naviera", barco.id_linea_naviera);
@@ -110,7 +115,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(barco).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Barco";
+                ok.Message = "El barco " + barco.nombre_barco + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_linea_naviera = new SelectList(db.LineasNavieras, "id_linea_naviera", "linea_naviera", barco.id_linea_naviera);
             ViewBag.id_tipo_barco = new SelectList(db.TiposBarcos, "id_tipo_barco", "tipo_barco", barco.id_tipo_barco);

@@ -73,7 +73,12 @@ namespace ImagineProject.Controllers
             {
                 db.Paises.Add(pais);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pais";
+                ok.Message = "El país " + pais.nombre_pais + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_tipo_division = new SelectList(db.TiposDivisiones, "id_tipo_division", "tipo_division", pais.id_tipo_division);
@@ -100,7 +105,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(pais).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pais";
+                ok.Message = "El país " + pais.nombre_pais + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_tipo_division = new SelectList(db.TiposDivisiones, "id_tipo_division", "tipo_division", pais.id_tipo_division);
             return View(pais);

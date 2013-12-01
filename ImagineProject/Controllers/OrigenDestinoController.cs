@@ -52,7 +52,12 @@ namespace ImagineProject.Controllers
             {
                 db.OrigenDestinos.Add(origendestino);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "OrigenDestino";
+                ok.Message = "La escala " + origendestino.Puerto.nombre_puerto + " ha sido registrada satisfactoriamente para el viaje " + origendestino.Viaje.descripcion + ".";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_puerto = new SelectList(db.Puertos, "id_puerto", "nombre_puerto", origendestino.id_puerto);
@@ -81,7 +86,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(origendestino).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "OrigenDestino";
+                ok.Message = "La escala " + origendestino.Puerto.nombre_puerto + " ha sido actualizada satisfactoriamente para el viaje " + origendestino.Viaje.descripcion + ".";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_puerto = new SelectList(db.Puertos, "id_puerto", "nombre_puerto", origendestino.id_puerto);
             ViewBag.id_viaje = new SelectList(db.Viajes, "id_viaje", "descripcion", origendestino.id_viaje);

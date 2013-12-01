@@ -53,7 +53,12 @@ namespace ImagineProject.Controllers
                 recintoportico.estado = true;
                 db.RecintoPorticos.Add(recintoportico);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "RecintoPortico";
+                ok.Message = "Se ha ingresado el siguente portico " + recintoportico.Portico.descripcion_portico + "al reciento " + recintoportico.Recinto.nombre_recinto;
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_portico = new SelectList(db.Porticos, "id_portico", "descripcion_portico", recintoportico.id_portico);

@@ -61,3 +61,12 @@ E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZOperadorAcsii.pdb
 E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\ResolveAssemblyReference.cache
 E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\RfidZ.dll
 E:\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\RfidZ.pdb
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZ.dll
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZ.pdb
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZOperador.dll
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZOperadorAcsii.dll
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZOperador.pdb
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\bin\Debug\RfidZOperadorAcsii.pdb
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\RfidZ.dll
+C:\Users\Vale\Documents\GitHub\proyecto_titulo\Modulos_RFID\RfidZ\obj\Debug\RfidZ.pdb

@@ -68,7 +68,12 @@ namespace ImagineProject.Controllers
             {
                 db.DivisionesAdministrativas.Add(divisionadministrativa);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "DivisionAdministrativa";
+                ok.Message = "La división administrativa " + divisionadministrativa.nombre + " ha sido ingresada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "nombre_pais", divisionadministrativa.id_pais);
@@ -95,7 +100,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(divisionadministrativa).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "DivisionAdministrativa";
+                ok.Message = "La división administrativa " + divisionadministrativa.nombre + " ha sido actualizada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "nombre_pais", divisionadministrativa.id_pais);
             return View(divisionadministrativa);

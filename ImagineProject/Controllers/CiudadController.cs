@@ -106,7 +106,12 @@ namespace ImagineProject.Controllers
             {
                 db.Ciudades.Add(ciudad);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index"); 
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Ciudad";
+                ok.Message = "La ciudad " + ciudad.nombre + " ha sido ingresada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             //ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre", ciudad.id_division_administrativa);
@@ -148,7 +153,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(ciudad).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Ciudad";
+                ok.Message = "La ciudad " + ciudad.nombre + " ha sido actualizada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_division_administrativa = new SelectList(db.DivisionesAdministrativas, "id_division_administrativa", "nombre", ciudad.id_division_administrativa);
             return View(ciudad);

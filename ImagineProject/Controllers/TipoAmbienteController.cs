@@ -49,7 +49,12 @@ namespace ImagineProject.Controllers
             {
                 db.TiposAmbientes.Add(tipoambiente);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoAmbiente";
+                ok.Message = "El tipo de ambiente " + tipoambiente.tipo_ambiente + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(tipoambiente);
@@ -74,7 +79,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tipoambiente).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoAmbiente";
+                ok.Message = "El tipo de ambiente " + tipoambiente.tipo_ambiente + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipoambiente);
         }

@@ -65,7 +65,12 @@ namespace ImagineProject.Controllers
                 portico.estado = true;
                 db.Porticos.Add(portico);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Portico";
+                ok.Message = "El portico " + portico.numero_portico + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(portico);
@@ -90,7 +95,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(portico).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Portico";
+                ok.Message = "El portico " + portico.numero_portico + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(portico);
         }

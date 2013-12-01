@@ -5,19 +5,19 @@
 	<meta charset="utf-8">
 	<title>Operación exitosa</title>
     	
-    <link rel="stylesheet" href="../../Scripts/Dialog/themes/base/jquery.ui.all.css">
-	<script src="<%: Url.Content("~/Scripts/Dialog/jquery-1.9.1.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.core.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.widget.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.mouse.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.button.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.draggable.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.position.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.resizable.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.button.js") %>"></script>
-	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.dialog.js") %>"></script>
+    <link rel="stylesheet" href="../../Scripts/Dialog/themes/base/jquery.ui.all.css" />
+	<script src="<%: Url.Content("~/Scripts/Dialog/jquery-1.9.1.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.core.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.widget.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.mouse.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.button.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.draggable.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.position.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.resizable.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.button.js") %>" type="text/javascript"></script>
+	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.dialog.js") %>" type="text/javascript"></script>
 	<link rel="stylesheet" href="../../Scripts/Dialog/demos/demos.css">
-	<script>
+	<script type="text/javascript">
         
 	    $(function () {
 	        $("#dialog-message").dialog({

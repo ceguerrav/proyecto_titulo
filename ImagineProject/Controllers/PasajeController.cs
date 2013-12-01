@@ -52,7 +52,12 @@ namespace ImagineProject.Controllers
             {
                 db.Pasajes.Add(pasaje);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pasaje";
+                ok.Message = "El pasaje " + pasaje.numero_boleto + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", pasaje.id_pasajero);
@@ -83,7 +88,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(pasaje).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pasaje";
+                ok.Message = "El pasaje " + pasaje.numero_boleto + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", pasaje.id_pasajero);
             ViewBag.id_tipo_pasaje = new SelectList(db.TiposPasajes, "id_tipo_pasaje", "tipo_pasaje", pasaje.id_tipo_pasaje);

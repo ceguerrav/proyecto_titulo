@@ -97,7 +97,12 @@ namespace ImagineProject.Controllers
             {
                 db.Puertos.Add(puerto);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Puerto";
+                ok.Message = "El puerto " + puerto.nombre_puerto + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             //ViewBag.id_ciudad = new SelectList(db.Ciudades, "id_ciudad", "nombre", puerto.id_ciudad);
@@ -143,7 +148,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(puerto).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Puerto";
+                ok.Message = "El puerto " + puerto.nombre_puerto + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             //ViewBag.id_ciudad = new SelectList(db.Ciudades, "id_ciudad", "nombre", puerto.id_ciudad);
             return View(puerto);

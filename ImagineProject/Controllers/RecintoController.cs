@@ -68,7 +68,12 @@ namespace ImagineProject.Controllers
             {
                 db.Recintos.Add(recinto);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Recinto";
+                ok.Message = "El recinto " + recinto.nombre_recinto + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_barco = new SelectList(db.Barcos, "id_barco", "nombre_barco", recinto.id_barco);
@@ -99,7 +104,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(recinto).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Recinto";
+                ok.Message = "El recinto " + recinto.nombre_recinto + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_barco = new SelectList(db.Barcos, "id_barco", "nombre_barco", recinto.id_barco);
             ViewBag.id_tipo_ambiente = new SelectList(db.TiposAmbientes, "id_tipo_ambiente", "tipo_ambiente", recinto.id_tipo_ambiente);

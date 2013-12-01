@@ -64,7 +64,12 @@ namespace ImagineProject.Controllers
             {
                 db.LineasNavieras.Add(lineanaviera);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "LineaNaviera";
+                ok.Message = "La linea naviera " + lineanaviera.linea_naviera + " ha sido ingresada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(lineanaviera);
             
@@ -89,7 +94,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(lineanaviera).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "LineaNaviera";
+                ok.Message = "La linea naviera " + lineanaviera.linea_naviera + " ha sido actualizada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(lineanaviera);
         }

@@ -66,7 +66,12 @@ namespace ImagineProject.Controllers
             {
                 db.Zonas.Add(zona);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Zona";
+                ok.Message = "La zona " + zona.nombre_zona + " ha sido ingresada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             ViewBag.id_tipo_zona = new SelectList(db.TipoZonas, "id_tipo_zona", "tipo_zona", zona.id_tipo_zona);
@@ -93,7 +98,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(zona).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Zona";
+                ok.Message = "La zona " + zona.nombre_zona + " ha sido actualizada exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_tipo_zona = new SelectList(db.TipoZonas, "id_tipo_zona", "tipo_zona", zona.id_tipo_zona);
             return View(zona);

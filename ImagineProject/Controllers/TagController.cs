@@ -174,6 +174,11 @@ namespace ImagineProject.Controllers
                 }
                 contrCon.Disconnect();
                 //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Tag";
+                ok.Message = "El identificador de la etiqueta ingresado es el " + tag.identificador;
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);
@@ -200,7 +205,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tag).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Tag";
+                ok.Message = "El identificador de la etiqueta actualizado es el " + tag.identificador;
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);

@@ -68,10 +68,9 @@ namespace ImagineProject.Controllers
                 Operacion ok = new Operacion();
                 ok.Action = "Index"; //Acción de retorno (Después del mensaje OK)
                 ok.Controller = "TipoZona";//Controlador de retorno (Después del mensaje OK)
-                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido guardado exitosamente.";
+                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido ingresada exitosamente.";
                 return View("~/Views/Shared/Dialog.aspx",ok);
             }
-            //return View("Details", tipozona);
             return View(tipozona);
         }
 
@@ -98,7 +97,7 @@ namespace ImagineProject.Controllers
                 Operacion ok = new Operacion();
                 ok.Action = "Index"; //Acción de retorno (Después del mensaje OK)
                 ok.Controller = "TipoZona";//Controlador de retorno (Después del mensaje OK)
-                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido guardado exitosamente.";
+                ok.Message = "El tipo de zona " + tipozona.tipo_zona + " ha sido actualizado exitosamente.";
                 return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipozona);

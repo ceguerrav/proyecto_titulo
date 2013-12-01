@@ -116,7 +116,12 @@ namespace ImagineProject.Controllers
                 pasajero.estado = true;
                 db.Pasajeros.Add(pasajero);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pasajero";
+                ok.Message = "El pasajero " + pasajero.nombres +" " + pasajero.apellidos + "con n° de pasaporte " + pasajero.pasaporte + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             //ViewBag.id_ciudad = new SelectList(db.Ciudad, "id_ciudad", "nombre", pasajero.id_ciudad);
             return View(pasajero);
@@ -161,7 +166,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(pasajero).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Pasajero";
+                ok.Message = "El pasajero " + pasajero.nombres + " " + pasajero.apellidos + "con n° de pasaporte " + pasajero.pasaporte + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             //ViewBag.id_ciudad = new SelectList(db.Ciudad, "id_ciudad", "nombre", pasajero.id_ciudad);
             return View(pasajero);

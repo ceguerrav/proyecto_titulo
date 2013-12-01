@@ -49,7 +49,12 @@ namespace ImagineProject.Controllers
             {
                 db.TiposRecintos.Add(tiporecinto);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoRecinto";
+                ok.Message = "El tipo de recinto " + tiporecinto.tipo_recinto + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(tiporecinto);
@@ -74,7 +79,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tiporecinto).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoRecinto";
+                ok.Message = "El tipo de recinto " + tiporecinto.tipo_recinto + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tiporecinto);
         }

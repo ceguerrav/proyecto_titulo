@@ -63,7 +63,12 @@ namespace ImagineProject.Controllers
             {
                 db.TiposBarcos.Add(tipobarco);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoBarco";
+                ok.Message = "El tipo de barco " + tipobarco.tipo_barco + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(tipobarco);
@@ -88,7 +93,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tipobarco).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoBarco";
+                ok.Message = "El tipo de barco " + tipobarco.tipo_barco + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipobarco);
         }

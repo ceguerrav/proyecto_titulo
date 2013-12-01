@@ -64,7 +64,12 @@ namespace ImagineProject.Controllers
             {
                 db.TiposDivisiones.Add(tipodivision);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                //return RedirectToAction("Index");  
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoDivision";
+                ok.Message = "El tipo de división " + tipodivision.tipo_division + " ha sido ingresado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
             return View(tipodivision);
@@ -89,7 +94,12 @@ namespace ImagineProject.Controllers
             {
                 db.Entry(tipodivision).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "TipoDivision";
+                ok.Message = "El tipo de división " + tipodivision.tipo_division + " ha sido actualizado exitosamente.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
             }
             return View(tipodivision);
         }
