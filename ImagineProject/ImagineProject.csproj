@@ -38,6 +38,26 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RfidZ, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\RfidZ.dll</HintPath>
+    </Reference>
+    <Reference Include="RfidZControl, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\RfidZControl.dll</HintPath>
+    </Reference>
+    <Reference Include="RfidZOperador, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\RfidZOperador.dll</HintPath>
+    </Reference>
+    <Reference Include="RfidZOperadorAcsii, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\RfidZOperadorAcsii.dll</HintPath>
+    </Reference>
+    <Reference Include="RfidZOperadorCommandos, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\RfidZOperadorCommandos.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -78,6 +98,7 @@
     <Compile Include="Controllers\PuertoController.cs" />
     <Compile Include="Controllers\RecintoController.cs" />
     <Compile Include="Controllers\RecintoPorticoController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TipoAmbienteController.cs" />
     <Compile Include="Controllers\TipoBarcoController.cs" />
@@ -110,16 +131,60 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContextModelDWH.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextModelDWH.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContextModelDWH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_barco.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_escala.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_pasaje.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_pasajero.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_recinto.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_tiempo.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dim_viaje.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DivisionAdministrativa.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDM_DWH_imagine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDM_DWH_imagine.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\fact_movimiento.cs">
+      <DependentUpon>ContextModelDWH.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LineaNaviera.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Movimiento.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
@@ -148,6 +213,7 @@
     <Compile Include="Models\RecintoPortico.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Reporte1.cs" />
     <Compile Include="Models\RfidModel.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
@@ -304,6 +370,11 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Libraries_RFID\RfidZ.dll" />
+    <Content Include="Libraries_RFID\RfidZControl.dll" />
+    <Content Include="Libraries_RFID\RfidZOperador.dll" />
+    <Content Include="Libraries_RFID\RfidZOperadorAcsii.dll" />
+    <Content Include="Libraries_RFID\RfidZOperadorCommandos.dll" />
     <Content Include="Scripts\CascadeDropDownListPasajero.js" />
     <Content Include="Scripts\CascadeDropDownListPuerto.js" />
     <Content Include="Scripts\CascadeDropDownListCiudad.js" />
@@ -542,6 +613,8 @@
     <Content Include="Views\Recinto\Details.aspx" />
     <Content Include="Views\Recinto\Edit.aspx" />
     <Content Include="Views\Recinto\Index.aspx" />
+    <Content Include="Views\Reportes\Reporte1.aspx" />
+    <Content Include="Views\Reportes\ResultsPartial.ascx" />
     <Content Include="Views\Shared\Dialog.aspx" />
     <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Tag\Delete.aspx" />
@@ -661,34 +734,28 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ContextModel.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="Models\EDM_DWH_imagine.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EDM_DWH_imagine.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ContextModelDWH.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContextModelDWH.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\ContextModelDWH.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContextModelDWH.cs</LastGenOutput>
+    </None>
+    <None Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\DataTables-1.9.4\extras\AutoFill\media\js\AutoFill.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\ColReorder\media\js\ColReorder.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\ColVis\media\js\ColVis.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\TableTools.min.js.gz" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Modulos_RFID\RfidZControl\RfidZControl.csproj">
-      <Project>{116474B6-41B5-41F6-9F98-DB8EF4634DED}</Project>
-      <Name>RfidZControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modulos_RFID\RfidZOperadorAcsii\RfidZOperadorAscii.csproj">
-      <Project>{C5A20BED-2C68-4F12-9F1E-D70E5AE8020D}</Project>
-      <Name>RfidZOperadorAscii</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modulos_RFID\RfidZOperadorCommandos\RfidZOperadorCommandos.csproj">
-      <Project>{951074A5-7517-44F6-8745-9609D39E8BF0}</Project>
-      <Name>RfidZOperadorCommandos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modulos_RFID\RfidZOperador\RfidZOperador.csproj">
-      <Project>{E0C1127A-54D8-4CC3-B606-321939265EB8}</Project>
-      <Name>RfidZOperador</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Modulos_RFID\RfidZ\RfidZ.csproj">
-      <Project>{AD13FC12-635B-424C-96D7-1FC746506277}</Project>
-      <Name>RfidZ</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

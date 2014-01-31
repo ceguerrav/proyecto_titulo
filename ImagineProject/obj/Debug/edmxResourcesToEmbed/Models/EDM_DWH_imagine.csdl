@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DWH_imagineModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DWH_ImagineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dim_barcos" EntityType="DWH_imagineModel.dim_barco" />
+    <EntitySet Name="dim_escalas" EntityType="DWH_imagineModel.dim_escala" />
+    <EntitySet Name="dim_pasajes" EntityType="DWH_imagineModel.dim_pasaje" />
+    <EntitySet Name="dim_pasajeros" EntityType="DWH_imagineModel.dim_pasajero" />
+    <EntitySet Name="dim_recintos" EntityType="DWH_imagineModel.dim_recinto" />
+    <EntitySet Name="dim_tiempos" EntityType="DWH_imagineModel.dim_tiempo" />
+    <EntitySet Name="dim_viajes" EntityType="DWH_imagineModel.dim_viaje" />
+    <EntitySet Name="fact_movimientos" EntityType="DWH_imagineModel.fact_movimiento" />
+    <AssociationSet Name="FK_fact_movimiento_dim_barco" Association="DWH_imagineModel.FK_fact_movimiento_dim_barco">
+      <End Role="dim_barco" EntitySet="dim_barcos" />
+      <End Role="fact_movimientos" EntitySet="fact_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dim_escala_dim_viaje" Association="DWH_imagineModel.FK_dim_escala_dim_viaje">
+      <End Role="dim_viaje" EntitySet="dim_viajes" />
+      <End Role="dim_escala" EntitySet="dim_escalas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dim_pasaje_dim_pasajero" Association="DWH_imagineModel.FK_dim_pasaje_dim_pasajero">
+      <End Role="dim_pasajero" EntitySet="dim_pasajeros" />
+      <End Role="dim_pasaje" EntitySet="dim_pasajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dim_pasajero_dim_viaje" Association="DWH_imagineModel.FK_dim_pasajero_dim_viaje">
+      <End Role="dim_viaje" EntitySet="dim_viajes" />
+      <End Role="dim_pasaje" EntitySet="dim_pasajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fact_movimiento_dim_pasajero" Association="DWH_imagineModel.FK_fact_movimiento_dim_pasajero">
+      <End Role="dim_pasajero" EntitySet="dim_pasajeros" />
+      <End Role="fact_movimientos" EntitySet="fact_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fact_movimiento_dim_recinto" Association="DWH_imagineModel.FK_fact_movimiento_dim_recinto">
+      <End Role="dim_recinto" EntitySet="dim_recintos" />
+      <End Role="fact_movimientos" EntitySet="fact_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fact_movimiento_dim_tiempo" Association="DWH_imagineModel.FK_fact_movimiento_dim_tiempo">
+      <End Role="dim_tiempo" EntitySet="dim_tiempos" />
+      <End Role="fact_movimientos" EntitySet="fact_movimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fact_movimiento_dim_viaje" Association="DWH_imagineModel.FK_fact_movimiento_dim_viaje">
+      <End Role="dim_viaje" EntitySet="dim_viajes" />
+      <End Role="fact_movimientos" EntitySet="fact_movimientos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="dim_barco">
+    <Key>
+      <PropertyRef Name="id_barco" />
+    </Key>
+    <Property Name="id_barco" Type="Int64" Nullable="false" />
+    <Property Name="tipo_barco" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="linea_naviera" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="nombre_barco" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="capacidad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="fact_movimientos" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_barco" FromRole="dim_barco" ToRole="fact_movimientos" />
+  </EntityType>
+  <EntityType Name="dim_escala">
+    <Key>
+      <PropertyRef Name="id_escala" />
+    </Key>
+    <Property Name="id_escala" Type="Int64" Nullable="false" />
+    <Property Name="pais" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="division_administrativa" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ciudad" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="puerto_escala" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="numero_escala" Type="Int16" Nullable="false" />
+    <Property Name="fecha_llegada" Type="DateTime" Nullable="false" />
+    <Property Name="fecha_salida" Type="DateTime" Nullable="false" />
+    <Property Name="id_viaje" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="dim_viaje" Relationship="DWH_imagineModel.FK_dim_escala_dim_viaje" FromRole="dim_escala" ToRole="dim_viaje" />
+  </EntityType>
+  <EntityType Name="dim_pasaje">
+    <Key>
+      <PropertyRef Name="id_pasaje" />
+    </Key>
+    <Property Name="id_pasaje" Type="Int64" Nullable="false" />
+    <Property Name="id_viaje" Type="Int64" Nullable="false" />
+    <Property Name="id_pasajero" Type="Int64" Nullable="false" />
+    <Property Name="tipo_pasaje" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion_tipo_pasaje" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="numero_boleto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="dim_pasajero" Relationship="DWH_imagineModel.FK_dim_pasaje_dim_pasajero" FromRole="dim_pasaje" ToRole="dim_pasajero" />
+    <NavigationProperty Name="dim_viaje" Relationship="DWH_imagineModel.FK_dim_pasajero_dim_viaje" FromRole="dim_pasaje" ToRole="dim_viaje" />
+  </EntityType>
+  <EntityType Name="dim_pasajero">
+    <Key>
+      <PropertyRef Name="id_pasajero" />
+    </Key>
+    <Property Name="id_pasajero" Type="Int64" Nullable="false" />
+    <Property Name="pasaporte" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="nombres" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="apellidos" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="fecha_registro" Type="DateTime" Nullable="false" />
+    <Property Name="direccion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="numero_contacto" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="e_mail" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="sexo" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="dim_pasaje" Relationship="DWH_imagineModel.FK_dim_pasaje_dim_pasajero" FromRole="dim_pasajero" ToRole="dim_pasaje" />
+    <NavigationProperty Name="fact_movimientos" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_pasajero" FromRole="dim_pasajero" ToRole="fact_movimientos" />
+  </EntityType>
+  <EntityType Name="dim_recinto">
+    <Key>
+      <PropertyRef Name="id_recinto" />
+    </Key>
+    <Property Name="id_recinto" Type="Int64" Nullable="false" />
+    <Property Name="tipo_recinto" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="tipo_ambiente" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion_tipo_ambiente" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="nombre_recinto" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion_recinto" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="numero_portico" Type="Int32" Nullable="false" />
+    <Property Name="descripcion_portico" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="fact_movimientos" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_recinto" FromRole="dim_recinto" ToRole="fact_movimientos" />
+  </EntityType>
+  <EntityType Name="dim_tiempo">
+    <Key>
+      <PropertyRef Name="id_tiempo" />
+    </Key>
+    <Property Name="id_tiempo" Type="Int64" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <Property Name="anio" Type="Int16" Nullable="false" />
+    <Property Name="mes" Type="Int16" Nullable="false" />
+    <Property Name="dia" Type="Int16" Nullable="false" />
+    <Property Name="semana_anio" Type="Int16" Nullable="false" />
+    <Property Name="nombre_mes" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="dia_semana" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="fact_movimientos" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_tiempo" FromRole="dim_tiempo" ToRole="fact_movimientos" />
+  </EntityType>
+  <EntityType Name="dim_viaje">
+    <Key>
+      <PropertyRef Name="id_viaje" />
+    </Key>
+    <Property Name="id_viaje" Type="Int64" Nullable="false" />
+    <Property Name="tipo_viaje" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="descripcion_tipo_viaje" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="fecha_salida" Type="DateTime" Nullable="false" />
+    <Property Name="fecha_llegada" Type="DateTime" Nullable="false" />
+    <Property Name="descripcion_viaje" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="puerto_origen" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="puerto_destino" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="dim_escala" Relationship="DWH_imagineModel.FK_dim_escala_dim_viaje" FromRole="dim_viaje" ToRole="dim_escala" />
+    <NavigationProperty Name="dim_pasaje" Relationship="DWH_imagineModel.FK_dim_pasajero_dim_viaje" FromRole="dim_viaje" ToRole="dim_pasaje" />
+    <NavigationProperty Name="fact_movimientos" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_viaje" FromRole="dim_viaje" ToRole="fact_movimientos" />
+  </EntityType>
+  <EntityType Name="fact_movimiento">
+    <Key>
+      <PropertyRef Name="id_fact_movimientos" />
+    </Key>
+    <Property Name="id_fact_movimientos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_pasajero" Type="Int64" Nullable="false" />
+    <Property Name="id_tiempo" Type="Int64" Nullable="false" />
+    <Property Name="id_barco" Type="Int64" Nullable="false" />
+    <Property Name="id_viaje" Type="Int64" Nullable="false" />
+    <Property Name="id_recinto" Type="Int64" Nullable="false" />
+    <Property Name="cantidad_movimientos" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="dim_barco" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_barco" FromRole="fact_movimientos" ToRole="dim_barco" />
+    <NavigationProperty Name="dim_pasajero" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_pasajero" FromRole="fact_movimientos" ToRole="dim_pasajero" />
+    <NavigationProperty Name="dim_recinto" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_recinto" FromRole="fact_movimientos" ToRole="dim_recinto" />
+    <NavigationProperty Name="dim_tiempo" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_tiempo" FromRole="fact_movimientos" ToRole="dim_tiempo" />
+    <NavigationProperty Name="dim_viaje" Relationship="DWH_imagineModel.FK_fact_movimiento_dim_viaje" FromRole="fact_movimientos" ToRole="dim_viaje" />
+  </EntityType>
+  <Association Name="FK_fact_movimiento_dim_barco">
+    <End Role="dim_barco" Type="DWH_imagineModel.dim_barco" Multiplicity="1" />
+    <End Role="fact_movimientos" Type="DWH_imagineModel.fact_movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_barco">
+        <PropertyRef Name="id_barco" />
+      </Principal>
+      <Dependent Role="fact_movimientos">
+        <PropertyRef Name="id_barco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dim_escala_dim_viaje">
+    <End Role="dim_viaje" Type="DWH_imagineModel.dim_viaje" Multiplicity="1" />
+    <End Role="dim_escala" Type="DWH_imagineModel.dim_escala" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_viaje">
+        <PropertyRef Name="id_viaje" />
+      </Principal>
+      <Dependent Role="dim_escala">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dim_pasaje_dim_pasajero">
+    <End Role="dim_pasajero" Type="DWH_imagineModel.dim_pasajero" Multiplicity="1" />
+    <End Role="dim_pasaje" Type="DWH_imagineModel.dim_pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_pasajero">
+        <PropertyRef Name="id_pasajero" />
+      </Principal>
+      <Dependent Role="dim_pasaje">
+        <PropertyRef Name="id_pasajero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dim_pasajero_dim_viaje">
+    <End Role="dim_viaje" Type="DWH_imagineModel.dim_viaje" Multiplicity="1" />
+    <End Role="dim_pasaje" Type="DWH_imagineModel.dim_pasaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_viaje">
+        <PropertyRef Name="id_viaje" />
+      </Principal>
+      <Dependent Role="dim_pasaje">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fact_movimiento_dim_pasajero">
+    <End Role="dim_pasajero" Type="DWH_imagineModel.dim_pasajero" Multiplicity="1" />
+    <End Role="fact_movimientos" Type="DWH_imagineModel.fact_movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_pasajero">
+        <PropertyRef Name="id_pasajero" />
+      </Principal>
+      <Dependent Role="fact_movimientos">
+        <PropertyRef Name="id_pasajero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fact_movimiento_dim_recinto">
+    <End Role="dim_recinto" Type="DWH_imagineModel.dim_recinto" Multiplicity="1" />
+    <End Role="fact_movimientos" Type="DWH_imagineModel.fact_movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_recinto">
+        <PropertyRef Name="id_recinto" />
+      </Principal>
+      <Dependent Role="fact_movimientos">
+        <PropertyRef Name="id_recinto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fact_movimiento_dim_tiempo">
+    <End Role="dim_tiempo" Type="DWH_imagineModel.dim_tiempo" Multiplicity="1" />
+    <End Role="fact_movimientos" Type="DWH_imagineModel.fact_movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_tiempo">
+        <PropertyRef Name="id_tiempo" />
+      </Principal>
+      <Dependent Role="fact_movimientos">
+        <PropertyRef Name="id_tiempo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fact_movimiento_dim_viaje">
+    <End Role="dim_viaje" Type="DWH_imagineModel.dim_viaje" Multiplicity="1" />
+    <End Role="fact_movimientos" Type="DWH_imagineModel.fact_movimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dim_viaje">
+        <PropertyRef Name="id_viaje" />
+      </Principal>
+      <Dependent Role="fact_movimientos">
+        <PropertyRef Name="id_viaje" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
