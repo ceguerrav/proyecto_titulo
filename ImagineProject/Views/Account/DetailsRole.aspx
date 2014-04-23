@@ -32,7 +32,10 @@
 </table>
 </fieldset>
 <p>
-    <%: Html.ActionLink("Regresar", "ListRoles") %>
+    <a href="<%: Url.Action("ListRoles", "Account") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+    <%--<%: Html.ActionLink("Regresar", "ListRoles") %>--%>
 </p>
 
 </asp:Content>

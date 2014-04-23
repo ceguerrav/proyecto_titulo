@@ -48,7 +48,7 @@
             <% } %>
         </table>
         <p>
-            <input type="submit" value="Guardar" />
+            <input type="submit" value="Guardar" class="btn btn-primary" />
         </p>
     </fieldset>
 <% } %>

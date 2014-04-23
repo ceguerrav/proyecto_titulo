@@ -63,14 +63,17 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Registrar" />
+                    <input type="submit" value="Registrar" class="btn btn-primary" />
                 </p>
             </fieldset>
         </div>
     <% } %>
 
-    <div>
-    <%: Html.ActionLink("Regresar", "ListUsers") %>
-    </div>
+    <%--<div>
+        <a href="<%: Url.Action("RegisterUser", "Account") %>">
+            <button type="button" class="btn btn-info">Regresar</button>
+        </a>
+        <%: Html.ActionLink("Regresar", "ListUsers") %>
+    </div>--%>
 
 </asp:Content>

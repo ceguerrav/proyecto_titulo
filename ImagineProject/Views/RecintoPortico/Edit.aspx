@@ -37,13 +37,16 @@
         </div>
 
         <p>
-            <input type="submit" value="Guardar" />
+            <input type="submit" value="Guardar" class="btn btn-default" />
         </p>
     </fieldset>
 <% } %>
 
 <div>
-    <%: Html.ActionLink("Regresar", "Index") %>
+    <a href="<%: Url.Action("Index", "RecintoPortico") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+    <%--<%: Html.ActionLink("Regresar", "Index") %>--%>
 </div>
 
 </asp:Content>

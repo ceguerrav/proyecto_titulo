@@ -47,7 +47,7 @@
                 </div>
                 
                 <p>
-                    <input type="submit" value="Cambiar contraseña" />
+                    <input type="submit" value="Cambiar contraseña" class="btn btn-primary" />
                 </p>
             </fieldset>
         </div>

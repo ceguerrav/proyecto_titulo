@@ -10,7 +10,7 @@
 
 <p>
     <a href="<%: Url.Action("Create", "TipoZona") %>">
-        <button class="linkAgregar">Agregar Nuevo</button>
+        <button type="button" class="btn btn-primary">Agregar Nuevo</button>
     </a>
     <%--<%: Html.ActionLink("Agregar nuevo", "Create") %>--%>
 </p>
@@ -28,6 +28,7 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
+            tine
             <%: Html.DisplayFor(modelItem => item.tipo_zona) %>
         </td>
         <td>

@@ -1,27 +1,40 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<ImagineProject.Models.TipoDivision>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Delete
+    Create
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Eliminar</h2>
+<h2>Agregar</h2>
 
-<h3>¿Realmente desea eliminar esto?</h3>
-<fieldset>
-    <legend>Tipo de division</legend>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
-    <div class="display-label">Tipo de division</div>
-    <div class="display-field">
-        <%: Html.DisplayFor(model => model.tipo_division) %>
-    </div>
-</fieldset>
 <% using (Html.BeginForm()) { %>
-    <p>
-        <input type="submit" value="Eliminar" /> |
-        <%: Html.ActionLink("Regresar", "Index") %>
-    </p>
+    <%: Html.ValidationSummary(true) %>
+    <fieldset>
+        <legend>Tipo de division</legend>
+
+        <div class="editor-label">
+            <%: Html.LabelFor(model => model.tipo_division) %>
+        </div>
+        <div class="editor-field">
+            <%: Html.EditorFor(model => model.tipo_division) %>
+            <%: Html.ValidationMessageFor(model => model.tipo_division) %>
+        </div>
+
+        <p>
+            <input type="submit" value="Agregar" class="btn btn-default" />
+        </p>
+    </fieldset>
 <% } %>
+
+<div>
+    <a href="<%: Url.Action("Index", "TipoDivision") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+    <%--<%: Html.ActionLink("Regresar", "Index") %>--%>
+</div>
 
 </asp:Content>

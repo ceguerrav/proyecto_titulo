@@ -30,7 +30,8 @@ body {
     background-color: #164871;
     background:#e2ded4 url(/content/themes/base/images/main_bg.jpg) repeat-x center top;
     */
-    background: #002F43 url(/content/themes/base/images/fondo1.jpg) repeat-x;    
+    /*background: #002F43 url(/content/themes/base/images/fondo1.jpg) repeat-x;   */
+    background: #0000; 
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -68,6 +69,28 @@ body {
 .container {
   margin: 80px auto;
   width: 640px;
+}
+
+footer
+{
+  position: relative;
+  /*left: 0;
+  bottom: 0;*/
+  font-weight: bold;
+  color: Black;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0 0 0;
+  top: 0px;
+  height: 100px;
+  width: 100%;
+  overflow:hidden;
+  background: #002F43 url(/content/themes/base/images/footer2.jpg) repeat-x;
+  border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  opacity:0.6;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
 .login {

@@ -25,13 +25,16 @@
         </div>
 
         <p>
-            <input type="submit" value="Agragar" />
+            <input type="submit" value="Agragar" class="btn btn-primary" />
         </p>
     </fieldset>
 <% } %>
 
 <div>
-    <%: Html.ActionLink("Regresar", "ListRoles") %>
+    <a href="<%: Url.Action("ListRoles", "Account") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+    <%--<%: Html.ActionLink("Regresar", "ListRoles") %>--%>
 </div>
 
 </asp:Content>

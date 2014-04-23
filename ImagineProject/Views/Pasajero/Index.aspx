@@ -10,7 +10,7 @@
 
 <p>
     <a href="<%: Url.Action("Create", "Pasajero") %>">
-        <button class="linkAgregar">Agregar Nuevo</button>
+        <button class="btn btn-primary">Agregar Nuevo</button>
     </a>
     <%--<%: Html.ActionLink("Agregar", "Create") %>--%>
 </p>

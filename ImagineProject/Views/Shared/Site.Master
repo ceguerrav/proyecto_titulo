@@ -2,13 +2,16 @@
 
 <!DOCTYPE html>
 <html>
-<head runat="server"><asp:ContentPlaceHolder ID="Head" runat="server" />
+<head id="Head1" runat="server"><asp:ContentPlaceHolder ID="Head" runat="server" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link href="../../Content/Bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/style_menu1.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/themes/base/jquery.ui.dialog.css" rel="stylesheet" type="text/css" />
+    
     <script src="<%: Url.Content("~/Scripts/jquery-1.10.2.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/modernizr-1.7.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/DataTables-1.9.4/media/js/jquery.js") %>" type="text/javascript"></script>
@@ -16,12 +19,13 @@
     <script src="<%: Url.Content("~/Scripts/DataTables-1.9.4/extras/ColReorder/media/js/ColReorderWithResize.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery-ui-1.10.3.custom.min.js") %>" type="text/javascript"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tabla').dataTable({
                 "bJQueryUI": true,
                 "sPaginationType": "full_numbers",
-                "sDom": "Rlfrtip",  
+                "sDom": "Rlfrtip",
                 "oLanguage": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",
@@ -82,91 +86,127 @@
                  <img src="../../Content/themes/base/images/Logo.png" alt="CruiseCheck" />
             </div>
 
-            <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
+            <nav class="navbar nav-tabs" role="navigation">            
+                 <ul class="nav nav-tabs navbar-right">
+                  <li>
+                    <div id="logindisplay">
+                        <% Html.RenderPartial("LogOnUserControl"); %>
+                    </div>
+                  </li>
+                  <li><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%></li>
+                  <li><%: Html.ActionLink("Cambiar contraseña", "ChangePassword", "Account")%></li>
+                  <li><%: Html.ActionLink("Cerrar sesión", "LogOff", "Account") %></li>
+                  <%--<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      Cuenta <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%></li>
+                        <li><%: Html.ActionLink("Cambiar contraseña", "ChangePassword", "Account")%></li>
+                        <li><%: Html.ActionLink("Cerrar sesión", "LogOff", "Account") %></li>
+                    </ul>
+                  </li>--%>
+                </ul>
+             </nav>
+
+            <div class="row col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><%: Html.ActionLink("Home", "Index", "Home")%></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Geografría
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Tipo de zona", "Index", "TipoZona")%></li>
+                    <li><%: Html.ActionLink("Zona", "Index", "Zona")%></li>
+                    <li><%: Html.ActionLink("Paises de zona", "Index", "ZonaPais")%></li>
+                    <li><%: Html.ActionLink("Tipo de Divsión", "Index", "TipoDivision")%></li>
+                    <li><%: Html.ActionLink("País", "Index", "Pais")%></li>
+                    <li><%: Html.ActionLink("División administrativa", "Index", "DivisionAdministrativa")%></li>
+                    <li><%: Html.ActionLink("Ciudad", "Index", "Ciudad")%></li>
+                    <li><%: Html.ActionLink("Puerto", "Index", "Puerto")%></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pasajeros
+                    <b class="caret" ></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Pasajeros", "Index", "Pasajero")%></li>
+                    <li><%: Html.ActionLink("Pulsera", "Index", "Tag")%></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Barcos
+                    <b class="caret"></b>
+                </a>
+                    <ul class="dropdown-menu">
+                        <li><%: Html.ActionLink("Tipo de barco", "Index", "TipoBarco")%></li>
+                        <li><%: Html.ActionLink("Línea naviera", "Index", "LineaNaviera")%></li>
+                        <li><%: Html.ActionLink("Barco", "Index", "Barco")%></li>
+                        <li><%: Html.ActionLink("Tipo de recinto", "Index", "TipoRecinto")%></li>
+                        <li><%: Html.ActionLink("Tipo de ambiente", "Index", "TipoAmbiente")%></li>
+                        <li><%: Html.ActionLink("Recinto", "Index", "Recinto")%></li>
+                        <li><%: Html.ActionLink("Porticos de recinto", "Index", "RecintoPortico")%></li>
+                        <li><%: Html.ActionLink("Portico", "Index", "Portico")%></li>
+                    </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Viajes
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Tipo de viaje", "Index", "TipoViaje")%></li>
+                    <li><%: Html.ActionLink("Viajes", "Index", "Viaje")%></li>
+                    <li><%: Html.ActionLink("Escalas", "Index", "OrigenDestino")%></li>
+                    <li><%: Html.ActionLink("Tipo de pasaje", "Index", "TipoPasaje")%></li>
+                    <li><%: Html.ActionLink("Pasajes", "Index", "Pasaje")%></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Visitas diarias", "Reporte1", "Reportes")%></li>
+                </ul>
+              </li>
+              <%--<li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Configurar Cuenta
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%></li>
+                    <li><%: Html.ActionLink("Cambiar contraseña", "ChangePassword", "Account")%></li>
+                </ul>
+              </li>--%>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%: Html.ActionLink("Agregar Rol", "RegisterRole", "Account")%></li>
+                    <li><%: Html.ActionLink("Roles", "ListRoles", "Account")%></li>
+                    <li><%: Html.ActionLink("Agregar Usuario", "RegisterUser", "Account")%></li>
+                    <li><%: Html.ActionLink("Usuarios", "ListUsers", "Account")%></li>
+                </ul>
+              </li>
+            </ul>
             </div>
 
-           <nav id="menu">
-                    <ul id="accordion">
-                       <li><div><%: Html.ActionLink("Home", "Index", "Home")%></div></li>
-                       <li><div>Geografía</div>
-                          <ul>
-                             <li><%: Html.ActionLink("Tipo de zona", "Index", "TipoZona")%></li>
-                             <li><%: Html.ActionLink("Zona", "Index", "Zona")%></li>
-                             <li><%: Html.ActionLink("Paises de zona", "Index", "ZonaPais")%></li>
-                             <li><%: Html.ActionLink("Tipo de Divsión", "Index", "TipoDivision")%></li>
-                             <li><%: Html.ActionLink("País", "Index", "Pais")%></li>
-                             <li><%: Html.ActionLink("División administrativa", "Index", "DivisionAdministrativa")%></li>
-                             <li><%: Html.ActionLink("Ciudad", "Index", "Ciudad")%></li>
-                             <li><%: Html.ActionLink("Puerto", "Index", "Puerto")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Pasajeros</div>
-                          <ul>
-                             <li><%: Html.ActionLink("Pasajeros", "Index", "Pasajero")%></li>
-                             <li><%: Html.ActionLink("Pulsera", "Index", "Tag")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Barcos</div>
-                          <ul>
-                             <li><%: Html.ActionLink("Tipo de barco", "Index", "TipoBarco")%></li>
-                             <li><%: Html.ActionLink("Línea naviera", "Index", "LineaNaviera")%></li>
-                             <li><%: Html.ActionLink("Barco", "Index", "Barco")%></li>
-                             <li><%: Html.ActionLink("Tipo de recinto", "Index", "TipoRecinto")%></li>
-                             <li><%: Html.ActionLink("Tipo de ambiente", "Index", "TipoAmbiente")%></li>
-                             <li><%: Html.ActionLink("Recinto", "Index", "Recinto")%></li>
-                             <li><%: Html.ActionLink("Porticos de recinto", "Index", "RecintoPortico")%></li>
-                             <li><%: Html.ActionLink("Portico", "Index", "Portico")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Viajes</div>
-                          <ul>
-                             <li><%: Html.ActionLink("Tipo de viaje", "Index", "TipoViaje")%></li>
-                             <li><%: Html.ActionLink("Viajes", "Index", "Viaje")%></li>
-                             <li><%: Html.ActionLink("Escalas", "Index", "OrigenDestino")%></li>
-                             <li><%: Html.ActionLink("Tipo de pasaje", "Index", "TipoPasaje")%></li>
-                             <li><%: Html.ActionLink("Pasajes", "Index", "Pasaje")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Reportes</div>
-                           <ul>
-                             <li><%: Html.ActionLink("Visitas diarias", "Reporte1", "Reportes")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Configurar Cuenta</div>
-                          <ul>
-                             <li><%: Html.ActionLink("Configurar cuenta", "ChangePassword", "Account")%></li>
-                             <li><%: Html.ActionLink("Cambiar contraseña", "ChangePassword", "Account")%></li>
-                          </ul>
-                       </li>
-                       <li><div>Administración</div>
-                            <ul>
-                                <li><%: Html.ActionLink("Agregar Rol", "RegisterRole", "Account")%></li>
-                                <li><%: Html.ActionLink("Roles", "ListRoles", "Account")%></li>
-                                <li><%: Html.ActionLink("Agregar Usuario", "RegisterUser", "Account")%></li>
-                                <li><%: Html.ActionLink("Usuarios", "ListUsers", "Account")%></li>
-                            </ul>
-                       </li>
-                    </ul>
-            </nav>
-
         </header>
-        <section id="main">
+
+        <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
              <div id="my-dialog"></div>
-            <footer>
-            </footer>
-        </section>
+        </div>
+
+        <footer>
+            <h3><span class="label label-primary">Todos los derechos reservados. Aplicación creada por: Daniel Lienan - Cesar Guerra - Valentina Riffo</span></h3>
+        </footer>
     </div>
 
-    <script type="text/javascript">
-        $("#accordion > li > div").click(function () {
-            if (false == $(this).next().is(':visible')) {
-                $('#accordion ul').slideUp(300);
-            }
-            $(this).next().slideToggle(300);
-        });
-    </script>
+    <script src="<%: Url.Content("~/Scripts/Bootstrap/bootstrap.min.js") %>" type="text/javascript"></script>
 
 </body>
 </html>

@@ -12,6 +12,7 @@
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.core.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/jquery.ui.datepicker.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/i18n/jquery.ui.datepicker-es.js") %>" type="text/javascript"></script>
+
 <script type="text/javascript">
     $(function () {
         $("#txt_fecha").datepicker({
@@ -31,7 +32,7 @@
             data: {
                 id_barco: $("#id_barco").val(),
                 id_viaje: $("#id_viaje").val(),
-                fecha: $("#txt_fecha").val() 
+                fecha: $("#txt_fecha").val()
             },
             type: "post",
             async: true,
@@ -70,7 +71,7 @@
         </div>
 
         <p>
-            <input type="button" value="Buscar" id="btn_buscar" onclick="javascript:buscarAjax();"/>
+            <input type="button" value="Buscar" id="btn_buscar" class="btn btn-default" onclick="javascript:buscarAjax();"/>
         </p>
 
     </fieldset>

@@ -52,6 +52,9 @@
 </fieldset>
 <p>
     <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_barco }) %> |
+    <%--<a href="<%: Url.Action("Index", "Barco") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>--%>
     <%: Html.ActionLink("Regresar", "Index") %>
 </p>
 

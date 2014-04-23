@@ -57,13 +57,16 @@
         </div>
 
         <p>
-            <input type="submit" value="Agregar" />
+            <input type="submit" value="Agregar" class="btn btn-default" />
         </p>
     </fieldset>
 <% } %>
 
 <div>
-    <%: Html.ActionLink("Regresar", "Index") %>
+    <a href="<%: Url.Action("Index", "Barco") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+    <%--<%: Html.ActionLink("Regresar", "Index") %>--%>
 </div>
 
 </asp:Content>

@@ -29,8 +29,11 @@
 </fieldset>
 <% using (Html.BeginForm()) { %>
     <p>
-        <input type="submit" value="Eliminar" /> |
-        <%: Html.ActionLink("Regresar", "ListUsers") %>
+        <input type="submit" value="Eliminar" class="btn btn-default"/> 
+        <a href="<%: Url.Action("ListUsers", "Account") %>">
+            <button type="button" class="btn btn-info">Regresar</button>
+        </a>
+        <%--<%: Html.ActionLink("Regresar", "ListUsers") %>--%>
     </p>
 <% } %>
 

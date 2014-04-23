@@ -254,6 +254,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.css" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\doc.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shCore.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shThemeDataTables.css" />
@@ -334,10 +339,9 @@
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
     <Content Include="Content\style_login.css" />
-    <Content Include="Content\style_menu.css" />
-    <Content Include="Content\style_menu1.css" />
     <Content Include="Content\themes\base\images\bg01.jpg" />
     <Content Include="Content\themes\base\images\fondo1.jpg" />
+    <Content Include="Content\themes\base\images\footer2.jpg" />
     <Content Include="Content\themes\base\images\logo.jpg" />
     <Content Include="Content\themes\base\images\Logo.png" />
     <Content Include="Content\themes\base\images\Logo1.png" />
@@ -375,6 +379,8 @@
     <Content Include="Libraries_RFID\RfidZOperador.dll" />
     <Content Include="Libraries_RFID\RfidZOperadorAcsii.dll" />
     <Content Include="Libraries_RFID\RfidZOperadorCommandos.dll" />
+    <Content Include="Scripts\Bootstrap\bootstrap.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\CascadeDropDownListPasajero.js" />
     <Content Include="Scripts\CascadeDropDownListPuerto.js" />
     <Content Include="Scripts\CascadeDropDownListCiudad.js" />
@@ -721,6 +727,11 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Bootstrap\bootstrap-theme.css.map" />
+    <None Include="Content\Bootstrap\bootstrap.css.map" />
+    <None Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.woff" />
     <None Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\collection.psd" />
     <None Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\copy document.psd" />
     <None Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\file_types.psd" />
