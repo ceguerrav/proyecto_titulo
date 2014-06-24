@@ -43,3 +43,15 @@ E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cach
 E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
 E:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb
 C:\Users\Vale\Documents\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.csprojResolveAssemblyReference.cache
+D:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\ImagineProject.pdb
+D:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\RfidZ.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\RfidZControl.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\RfidZOperador.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\RfidZOperadorAcsii.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\RfidZOperadorCommandos.dll
+D:\GitHub\proyecto_titulo\ImagineProject\bin\EntityFramework.xml
+D:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ResolveAssemblyReference.cache
+D:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.dll
+D:\GitHub\proyecto_titulo\ImagineProject\obj\Debug\ImagineProject.pdb

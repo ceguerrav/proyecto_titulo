@@ -169,6 +169,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><%: Html.ActionLink("Visitas diarias", "Reporte1", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Recintos más y menos visitados", "Reporte2", "Reportes")%></li>
                 </ul>
               </li>
               <%--<li class="dropdown">

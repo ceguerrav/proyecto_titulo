@@ -28,7 +28,6 @@
 <% foreach (var item in Model) { %>
     <tr>
         <td>
-            tine
             <%: Html.DisplayFor(modelItem => item.tipo_zona) %>
         </td>
         <td>

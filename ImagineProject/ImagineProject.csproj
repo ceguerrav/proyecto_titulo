@@ -214,6 +214,7 @@
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reporte1.cs" />
+    <Compile Include="Models\Reporte2.cs" />
     <Compile Include="Models\RfidModel.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
@@ -619,8 +620,10 @@
     <Content Include="Views\Recinto\Details.aspx" />
     <Content Include="Views\Recinto\Edit.aspx" />
     <Content Include="Views\Recinto\Index.aspx" />
+    <Content Include="Views\Reportes\Reporte2.aspx" />
+    <Content Include="Views\Reportes\ResultsPartialR2.ascx" />
     <Content Include="Views\Reportes\Reporte1.aspx" />
-    <Content Include="Views\Reportes\ResultsPartial.ascx" />
+    <Content Include="Views\Reportes\ResultsPartialR1.ascx" />
     <Content Include="Views\Shared\Dialog.aspx" />
     <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Tag\Delete.aspx" />
