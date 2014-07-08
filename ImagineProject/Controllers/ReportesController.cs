@@ -17,7 +17,7 @@ namespace ImagineProject.Controllers
     {
         //private Db_ImagineEntities db = new Db_ImagineEntities();
         private DWH_ImagineEntities dwh = new DWH_ImagineEntities();
-        
+        private Db_ImagineEntities bd = new Db_ImagineEntities();
         
         
         // REPORTE1 --------------------------------------------------------------------------        
@@ -61,6 +61,46 @@ namespace ImagineProject.Controllers
             var respuesta = ObtenerDatosReporte2(in_desde, in_hasta, in_barco, in_viaje, in_pasaporte).ToList();
             return PartialView("ResultsPartialR2", respuesta);
         }
+
+        // REPORTE7 --------------------------------------------------------------------------
+        public ActionResult Reporte7()
+        {
+            ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reporte7(string linea_naviera, string anio1, string anio2)
+        {
+            int linea_nav = Convert.ToInt32(linea_naviera);
+            int anioD = Convert.ToInt32(anio1);
+            int anioH = Convert.ToInt32(anio2);
+
+            ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera", linea_naviera).Distinct();
+
+            var respuesta7 = ObtenerDatosReporte7(linea_nav, anioD, anioH).ToList();
+            return PartialView("ResultsPartialR7", respuesta7);
+        }
+
+        // REPORTE8 --------------------------------------------------------------------------
+        public ActionResult Reporte8()
+        {
+            ViewBag.linea_naviera = new SelectList(dwh.dim_barcos, "linea_naviera", "linea_naviera");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reporte8(string linea_naviera, string anio)
+        {
+            string linea_nav = linea_naviera;
+            int anio1 = Convert.ToInt32(anio.Trim());
+
+            ViewBag.linea_naviera = new SelectList(dwh.dim_barcos, "linea_naviera", "linea_naviera", linea_naviera);
+
+            var respuesta8 = ObtenerDatosReporte8(linea_nav, anio1).ToList();
+            return PartialView("ResultsPartialR8", respuesta8);
+        }
+
 
         /***************************************************************************************************************/
         // Reporte 1: Se obtiene cada coincidencia y se guarda en el objeto Reporte1. El objeto Reporte1 es una clase 
@@ -191,5 +231,88 @@ namespace ImagineProject.Controllers
             return listaDatos;
         }
         /***************************************************************************************************************/
+        /***************************************************************************************************************/
+        // Reporte 7
+        public List<Reporte7> ObtenerDatosReporte7(int linea_naviera, int anio1, int anio2)
+        {
+            List<Reporte7> listaDatos = new List<Reporte7>();
+            var reporte7 = (from via in bd.Viajes
+                            join bar in bd.Barcos on via.id_barco equals bar.id_barco
+                            where via.fecha_salida.Year >= anio1
+                            && via.fecha_salida.Year <= anio2
+                            && bar.id_linea_naviera == linea_naviera
+                            group new { bar, via } by new
+                            {
+                                bar.nombre_barco,
+                                via.descripcion,
+                                via.id_viaje
+                            } into grupo7
+                            select new
+                            {
+                                nombre_barco = grupo7.Key.nombre_barco,
+                                desc_viaje = grupo7.Key.descripcion,
+                                viajes = grupo7.Key.id_viaje
+                            }).ToList();
+
+            for (int i = 0; i < reporte7.Count; i++)
+            {
+                Reporte7 r7 = new Reporte7();
+                r7.Nombre_Barco = reporte7[i].nombre_barco;
+                r7.Descripcion = reporte7[i].desc_viaje;
+                r7.Viajes = reporte7[i].viajes.ToString();
+                listaDatos.Add(r7);
+            }
+            return listaDatos;
+        }
+
+        /***************************************************************************************************************/
+        // Reporte 8
+        public List<Reporte8> ObtenerDatosReporte8(string linea_naviera, int anio)
+        {
+            List<Reporte8> listaDatos = new List<Reporte8>();
+            var reporte8 = (from pjo in dwh.dim_pasajeros
+                            join pje in dwh.dim_pasajes on pjo.id_pasajero equals pje.id_pasajero
+                            join vi in dwh.dim_viajes on pje.id_viaje equals vi.id_viaje
+                            join mo in
+                                (from b in dwh.dim_barcos
+                                  join m in dwh.fact_movimientos on b.id_barco equals m.id_barco
+                                  select new
+                                  {
+                                      id_barco = b.id_barco,
+                                      linea_nav = b.linea_naviera,
+                                      id_viaje = m.id_viaje
+                                  }).Distinct() on vi.id_viaje equals mo.id_viaje
+                            where mo.linea_nav == linea_naviera
+                            && (vi.fecha_salida.Year == anio
+                            || vi.fecha_llegada.Year == anio)
+                            group new { pjo, pje, vi } by new
+                            {
+                                pjo.pasaporte,
+                                pjo.nombres,
+                                pjo.apellidos,
+                                pje.tipo_pasaje,
+                                vi.id_viaje
+                            } into grupo8
+                            select new
+                            {
+                                pasaporte = grupo8.Key.pasaporte,
+                                nombre_completo = grupo8.Key.nombres + " " + grupo8.Key.apellidos,
+                                tipo_pasaje = grupo8.Key.tipo_pasaje,
+                                //cantidad_viajes = grupo8.Select(x => x.vi.id_viaje).Count()
+                                cantidad_viajes = grupo8.Key.id_viaje
+                            }).ToList();
+            //falta el distinc y having count
+
+            for (int i = 0; i < reporte8.Count; i++)
+            {
+                Reporte8 r8 = new Reporte8();
+                r8.Pasaporte = reporte8[i].pasaporte.ToString();
+                r8.Nombre_completo = reporte8[i].nombre_completo.ToString();
+                r8.Tipo_pasaje = reporte8[i].tipo_pasaje.ToString();
+                r8.Cantidad_viajes = reporte8[i].cantidad_viajes.ToString();
+                listaDatos.Add(r8);
+            }
+            return listaDatos;
+        }
     }
 }
