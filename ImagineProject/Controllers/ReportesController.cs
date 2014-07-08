@@ -76,7 +76,7 @@ namespace ImagineProject.Controllers
             int anioD = Convert.ToInt32(anio1);
             int anioH = Convert.ToInt32(anio2);
 
-            ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera", linea_naviera).Distinct();
+            ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera", linea_naviera);
 
             var respuesta7 = ObtenerDatosReporte7(linea_nav, anioD, anioH).ToList();
             return PartialView("ResultsPartialR7", respuesta7);
@@ -85,7 +85,13 @@ namespace ImagineProject.Controllers
         // REPORTE8 --------------------------------------------------------------------------
         public ActionResult Reporte8()
         {
-            ViewBag.linea_naviera = new SelectList(dwh.dim_barcos, "linea_naviera", "linea_naviera");
+            var linea = (from ba in dwh.dim_barcos
+                         select new
+                         {
+                             linea_naviera = ba.linea_naviera
+                         }).Distinct();
+            //ViewBag.linea_naviera = new SelectList(dwh.dim_barcos.Distinct(), "linea_naviera", "linea_naviera");
+            ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera");
             return View();
         }
 
@@ -238,8 +244,8 @@ namespace ImagineProject.Controllers
             List<Reporte7> listaDatos = new List<Reporte7>();
             var reporte7 = (from via in bd.Viajes
                             join bar in bd.Barcos on via.id_barco equals bar.id_barco
-                            where via.fecha_salida.Year >= anio1
-                            && via.fecha_salida.Year <= anio2
+                            where (via.fecha_salida.Year >= anio1
+                            && via.fecha_salida.Year <= anio2)
                             && bar.id_linea_naviera == linea_naviera
                             group new { bar, via } by new
                             {
@@ -251,7 +257,7 @@ namespace ImagineProject.Controllers
                             {
                                 nombre_barco = grupo7.Key.nombre_barco,
                                 desc_viaje = grupo7.Key.descripcion,
-                                viajes = grupo7.Key.id_viaje
+                                viajes = grupo7.Select(x => x.via.id_viaje).Count()
                             }).ToList();
 
             for (int i = 0; i < reporte7.Count; i++)
@@ -274,14 +280,14 @@ namespace ImagineProject.Controllers
                             join pje in dwh.dim_pasajes on pjo.id_pasajero equals pje.id_pasajero
                             join vi in dwh.dim_viajes on pje.id_viaje equals vi.id_viaje
                             join mo in
-                                (from b in dwh.dim_barcos
+                                ((from b in dwh.dim_barcos
                                   join m in dwh.fact_movimientos on b.id_barco equals m.id_barco
                                   select new
                                   {
                                       id_barco = b.id_barco,
                                       linea_nav = b.linea_naviera,
                                       id_viaje = m.id_viaje
-                                  }).Distinct() on vi.id_viaje equals mo.id_viaje
+                                  }).Distinct()) on vi.id_viaje equals mo.id_viaje
                             where mo.linea_nav == linea_naviera
                             && (vi.fecha_salida.Year == anio
                             || vi.fecha_llegada.Year == anio)
@@ -298,10 +304,8 @@ namespace ImagineProject.Controllers
                                 pasaporte = grupo8.Key.pasaporte,
                                 nombre_completo = grupo8.Key.nombres + " " + grupo8.Key.apellidos,
                                 tipo_pasaje = grupo8.Key.tipo_pasaje,
-                                //cantidad_viajes = grupo8.Select(x => x.vi.id_viaje).Count()
-                                cantidad_viajes = grupo8.Key.id_viaje
+                                cantidad_viajes = grupo8.Select(x => x.vi.id_viaje).Count()
                             }).ToList();
-            //falta el distinc y having count
 
             for (int i = 0; i < reporte8.Count; i++)
             {
