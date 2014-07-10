@@ -215,6 +215,7 @@
     </Compile>
     <Compile Include="Models\Reporte1.cs" />
     <Compile Include="Models\Reporte2.cs" />
+    <Compile Include="Models\Reporte5.cs" />
     <Compile Include="Models\Reporte7.cs" />
     <Compile Include="Models\Reporte8.cs" />
     <Compile Include="Models\RfidModel.cs" />
@@ -622,6 +623,8 @@
     <Content Include="Views\Recinto\Details.aspx" />
     <Content Include="Views\Recinto\Edit.aspx" />
     <Content Include="Views\Recinto\Index.aspx" />
+    <Content Include="Views\Reportes\ResultsPartialR5.ascx" />
+    <Content Include="Views\Reportes\Reporte5.aspx" />
     <Content Include="Views\Reportes\Reporte2.aspx" />
     <Content Include="Views\Reportes\Reporte7.aspx" />
     <Content Include="Views\Reportes\Reporte8.aspx" />

@@ -15,7 +15,6 @@ namespace ImagineProject.Controllers
 {
     public class ReportesController : Controller
     {
-        //private Db_ImagineEntities db = new Db_ImagineEntities();
         private DWH_ImagineEntities dwh = new DWH_ImagineEntities();
         private Db_ImagineEntities bd = new Db_ImagineEntities();
         
@@ -60,6 +59,18 @@ namespace ImagineProject.Controllers
             ViewBag.id_viaje = new SelectList(dwh.dim_viajes, "id_viaje", "descripcion_viaje", id_viaje);
             var respuesta = ObtenerDatosReporte2(in_desde, in_hasta, in_barco, in_viaje, in_pasaporte).ToList();
             return PartialView("ResultsPartialR2", respuesta);
+        }
+
+        // REPORTE5 --------------------------------------------------------------------------
+        public ActionResult Reporte5()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Reporte5(string desde, string hasta)
+        {
+            var respuesta = ObtenerDatosReporte5(Convert.ToDateTime(desde), Convert.ToDateTime(hasta));
+            return PartialView("ResultsPartialR5", respuesta);
         }
 
         // REPORTE7 --------------------------------------------------------------------------
@@ -154,7 +165,8 @@ namespace ImagineProject.Controllers
             }
             return listaDatos;
         }
-
+        
+        /***************************************************************************************************************/
         // Reporte 2: Este reporte se basa en una Query SQL que contiene una SubQuery en la clausula FROM.
         // Para hacer más secillo el trabajo, al hacer el traspaso de SQL a LINQ C#, esta es dividida
         // en 2 Queries: sub_query (De la clausula FROM) y reporte (Es un select a sub_query y luego se vuelve 
@@ -236,7 +248,81 @@ namespace ImagineProject.Controllers
             
             return listaDatos;
         }
+
         /***************************************************************************************************************/
+        // Reporte 5:
+        public List<Reporte5> ObtenerDatosReporte5(DateTime desde, DateTime hasta)
+        { 
+            List<Reporte5> listaDatos = new List<Reporte5>();
+            var sub_query = (from mo in bd.Movimientos
+                             join po in bd.Porticos on mo.id_portico equals po.id_portico
+                             join rp in bd.RecintoPorticos on po.id_portico equals rp.id_portico
+                             join re in bd.Recintos on rp.id_recinto equals re.id_recinto
+                             join tr in bd.TiposRecintos on re.id_tipo_recinto equals tr.id_tipo_recinto
+                             join ta in bd.TiposAmbientes on re.id_tipo_ambiente equals ta.id_tipo_ambiente
+                             join ba in bd.Barcos on re.id_barco equals ba.id_barco
+                             group new { mo, po, rp, re, tr, ta, ba } by new
+                             {
+                                 ba.nombre_barco,
+                                 tr.tipo_recinto,
+                                 ta.tipo_ambiente,
+                                 re.nombre_recinto,
+                                 mo.fecha,
+                                 mo.hora,
+                                 mo.id_movimiento
+                             } into query_group
+                               select new 
+                               { 
+                                   barco = query_group.Key.nombre_recinto,
+	                               tipo_recinto = query_group.Key.tipo_recinto,
+	                               tipo_ambiente = query_group.Key.tipo_ambiente,
+	                               recinto = query_group.Key.nombre_recinto,
+	                               fecha = query_group.Key.fecha,
+	                               hora = query_group.Key.hora.Hours,
+	                               cantidad_movimentos = query_group.Select(x => x.mo.id_movimiento).Count()
+                               }).ToList();
+
+            var reporte = (from q in sub_query
+                          where q.fecha >= desde && q.fecha <= hasta
+                          group q by new
+                          {
+                              q.barco,
+                              q.tipo_recinto,
+                              q.tipo_ambiente,
+                              q.recinto,
+                              q.fecha,
+                              q.hora,
+                              q.cantidad_movimentos
+                          } into query_group
+                          select new 
+                          { 
+                               barco = query_group.Key.barco,
+                               tipo_recinto = query_group.Key.tipo_recinto,
+                               tipo_ambiente = query_group.Key.tipo_ambiente,
+                               recinto = query_group.Key.recinto,
+                               fecha = query_group.Key.fecha,
+                               hora = query_group.Key.hora,
+                               min_mov = query_group.Min(x => x.cantidad_movimentos),
+                               max_mov = query_group.Max(x => x.cantidad_movimentos)
+                          }).ToList();
+
+            foreach (var rep in reporte)
+            {
+                Reporte5 r5 = new Reporte5();
+                r5.Barco = rep.barco;
+                r5.TipoRecinto = rep.tipo_recinto;
+                r5.TipoAmbiente = rep.tipo_ambiente;
+                r5.Recinto = rep.recinto;
+                r5.Fecha = rep.fecha.ToString();
+                r5.Hora = rep.hora.ToString();
+                r5.MinMov = rep.min_mov.ToString();
+                r5.MaxMov = rep.max_mov.ToString();
+                listaDatos.Add(r5);
+            }
+
+            return listaDatos;
+        }
+
         /***************************************************************************************************************/
         // Reporte 7
         public List<Reporte7> ObtenerDatosReporte7(int linea_naviera, int anio1, int anio2)

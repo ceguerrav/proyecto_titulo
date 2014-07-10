@@ -169,7 +169,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><%: Html.ActionLink("Visitas diarias", "Reporte1", "Reportes")%></li>
-                    <li><%: Html.ActionLink("Recintos más y menos visitados", "Reporte2", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Visitas recinto pasajero", "Reporte2", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Visitas por recinto", "Reporte5", "Reportes")%></li>
                     <li><%: Html.ActionLink("Barcos con más viajes", "Reporte7", "Reportes")%></li>
                     <li><%: Html.ActionLink("Pasajeros más y menos importantes", "Reporte8", "Reportes")%></li>
                 </ul>
