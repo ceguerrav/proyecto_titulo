@@ -30,6 +30,20 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte1(string id_barco, string id_viaje, string fecha)
         {
+            if (id_barco == null || id_barco == "")
+            {
+                return Content("Seleccione barco");
+            }
+            if (id_viaje == null || id_viaje == "")
+            {
+                return Content("Seleccione viaje");
+            }
+            if (fecha == null || fecha == "")
+            {
+                return Content("Ingrese fecha");
+            }
+
+
             int id_b = Convert.ToInt32(id_barco);
             int id_v = Convert.ToInt32(id_viaje);
             DateTime fecha_conv = Convert.ToDateTime(fecha);
@@ -59,6 +73,24 @@ namespace ImagineProject.Controllers
             ViewBag.id_viaje = new SelectList(dwh.dim_viajes, "id_viaje", "descripcion_viaje", id_viaje);
             var respuesta = ObtenerDatosReporte2(in_desde, in_hasta, in_barco, in_viaje, in_pasaporte).ToList();
             return PartialView("ResultsPartialR2", respuesta);
+        }
+
+        // REPORTE3 --------------------------------------------------------------------------
+        public ActionResult Reporte3()
+        {
+            var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera } ).Distinct();
+            ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reporte3(string linea_naviera)
+        {
+            var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
+            ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera", linea_naviera);
+
+            var respuesta3 = ObtenerDatosReporte3(linea_naviera).ToList();
+            return PartialView("ResultsPartialR3", respuesta3);
         }
 
         // REPORTE5 --------------------------------------------------------------------------
@@ -111,8 +143,8 @@ namespace ImagineProject.Controllers
         {
             string linea_nav = linea_naviera;
             int anio1 = Convert.ToInt32(anio.Trim());
-
-            ViewBag.linea_naviera = new SelectList(dwh.dim_barcos, "linea_naviera", "linea_naviera", linea_naviera);
+            var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
+            ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera", linea_naviera);
 
             var respuesta8 = ObtenerDatosReporte8(linea_nav, anio1).ToList();
             return PartialView("ResultsPartialR8", respuesta8);
@@ -246,6 +278,61 @@ namespace ImagineProject.Controllers
                 listaDatos.Add(r2);   
             }
             
+            return listaDatos;
+        }
+        /***************************************************************************************************************/
+        // Reporte 3:
+        public List<Reporte3> ObtenerDatosReporte3(string linea_naviera)
+        {
+            List<Reporte3> listaDatos = new List<Reporte3>();
+            var query = (from pjo in dwh.dim_pasajeros
+                         join pje in dwh.dim_pasajes
+                            on pjo.id_pasajero equals pje.id_pasajero
+                         join vi in dwh.dim_viajes
+                            on pje.id_viaje equals vi.id_viaje
+                         join fm in
+                             ((from f in dwh.fact_movimientos
+                               select new
+                               {
+                                   f.id_barco,
+                                   f.id_viaje,
+                                   f.id_pasajero,
+                                   f.id_tiempo
+                               }).Distinct())
+                            on new { pjo.id_pasajero, vi.id_viaje } equals new { fm.id_pasajero, fm.id_viaje }
+                         join ba in dwh.dim_barcos
+                            on fm.id_barco equals ba.id_barco
+                         join ti in dwh.dim_tiempos
+                            on fm.id_tiempo equals ti.id_tiempo
+                         orderby ti.anio ascending, pjo.pasaporte ascending, pje.tipo_pasaje ascending
+                         where ba.linea_naviera == linea_naviera
+                         group new { ti, pjo, pje } by
+                         new
+                         {
+                             ti.anio,
+                             pjo.pasaporte,
+                             pasajero = pjo.nombres + " " + pjo.apellidos,
+                             pje.tipo_pasaje,
+                             pje.id_pasaje
+                         } into q_group
+                         select new
+                         {
+                             anio = q_group.Key.anio,
+                             pasaporte = q_group.Key.pasaporte,
+                             pasajero = q_group.Key.pasajero,
+                             tipo_pasaje = q_group.Key.tipo_pasaje,
+                             cant_pasajes = q_group.Select(x => x.pje.id_pasaje).Count()
+                         }).ToList();
+            foreach (var rep in query)
+            {
+                Reporte3 r3 = new Reporte3();
+                r3.Anio = rep.anio.ToString();
+                r3.Pasaporte = rep.pasaporte;
+                r3.Pasajero = rep.pasajero;
+                r3.Tipo_pasaje = rep.tipo_pasaje;
+                r3.Cant_pasajes = rep.cant_pasajes.ToString();
+                listaDatos.Add(r3);
+            }
             return listaDatos;
         }
 

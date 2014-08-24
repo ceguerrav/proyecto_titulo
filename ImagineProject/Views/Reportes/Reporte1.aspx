@@ -6,6 +6,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
+<script src="<%: Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js") %>" type="text/javascript"></script>
+
 <!-- date_picker -->
 <script src="<%: Url.Content("~/Script/jquery-1.6.4.min.js") %>" type="text/javascript"></script>	
 <link href="../../Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" type="text/css" />
@@ -46,6 +50,9 @@
 
 <h2>Reporte</h2>
 
+<% using (Html.BeginForm()) { %>
+    <%: Html.ValidationSummary(true) %>
+
     <fieldset>
         <legend>Visitas por día</legend>
 
@@ -60,14 +67,14 @@
             <%: Html.Label("id_viaje","Viaje") %>
         </div>
         <div class="editor-field">
-            <%: Html.DropDownList("id_barco", ViewBag.id_viaje as SelectList, "--- Seleccione Viaje ---", new { id = "id_viaje" })%>
+            <%: Html.DropDownList("id_viaje", ViewBag.id_viaje as SelectList, "--- Seleccione Viaje ---", new { id = "id_viaje" })%>
         </div>
 
         <div class="editor-label">
-            <%: Html.Label("fecha","Fecha") %>
+            <%: Html.Label("txt_fecha","Fecha") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_fecha" />
+            <input type="text" id="txt_fecha"/>
         </div>
 
         <p>
@@ -75,6 +82,7 @@
         </p>
 
     </fieldset>
+<% } %>
 
     <div id="contenido">
     </div>

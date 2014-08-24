@@ -6,16 +6,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-
-
 <script type="text/javascript">
     function buscarAjax() {
         $.ajax({
-            url: "/Reportes/Reporte8",
-            //'@Url.Action("Reporte", "Reportes")',
+            url: "/Reportes/Reporte3",
             data: {
-                linea_naviera: $("#linea_naviera").val(),
-                anio: $("#txt_anio").val()
+                linea_naviera: $("#linea_naviera").val()
             },
             type: "post",
             async: true,
@@ -27,23 +23,16 @@
     }
 </script>
 
-<h2>Reporte8</h2>
+<h2>Reporte</h2>
 
 <fieldset>
-    <legend>Pasajeros Importante</legend>
+    <legend>Evolución de pasajes por año</legend>
 
         <div class="editor-label">
             <%: Html.Label("linea_naviera","Linea Naviera") %>
         </div>
         <div class="editor-field">
             <%: Html.DropDownList("linea_naviera", ViewBag.linea_naviera as SelectList, "--- Seleccione Linea Naviera ---", new { id = "linea_naviera" })%>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.Label("anio","Año") %>
-        </div>
-        <div class="editor-field">
-            <input type="text" id="txt_anio" />
         </div>
 
         <p>
