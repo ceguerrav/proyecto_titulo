@@ -214,11 +214,14 @@
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reporte1.cs" />
+    <Compile Include="Models\Reporte10.cs" />
     <Compile Include="Models\Reporte2.cs" />
     <Compile Include="Models\Reporte3.cs" />
     <Compile Include="Models\Reporte5.cs" />
+    <Compile Include="Models\Reporte6.cs" />
     <Compile Include="Models\Reporte7.cs" />
     <Compile Include="Models\Reporte8.cs" />
+    <Compile Include="Models\Reporte9.cs" />
     <Compile Include="Models\RfidModel.cs" />
     <Compile Include="Models\Tag.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
@@ -624,6 +627,10 @@
     <Content Include="Views\Recinto\Details.aspx" />
     <Content Include="Views\Recinto\Edit.aspx" />
     <Content Include="Views\Recinto\Index.aspx" />
+    <Content Include="Views\Reportes\Reporte10.aspx" />
+    <Content Include="Views\Reportes\Reporte6.aspx" />
+    <Content Include="Views\Reportes\Reporte9.aspx" />
+    <Content Include="Views\Reportes\ResultsPartialR10.ascx" />
     <Content Include="Views\Reportes\ResultsPartialR3.ascx" />
     <Content Include="Views\Reportes\Reporte3.aspx" />
     <Content Include="Views\Reportes\ResultsPartialR5.ascx" />
@@ -634,8 +641,10 @@
     <Content Include="Views\Reportes\ResultsPartialR2.ascx" />
     <Content Include="Views\Reportes\Reporte1.aspx" />
     <Content Include="Views\Reportes\ResultsPartialR1.ascx" />
+    <Content Include="Views\Reportes\ResultsPartialR6.ascx" />
     <Content Include="Views\Reportes\ResultsPartialR7.ascx" />
     <Content Include="Views\Reportes\ResultsPartialR8.ascx" />
+    <Content Include="Views\Reportes\ResultsPartialR9.ascx" />
     <Content Include="Views\Shared\Dialog.aspx" />
     <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Tag\Delete.aspx" />

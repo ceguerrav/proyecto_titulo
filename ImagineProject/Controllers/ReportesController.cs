@@ -105,6 +105,18 @@ namespace ImagineProject.Controllers
             return PartialView("ResultsPartialR5", respuesta);
         }
 
+        // REPORTE6 --------------------------------------------------------------------------
+        public ActionResult Reporte6()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Reporte6(string linea_naviera)
+        {
+            var respuesta6 = ObtenerDatosReporte6().ToList();
+            return PartialView("ResultsPartialR6", respuesta6);
+        }
+
         // REPORTE7 --------------------------------------------------------------------------
         public ActionResult Reporte7()
         {
@@ -148,6 +160,35 @@ namespace ImagineProject.Controllers
 
             var respuesta8 = ObtenerDatosReporte8(linea_nav, anio1).ToList();
             return PartialView("ResultsPartialR8", respuesta8);
+        }
+
+        // REPORTE9 --------------------------------------------------------------------------
+        public ActionResult Reporte9()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reporte9(string linea_naviera)
+        {
+            var respuesta9 = ObtenerDatosReporte9().ToList();
+            return PartialView("ResultsPartialR9", respuesta9);
+        }
+
+        // REPORTE10 --------------------------------------------------------------------------
+        public ActionResult Reporte10()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reporte10(string anio1, string anio2)
+        {
+            int anioD = Convert.ToInt32(anio1);
+            int anioH = Convert.ToInt32(anio2);
+
+            var respuesta10 = ObtenerDatosReporte10(anioD, anioH).ToList();
+            return PartialView("ResultsPartialR10", respuesta10);
         }
 
 
@@ -411,6 +452,56 @@ namespace ImagineProject.Controllers
         }
 
         /***************************************************************************************************************/
+        /***************************************************************************************************************/
+        // Reporte 6
+        public List<Reporte6> ObtenerDatosReporte6()
+        {
+            List<Reporte6> listaDatos = new List<Reporte6>();
+
+            var sub_query6 = (from factm in dwh.fact_movimientos
+                              select new
+                              {
+                                  id_pasajero = factm.id_pasajero,
+                                  id_barco = factm.id_barco,
+                                  id_viaje = factm.id_viaje
+                              }).Distinct();
+
+            var reporte6 = (from pjos in dwh.dim_pasajeros
+                            join match in sub_query6 on pjos.id_pasajero equals match.id_pasajero
+                            join bar in dwh.dim_barcos on match.id_barco equals bar.id_barco
+                            join via in dwh.dim_viajes on match.id_viaje equals via.id_viaje
+                            group new { bar, via, pjos, match } by new
+                            {
+                                bar.nombre_barco,
+                                via.descripcion_viaje,
+                                via.fecha_salida,
+                                bar.capacidad
+                            } into grupo6
+                            select new
+                            {
+                                nom_barco = grupo6.Key.nombre_barco,
+                                desc_viaje = grupo6.Key.descripcion_viaje,
+                                fecha_salida = grupo6.Key.fecha_salida,
+                                capacidad = grupo6.Key.capacidad,
+                                q_pasajeros = grupo6.Select(x => x.pjos.id_pasajero).Count(),
+                                porc = ((grupo6.Select(x => x.pjos.id_pasajero).Count() * 100.0) / grupo6.Key.capacidad)
+                            }).ToList();
+
+            for (int i = 0; i < reporte6.Count; i++)
+            {
+                Reporte6 r6 = new Reporte6();
+                r6.Nombre_Barco = reporte6[i].nom_barco.ToString();
+                r6.Descripcion_Viaje = reporte6[i].desc_viaje;
+                r6.Fecha_Salida = reporte6[i].fecha_salida.ToShortDateString();
+                r6.Capacidad = reporte6[i].capacidad.ToString();
+                r6.Cant_Pasajeros = reporte6[i].q_pasajeros.ToString();
+                r6.Porcentaje = reporte6[i].porc.ToString();
+                listaDatos.Add(r6);
+            }
+            return listaDatos;
+        }
+
+        /***************************************************************************************************************/
         // Reporte 7
         public List<Reporte7> ObtenerDatosReporte7(int linea_naviera, int anio1, int anio2)
         {
@@ -488,6 +579,105 @@ namespace ImagineProject.Controllers
                 r8.Tipo_pasaje = reporte8[i].tipo_pasaje.ToString();
                 r8.Cantidad_viajes = reporte8[i].cantidad_viajes.ToString();
                 listaDatos.Add(r8);
+            }
+            return listaDatos;
+        }
+
+        /***************************************************************************************************************/
+        // Reporte 9
+        //FALTA AGREGAR EN EL WHERE DE LA SUB_SUB_QUERY9 QUE LA FECHA DE SALIDA SEA IGUAL A 1 AÑO
+        public List<Reporte9> ObtenerDatosReporte9()
+        {
+            List<Reporte9> listaDatos = new List<Reporte9>();
+
+            var sub_query9 = (from f in dwh.fact_movimientos
+                              select new 
+                              {
+                                  id_viaje = f.id_viaje,
+                                  id_pasajero = f.id_pasajero
+                              }).Distinct();
+            var sub_sub_query9 = (from v in dwh.dim_viajes
+                               join m in sub_query9 on v.id_viaje equals m.id_viaje
+                               where v.id_viaje == m.id_viaje
+                               select v);
+
+            var reporte9 = (from pjo in dwh.dim_pasajeros
+                            where (sub_sub_query9).AsEnumerable().Any() 
+                            group new { pjo } by new
+                            {
+                                pjo.pasaporte,
+                                pjo.nombres,
+                                pjo.apellidos,
+                                pjo.fecha_registro,
+                                pjo.e_mail
+                            } into grupo9
+                            select new
+                            {
+                                pasaporte = grupo9.Key.pasaporte,
+                                nombre_completo = grupo9.Key.nombres + " " + grupo9.Key.apellidos,
+                                fecha_registro = grupo9.Key.fecha_registro,
+                                email = grupo9.Key.e_mail
+                            }).ToList();
+
+
+            for (int i = 0; i < reporte9.Count; i++)
+            {
+                Reporte9 r9 = new Reporte9();
+                r9.Pasaporte = reporte9[i].pasaporte;
+                r9.Nombre_Completo = reporte9[i].nombre_completo;
+                r9.Fecha_Registro = reporte9[i].fecha_registro.ToString();
+                r9.Email = reporte9[i].email;
+                listaDatos.Add(r9);
+            }
+            return listaDatos;
+
+        }
+
+        /***************************************************************************************************************/
+        // Reporte 10
+        //FALTA AGREGAR EN EL WHERE LA FECHA DE LLEGADA
+        public List<Reporte10> ObtenerDatosReporte10(int anio1, int anio2)
+        {
+            List<Reporte10> listaDatos = new List<Reporte10>();
+            var sub_query10 = (from f in dwh.fact_movimientos
+                               select new
+                               {
+                                   id_barco = f.id_barco,
+                                   id_pasajero = f.id_pasajero,
+                                   id_viaje = f.id_viaje
+                               }).Distinct();
+            var reporte10 = (from m in sub_query10
+                             join pjo in dwh.dim_pasajeros on m.id_pasajero equals pjo.id_pasajero
+                             join v in dwh.dim_viajes on m.id_viaje equals v.id_viaje
+                             where (v.fecha_salida.Year >= anio1 && v.fecha_salida.Year <= anio2)
+                             group new { v, pjo } by new
+                             {
+                                 v.fecha_salida,
+                                 v.puerto_destino,
+                                 pjo.pasaporte,
+                                 pjo.nombres,
+                                 pjo.apellidos
+                             } into grupo10
+                             orderby grupo10.Key.fecha_salida.Year ascending //nose si funciona
+                             select new
+                             {
+                                 anio = grupo10.Key.fecha_salida.Year,
+                                 cantidad_viajes = grupo10.Select(x => x.v.id_viaje).Count(),
+                                 puerto_destino = grupo10.Key.puerto_destino,
+                                 pasaporte = grupo10.Key.pasaporte,
+                                 pasajero = grupo10.Key.nombres + " " + grupo10.Key.apellidos
+                             }).ToList();
+
+
+            for (int i = 0; i < reporte10.Count; i++)
+            {
+                Reporte10 r10 = new Reporte10();
+                r10.Anio = reporte10[i].anio.ToString();
+                r10.Cantidad_Viaje = reporte10[i].cantidad_viajes.ToString();
+                r10.Puerto_Destino = reporte10[i].puerto_destino;
+                r10.Pasaporte = reporte10[i].pasaporte;
+                r10.Nombre_Completo = reporte10[i].pasajero;
+                listaDatos.Add(r10);
             }
             return listaDatos;
         }

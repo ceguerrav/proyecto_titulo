@@ -172,8 +172,11 @@
                     <li><%: Html.ActionLink("Visitas recinto pasajero", "Reporte2", "Reportes")%></li>
                     <li><%: Html.ActionLink("Evolución pasajes por año", "Reporte3", "Reportes")%></li>
                     <li><%: Html.ActionLink("Visitas por recinto", "Reporte5", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Barcos con mayor cantidad de pasajeros", "Reporte6", "Reportes")%></li>
                     <li><%: Html.ActionLink("Barcos con más viajes", "Reporte7", "Reportes")%></li>
                     <li><%: Html.ActionLink("Pasajeros más y menos importantes", "Reporte8", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Clientes que no se han embarcado en 1 año", "Reporte9", "Reportes")%></li>
+                    <li><%: Html.ActionLink("Destinos más y menos visitados", "Reporte10", "Reportes")%></li>
                 </ul>
               </li>
               <%--<li class="dropdown">
