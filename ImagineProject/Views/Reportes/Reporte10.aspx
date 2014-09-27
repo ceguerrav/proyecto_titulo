@@ -48,18 +48,35 @@
     <legend>Destinos más y menos visitados</legend>
 
         <div class="editor-label">
-            <%: Html.Label("anio","Año Salida Desde") %>
+            <%: Html.Label("anio","Año Llegada Desde") %>
         </div>
         <div class="editor-field">
             <input type="text" id="txt_anio1" />
         </div>
 
         <div class="editor-label">
-            <%: Html.Label("anio","Año Salida Hasta") %>
+            <%: Html.Label("anio","Año Llegada Hasta") %>
         </div>
         <div class="editor-field">
             <input type="text" id="txt_anio2" />
         </div>
+   
+
+        <div class="editor-label">
+            <%: Html.Label("anio","Año Salida Desde") %>
+        </div>
+        <div class="editor-field">
+            <input type="text" id="txt_anio3" />
+        </div>
+
+        <div class="editor-label">
+            <%: Html.Label("anio","Año Salida Hasta") %>
+        </div>
+        <div class="editor-field">
+            <input type="text" id="txt_anio4" />
+        </div>
+
+
 
         <p>
             <input type="button" value="Buscar" id="btn_buscar" class="btn btn-default" onclick="javascript:buscarAjax();"/>

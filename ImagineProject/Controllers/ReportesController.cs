@@ -182,12 +182,14 @@ namespace ImagineProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Reporte10(string anio1, string anio2)
+        public ActionResult Reporte10(string anio1, string anio2, string anio3, string anio4)
         {
-            int anioD = Convert.ToInt32(anio1);
-            int anioH = Convert.ToInt32(anio2);
+            int anioLD = Convert.ToInt32(anio1);
+            int anioLH = Convert.ToInt32(anio2);
+            int anioSD = Convert.ToInt32(anio3);
+            int anioSH = Convert.ToInt32(anio4);
 
-            var respuesta10 = ObtenerDatosReporte10(anioD, anioH).ToList();
+            var respuesta10 = ObtenerDatosReporte10(anioLD, anioLH, anioSD, anioSH).ToList();
             return PartialView("ResultsPartialR10", respuesta10);
         }
 
@@ -636,7 +638,7 @@ namespace ImagineProject.Controllers
         /***************************************************************************************************************/
         // Reporte 10
         //FALTA AGREGAR EN EL WHERE LA FECHA DE LLEGADA
-        public List<Reporte10> ObtenerDatosReporte10(int anio1, int anio2)
+        public List<Reporte10> ObtenerDatosReporte10(int anio1, int anio2, int anio3, int anio4)
         {
             List<Reporte10> listaDatos = new List<Reporte10>();
             var sub_query10 = (from f in dwh.fact_movimientos
@@ -649,7 +651,8 @@ namespace ImagineProject.Controllers
             var reporte10 = (from m in sub_query10
                              join pjo in dwh.dim_pasajeros on m.id_pasajero equals pjo.id_pasajero
                              join v in dwh.dim_viajes on m.id_viaje equals v.id_viaje
-                             where (v.fecha_salida.Year >= anio1 && v.fecha_salida.Year <= anio2)
+                             where (v.fecha_llegada.Year >= anio1 && v.fecha_llegada.Year <= anio2) || 
+                             (v.fecha_salida.Year >= anio3 && v.fecha_salida.Year <= anio4)
                              group new { v, pjo } by new
                              {
                                  v.fecha_salida,
