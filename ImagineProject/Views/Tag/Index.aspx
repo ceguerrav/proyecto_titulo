@@ -10,7 +10,10 @@
 
 <p>
     <a href="<%: Url.Action("Create", "Tag") %>">
-        <button class="btn btn-primary">Agregar Nuevo</button>
+        <button class="btn btn-primary">Registrar Etiqueta</button>
+    </a>
+    <a href="<%: Url.Action("Grabar", "Tag") %>">
+        <button class="btn btn-primary">Grabar Etiqueta</button>
     </a>
     <%--<%: Html.ActionLink("Agregar nuevo", "Create") %>--%>
 </p>

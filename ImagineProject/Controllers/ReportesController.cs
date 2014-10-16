@@ -17,8 +17,96 @@ namespace ImagineProject.Controllers
     {
         private DWH_ImagineEntities dwh = new DWH_ImagineEntities();
         private Db_ImagineEntities bd = new Db_ImagineEntities();
-        
-        
+
+        private static List<Reporte1> reporte1ToExcel { get; set; }
+        private static List<Reporte2> reporte2ToExcel { get; set; }
+        private static List<Reporte3> reporte3ToExcel { get; set; }
+        //private static List<Reporte4> reporte4ToExcel { get; set; }
+        private static List<Reporte5> reporte5ToExcel { get; set; }
+        private static List<Reporte6> reporte6ToExcel { get; set; }
+        private static List<Reporte7> reporte7ToExcel { get; set; }
+        private static List<Reporte8> reporte8ToExcel { get; set; }
+        private static List<Reporte9> reporte9ToExcel { get; set; }
+        private static List<Reporte10> reporte10ToExcel { get; set; }
+
+        public ActionResult ExportData()
+        {
+            string number = "";
+            string date = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string reportName = "";
+            System.Web.UI.WebControls.GridView gv = null; 
+            gv = new System.Web.UI.WebControls.GridView();
+
+            // Busca el DataSource para el reporte
+            if (reporte1ToExcel != null)
+            {
+                gv.DataSource = reporte1ToExcel;
+                number = "1";
+            }
+            if (reporte2ToExcel != null)
+            {
+                gv.DataSource = reporte2ToExcel;
+                number = "2";
+            }
+            if (reporte3ToExcel != null)
+            {
+                gv.DataSource = reporte3ToExcel;
+                number = "3";
+            }
+            // Reporte 4, pendiente
+            /*
+            if (reporte4ToExcel != null)
+            {
+                gv.DataSource = reporte4ToExcel;
+                number = "4";
+            }*/
+            if (reporte5ToExcel != null)
+            {
+                gv.DataSource = reporte5ToExcel;
+                number = "5";
+            }
+            if (reporte6ToExcel != null)
+            {
+                gv.DataSource = reporte6ToExcel;
+                number = "6";
+            }
+            if (reporte7ToExcel != null)
+            {
+                gv.DataSource = reporte7ToExcel;
+                number = "7";
+            }
+            if (reporte8ToExcel != null)
+            {
+                gv.DataSource = reporte8ToExcel;
+                number = "8";
+            }
+            if (reporte9ToExcel != null)
+            {
+                gv.DataSource = reporte9ToExcel;
+                number = "9";
+            }
+            if (reporte10ToExcel != null)
+            {
+                gv.DataSource = reporte10ToExcel;
+                number = "10";
+            }
+            // Crea el nombre del reporte
+            reportName = "Reporte"+number+"_"+date;
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename="+reportName+".xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            System.Web.UI.HtmlTextWriter htw = new System.Web.UI.HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
+
+            return RedirectToAction("ResultsPartialR1");
+        }
         // REPORTE1 --------------------------------------------------------------------------        
         public ActionResult Reporte1()
         {
@@ -43,13 +131,18 @@ namespace ImagineProject.Controllers
                 return Content("Ingrese fecha");
             }
 
+            // Se Elimina los dartos de una lista anterior
+            reporte1ToExcel = null;
 
             int id_b = Convert.ToInt32(id_barco);
             int id_v = Convert.ToInt32(id_viaje);
             DateTime fecha_conv = Convert.ToDateTime(fecha);
             ViewBag.id_barco = new SelectList(dwh.dim_barcos, "id_barco", "nombre_barco", id_barco);
             ViewBag.id_viaje = new SelectList(dwh.dim_viajes, "id_viaje", "descripcion_viaje", id_viaje);
+
             var respuesta = ObtenerDatosReporte1(id_b, id_v, fecha_conv).ToList();
+            // Se llena la lista temporal
+            reporte1ToExcel = respuesta.ToList();
             return PartialView("ResultsPartialR1", respuesta);
         }
 
@@ -64,6 +157,9 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte2(string desde, string hasta, string id_barco, string id_viaje, string pasaporte)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte2ToExcel = null;
+
             DateTime in_desde = Convert.ToDateTime(desde);
             DateTime in_hasta = Convert.ToDateTime(hasta);
             int in_barco = Convert.ToInt32(id_barco); ;
@@ -71,7 +167,10 @@ namespace ImagineProject.Controllers
             string in_pasaporte = pasaporte.Trim();
             ViewBag.id_barco = new SelectList(dwh.dim_barcos, "id_barco", "nombre_barco", id_barco);
             ViewBag.id_viaje = new SelectList(dwh.dim_viajes, "id_viaje", "descripcion_viaje", id_viaje);
+
             var respuesta = ObtenerDatosReporte2(in_desde, in_hasta, in_barco, in_viaje, in_pasaporte).ToList();
+            // Se llena la lista temporal
+            reporte2ToExcel = respuesta.ToList();
             return PartialView("ResultsPartialR2", respuesta);
         }
 
@@ -86,10 +185,16 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte3(string linea_naviera)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte3ToExcel = null;
+
             var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
             ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera", linea_naviera);
 
             var respuesta3 = ObtenerDatosReporte3(linea_naviera).ToList();
+            // Se llena la lista temporal
+            reporte3ToExcel = respuesta3.ToList();
+
             return PartialView("ResultsPartialR3", respuesta3);
         }
 
@@ -101,7 +206,13 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte5(string desde, string hasta)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte5ToExcel = null;
+
             var respuesta = ObtenerDatosReporte5(Convert.ToDateTime(desde), Convert.ToDateTime(hasta));
+            // Se llena la lista temporal
+            reporte5ToExcel = respuesta.ToList();
+
             return PartialView("ResultsPartialR5", respuesta);
         }
 
@@ -113,7 +224,12 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte6(string linea_naviera)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte6ToExcel = null;
+
             var respuesta6 = ObtenerDatosReporte6().ToList();
+            // Se llena la lista temporal
+            reporte6ToExcel = respuesta6.ToList();
             return PartialView("ResultsPartialR6", respuesta6);
         }
 
@@ -127,6 +243,9 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte7(string linea_naviera, string anio1, string anio2)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte7ToExcel = null;
+
             int linea_nav = Convert.ToInt32(linea_naviera);
             int anioD = Convert.ToInt32(anio1);
             int anioH = Convert.ToInt32(anio2);
@@ -134,6 +253,8 @@ namespace ImagineProject.Controllers
             ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera", linea_naviera);
 
             var respuesta7 = ObtenerDatosReporte7(linea_nav, anioD, anioH).ToList();
+            // Se llena la lista temporal
+            reporte7ToExcel = respuesta7.ToList();
             return PartialView("ResultsPartialR7", respuesta7);
         }
 
@@ -153,12 +274,17 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte8(string linea_naviera, string anio)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte8ToExcel = null;
+
             string linea_nav = linea_naviera;
             int anio1 = Convert.ToInt32(anio.Trim());
             var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
             ViewBag.linea_naviera = new SelectList(linea, "linea_naviera", "linea_naviera", linea_naviera);
 
             var respuesta8 = ObtenerDatosReporte8(linea_nav, anio1).ToList();
+            // Se llena la lista temporal
+            reporte8ToExcel = respuesta8.ToList();
             return PartialView("ResultsPartialR8", respuesta8);
         }
 
@@ -171,7 +297,12 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Reporte9(string linea_naviera)
         {
+            // Se Elimina los dartos de una lista anterior
+            reporte9ToExcel = null;
+
             var respuesta9 = ObtenerDatosReporte9().ToList();
+            // Se llena la lista temporal
+            reporte9ToExcel = respuesta9.ToList();
             return PartialView("ResultsPartialR9", respuesta9);
         }
 
@@ -182,12 +313,26 @@ namespace ImagineProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Reporte10(string anio1, string anio2)
+        public ActionResult Reporte10(string anio1, string anio2, string anio3, string anio4)
         {
+<<<<<<< HEAD
+            // Se Elimina los dartos de una lista anterior
+            reporte10ToExcel = null;
+
             int anioD = Convert.ToInt32(anio1);
             int anioH = Convert.ToInt32(anio2);
 
             var respuesta10 = ObtenerDatosReporte10(anioD, anioH).ToList();
+            // Se llena la lista temporal
+            reporte10ToExcel = respuesta10.ToList();
+=======
+            int anioLD = Convert.ToInt32(anio1);
+            int anioLH = Convert.ToInt32(anio2);
+            int anioSD = Convert.ToInt32(anio3);
+            int anioSH = Convert.ToInt32(anio4);
+
+            var respuesta10 = ObtenerDatosReporte10(anioLD, anioLH, anioSD, anioSH).ToList();
+>>>>>>> 73487bb936aec0111a61e8389dba5d90accafb37
             return PartialView("ResultsPartialR10", respuesta10);
         }
 
@@ -589,20 +734,22 @@ namespace ImagineProject.Controllers
         public List<Reporte9> ObtenerDatosReporte9()
         {
             List<Reporte9> listaDatos = new List<Reporte9>();
-
+            DateTime now = new DateTime((DateTime.Now.Year-1), DateTime.Now.Month, DateTime.Now.Day);
             var sub_query9 = (from f in dwh.fact_movimientos
                               select new 
                               {
                                   id_viaje = f.id_viaje,
                                   id_pasajero = f.id_pasajero
                               }).Distinct();
+
             var sub_sub_query9 = (from v in dwh.dim_viajes
                                join m in sub_query9 on v.id_viaje equals m.id_viaje
-                               where v.id_viaje == m.id_viaje
-                               select v);
+                               //where v.id_viaje == m.id_viaje
+                               where (v.fecha_salida >= now)
+                               select m);
 
             var reporte9 = (from pjo in dwh.dim_pasajeros
-                            where (sub_sub_query9).AsEnumerable().Any() 
+                            where !(sub_sub_query9).Any(s => s.id_pasajero == pjo.id_pasajero) //(sub_sub_query9).AsEnumerable().Any() 
                             group new { pjo } by new
                             {
                                 pjo.pasaporte,
@@ -636,7 +783,7 @@ namespace ImagineProject.Controllers
         /***************************************************************************************************************/
         // Reporte 10
         //FALTA AGREGAR EN EL WHERE LA FECHA DE LLEGADA
-        public List<Reporte10> ObtenerDatosReporte10(int anio1, int anio2)
+        public List<Reporte10> ObtenerDatosReporte10(int anio1, int anio2, int anio3, int anio4)
         {
             List<Reporte10> listaDatos = new List<Reporte10>();
             var sub_query10 = (from f in dwh.fact_movimientos
@@ -649,7 +796,8 @@ namespace ImagineProject.Controllers
             var reporte10 = (from m in sub_query10
                              join pjo in dwh.dim_pasajeros on m.id_pasajero equals pjo.id_pasajero
                              join v in dwh.dim_viajes on m.id_viaje equals v.id_viaje
-                             where (v.fecha_salida.Year >= anio1 && v.fecha_salida.Year <= anio2)
+                             where (v.fecha_llegada.Year >= anio1 && v.fecha_llegada.Year <= anio2) || 
+                             (v.fecha_salida.Year >= anio3 && v.fecha_salida.Year <= anio4)
                              group new { v, pjo } by new
                              {
                                  v.fecha_salida,

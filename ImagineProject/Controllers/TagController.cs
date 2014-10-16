@@ -52,16 +52,15 @@ namespace ImagineProject.Controllers
         private int LastIdInserted()
         {
             int lastId = 0;
-            int cant = db.Tags.Count();
-
-            if (cant == 0)
+            //int cant = db.Tags.Count();
+            lastId = db.Tags.Max(t => t.id_tag);
+            if (lastId == 0)
             {
                 lastId = 1;
             }
-            if (cant > 0)
+            if (lastId > 0)
             {
-                lastId = cant;
-                lastId = lastId + 1;
+                ++lastId;
             }               
             return lastId;
         }
@@ -81,22 +80,7 @@ namespace ImagineProject.Controllers
                 }
             }
         }
-        public string GenerarID()
-        {
-            string id = "1234567890";
-            return id;
-        }
- 
-        /*
-        public String GenerateID() 
-        {
-            int lastId = LastIdInserted();
-            RfidModel auxGrabar = new RfidModel();
-            auxGrabar.CodigoRFID = lastId.ToString();
-            string cod_rfid = auxGrabar.completaRFIDCod(lastId.ToString());
-            return cod_rfid;
-        }
-        */
+
         /************************************************************************************************/
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
@@ -119,27 +103,57 @@ namespace ImagineProject.Controllers
         }
 
         //
-        // GET: /Tag/Create
-
+        // GET: /AgregarTag/Create
         public ActionResult Create()
+        {
+            ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte");
+            return View();
+        }
+
+        //
+        // POST: /AgregarTag/Create
+        [HttpPost]
+        public ActionResult Create(Tag tag)
+        {
+            if (ModelState.IsValid)
+            {
+                SetStatus(tag.id_pasajero);
+                tag.estado = true;
+                tag.fecha_registro = DateTime.Now;
+                db.Tags.Add(tag);
+                db.SaveChanges();
+
+                Operacion ok = new Operacion();
+                ok.Action = "Index";
+                ok.Controller = "Tag";
+                ok.Message = "Tag " + tag.identificador + " registrado!.";
+                return View("~/Views/Shared/Dialog.aspx", ok);
+            }
+
+            ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
+            return View(tag);
+        }
+
+        //
+        // GET: /Tag/Grabar
+        public ActionResult Grabar()
         {
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte");
             return View();
         } 
 
         //
-        // POST: /Tag/Create
-
+        // POST: /Tag/Grabar
         [HttpPost]
-        public ActionResult Create(Tag tag)
+        public ActionResult Grabar(Tag tag)
         {
             // Conexión automática al puerto COM6
             this.contrCon.Selected = "COM6";
             this.contrCon.Connect();
-            string estado = "";
+            string estado = "000";
             int lastId = LastIdInserted();
 
-            String mensaje;
+            String mensaje = "";
             if (ModelState.IsValid)
             {
                 RfidModel auxGrabar = new RfidModel();
@@ -162,7 +176,8 @@ namespace ImagineProject.Controllers
                 }
                 else if (estado.Equals("002"))
                 {
-                    mensaje = "Error de comunicación";
+                    mensaje = "ERROR DE COMUNICACIÓN. El dispositivo de grabación de etiquetas RFID no se encuentra conectado. \n"+
+                              "Conecte el dispositivo o ingrese una etiqueta de forma manual presionando el link:";
                 }
                 else if (estado.Equals("003"))
                 {
@@ -174,11 +189,23 @@ namespace ImagineProject.Controllers
                 }
                 contrCon.Disconnect();
                 //return RedirectToAction("Index");  
-                Operacion ok = new Operacion();
-                ok.Action = "Index";
-                ok.Controller = "Tag";
-                ok.Message = "El identificador de la etiqueta ingresado es el " + tag.identificador;
-                return View("~/Views/Shared/Dialog.aspx", ok);
+                
+                if (estado.Equals("001"))
+                {
+                    Operacion ok = new Operacion();
+                    ok.Action = "Index";
+                    ok.Controller = "Tag";
+                    ok.Message = "El identificador de la etiqueta es " + tag.identificador;
+                    return View("~/Views/Shared/Dialog.aspx", ok);
+                }
+                if (!estado.Equals("001"))
+                {
+                    Operacion error = new Operacion();
+                    error.Message = mensaje;
+                    error.Action = "Create";
+                    error.Controller = "Tag";
+                    return View("~/Views/Shared/Error.aspx", error);   
+                }
             }
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);

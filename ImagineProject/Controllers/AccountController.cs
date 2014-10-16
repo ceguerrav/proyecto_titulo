@@ -33,20 +33,44 @@ namespace ImagineProject.Controllers
         {
             try
             {
+                String rol = "";
                 if (ModelState.IsValid)
                 {
                     if (Membership.ValidateUser(model.UserName, model.Password))
                     {
-                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                        if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                            && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                        // 0: Error: Variable no asignada.
+                        // 1: Error: El usuario está asociado a más de un ROL.
+                        // 2: Error: Rol invalido (Nulo a vacío)
+                        rol = this.GetRoleForUser(model.UserName).Trim();
+                        if (rol.Equals("0"))
                         {
-                            return Redirect(returnUrl);
+                            ModelState.AddModelError("","Usuario no tiene acceso a la aplicación.");
                         }
-                        else
+                        if (rol.Equals("1"))
                         {
-                            return RedirectToAction("Index", "Home");
+                            ModelState.AddModelError("", "Usuario pertenece a mas de un Rol.");
                         }
+                        if (rol.Equals("2"))
+                        {
+                            ModelState.AddModelError("", "Rol de usuario no válido.");
+                        }
+                        if (rol != null && rol != "" && rol != "0" && rol != "1" && rol != "2")
+                        {
+                            FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                            if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                                && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", "Home");
+                            }
+                        }/*
+                        else {
+                            ModelState.AddModelError("", "Usuario sin rol asignado.");
+                        }*/
+                        
                     }
                     else
                     {
@@ -271,6 +295,31 @@ namespace ImagineProject.Controllers
         {
             var users = Membership.GetAllUsers();
             return View(users);
+        }
+
+        private String GetRoleForUser(string userName)
+        {
+            // 0: Error: Variable no asignada.
+            // 1: Error: El usuario está asociado a más de un ROL.
+            // 2: Error: Rol invalido (Nulo a vacío)
+            String outRol = "0";
+            string [] roles = Roles.GetRolesForUser(userName);
+            if (roles.Length > 1)
+            {
+                outRol = "1"; 
+            }
+            if (roles.Length == 1) 
+            {
+                if (roles[0].ToString().Equals(null) || roles[0].ToString().Equals(""))
+                {
+                    outRol = "2";
+                }
+                else 
+                {
+                    outRol = roles[0].ToString().Trim();
+                }
+            }
+            return outRol;
         }
 
         /*******************************************************************************************************/

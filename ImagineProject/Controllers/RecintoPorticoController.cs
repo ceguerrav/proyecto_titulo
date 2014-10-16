@@ -57,7 +57,8 @@ namespace ImagineProject.Controllers
                 Operacion ok = new Operacion();
                 ok.Action = "Index";
                 ok.Controller = "RecintoPortico";
-                ok.Message = "Se ha ingresado el siguente portico " + recintoportico.Portico.descripcion_portico + "al reciento " + recintoportico.Recinto.nombre_recinto;
+                //ok.Message = "Se ha ingresado el siguente portico " + recintoportico.Portico.descripcion_portico + "al reciento " + recintoportico.Recinto.nombre_recinto;
+                ok.Message = "Se asociado correctamente el portico al recinto.";
                 return View("~/Views/Shared/Dialog.aspx", ok);
             }
 

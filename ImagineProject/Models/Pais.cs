@@ -42,7 +42,7 @@ namespace ImagineProject.Models
 
         [Required(ErrorMessage = "Seleccione un tipo de división")]
         [Display(Name = "Tipo de división administrativa")]
-        [RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
+        //[RegularExpression(@"^[a-zA-ZñÑáéíóú]{1}[a-zA-ZñÑáéíóú ]{1,}$", ErrorMessage = "Solo letras.")]
         public short id_tipo_division { get; set; }
 
         public virtual ICollection<DivisionAdministrativa> DivisionAdministrativa { get; set; }

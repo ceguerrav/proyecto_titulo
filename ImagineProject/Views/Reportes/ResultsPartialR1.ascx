@@ -108,6 +108,6 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Repor
     </tbody>
 </table>
 <p></p>
-<a href="<%: Url.Action("PDF", "Reportes") %>">
+<a href="<%: Url.Action("ExportData", "Reportes") %>">
     <button class="btn btn-primary">Generar PDF</button>
 </a>

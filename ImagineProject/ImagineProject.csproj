@@ -553,6 +553,7 @@
     <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -566,6 +567,7 @@
     <Content Include="Views\Account\EditUser.aspx" />
     <Content Include="Views\Account\ListRoles.aspx" />
     <Content Include="Views\Account\ListUsers.aspx" />
+    <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Barco\Create.aspx" />
     <Content Include="Views\Barco\Delete.aspx" />
     <Content Include="Views\Barco\Details.aspx" />
@@ -646,7 +648,7 @@
     <Content Include="Views\Reportes\ResultsPartialR8.ascx" />
     <Content Include="Views\Reportes\ResultsPartialR9.ascx" />
     <Content Include="Views\Shared\Dialog.aspx" />
-    <Content Include="Views\Tag\Create.aspx" />
+    <Content Include="Views\Tag\Grabar.aspx" />
     <Content Include="Views\Tag\Delete.aspx" />
     <Content Include="Views\Tag\Details.aspx" />
     <Content Include="Views\Tag\Edit.aspx" />

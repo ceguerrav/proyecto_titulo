@@ -28,7 +28,11 @@ namespace ImagineProject.Models
         [Display(Name = "Identificador")]
         [StringLength(255, ErrorMessage = "El {0} no debe exceder los 255 caracteres.")]
         */
-        [ScaffoldColumn(false)]
+        
+        //[ScaffoldColumn(false)]
+        [Required(ErrorMessage = "Ingrese el ID de la pulsera")]
+        [Display(Name = "Identificador")]
+        [StringLength(24, MinimumLength = 24)]
         public string identificador { get; set; }
 
         [ScaffoldColumn(false)]
