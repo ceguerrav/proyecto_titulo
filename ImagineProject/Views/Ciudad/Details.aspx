@@ -38,8 +38,16 @@
     </table>
 </fieldset>
 <p>
-    <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_ciudad }) %> |
-    <%: Html.ActionLink("Regresar", "Index") %>
+
+    <a href="<%: Url.Action("Edit", "Ciudad", new { id=Model.id_ciudad }) %>">
+        <button type="button" class="btn btn-default">Editar</button>
+    </a>
+    <a href="<%: Url.Action("Index", "Ciudad") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+
+    <%--<%: Html.ActionLink("Editar", "Edit", new { id=Model.id_ciudad }) %> |
+    <%: Html.ActionLink("Regresar", "Index") %>--%>
 </p>
 
 </asp:Content>

@@ -28,8 +28,15 @@
     </table>
 </fieldset>
 <p>
-    <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_ambiente }) %> |
-    <%: Html.ActionLink("Regresar", "Index") %>
+    <a href="<%: Url.Action("Edit", "TipoAmbiente", new { id=Model.id_tipo_ambiente }) %>">
+        <button type="button" class="btn btn-default">Editar</button>
+    </a>
+    <a href="<%: Url.Action("Index", "TipoAmbiente") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+
+    <%--<%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_ambiente }) %> |
+    <%: Html.ActionLink("Regresar", "Index") %>--%>
 </p>
 
 </asp:Content>

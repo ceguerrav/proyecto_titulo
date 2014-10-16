@@ -44,8 +44,15 @@
     </table>
 </fieldset>
 <p>
-    <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_puerto }) %> |
-    <%: Html.ActionLink("Regresar", "Index") %>
+    <a href="<%: Url.Action("Edit", "Puerto", new { id=Model.id_puerto }) %>">
+        <button type="button" class="btn btn-default">Editar</button>
+    </a>
+    <a href="<%: Url.Action("Index", "Puerto") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+
+    <%--<%: Html.ActionLink("Editar", "Edit", new { id=Model.id_puerto }) %> |
+    <%: Html.ActionLink("Regresar", "Index") %>--%>
 </p>
 
 </asp:Content>

@@ -21,8 +21,15 @@
     </table>
 </fieldset>
 <p>
-    <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_recinto }) %> |
-    <%: Html.ActionLink("Regresar", "Index") %>
+    <a href="<%: Url.Action("Edit", "TipoRecinto", new { id=Model.id_tipo_recinto }) %>">
+        <button type="button" class="btn btn-default">Editar</button>
+    </a>
+    <a href="<%: Url.Action("Index", "TipoRecinto") %>">
+        <button type="button" class="btn btn-info">Regresar</button>
+    </a>
+
+    <%--<%: Html.ActionLink("Editar", "Edit", new { id=Model.id_tipo_recinto }) %> |
+    <%: Html.ActionLink("Regresar", "Index") %>--%>
 </p>
 
 </asp:Content>

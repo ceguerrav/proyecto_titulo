@@ -51,11 +51,14 @@
 
 </fieldset>
 <p>
-    <%: Html.ActionLink("Editar", "Edit", new { id=Model.id_barco }) %> |
-    <%--<a href="<%: Url.Action("Index", "Barco") %>">
+    <a href="<%: Url.Action("Edit", "Barco", new { id=Model.id_barco }) %>">
+        <button type="button" class="btn btn-default">Editar</button>
+    </a>
+    <a href="<%: Url.Action("Index", "Barco") %>">
         <button type="button" class="btn btn-info">Regresar</button>
-    </a>--%>
-    <%: Html.ActionLink("Regresar", "Index") %>
+    </a>
+    <%--<%: Html.ActionLink("Editar", "Edit", new { id=Model.id_barco }) %> |--%>
+    <%--<%: Html.ActionLink("Regresar", "Index") %>--%>
 </p>
 
 </asp:Content>
