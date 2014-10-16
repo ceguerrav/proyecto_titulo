@@ -316,6 +316,7 @@ namespace ImagineProject.Controllers
         public ActionResult Reporte10(string anio1, string anio2, string anio3, string anio4)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // Se Elimina los dartos de una lista anterior
             reporte10ToExcel = null;
 
@@ -325,6 +326,14 @@ namespace ImagineProject.Controllers
             var respuesta10 = ObtenerDatosReporte10(anioD, anioH).ToList();
             // Se llena la lista temporal
             reporte10ToExcel = respuesta10.ToList();
+=======
+            int anioLD = Convert.ToInt32(anio1);
+            int anioLH = Convert.ToInt32(anio2);
+            int anioSD = Convert.ToInt32(anio3);
+            int anioSH = Convert.ToInt32(anio4);
+
+            var respuesta10 = ObtenerDatosReporte10(anioLD, anioLH, anioSD, anioSH).ToList();
+>>>>>>> 73487bb936aec0111a61e8389dba5d90accafb37
 =======
             int anioLD = Convert.ToInt32(anio1);
             int anioLH = Convert.ToInt32(anio2);
