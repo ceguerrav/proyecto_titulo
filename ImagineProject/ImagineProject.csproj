@@ -90,6 +90,7 @@
     <Compile Include="Controllers\DivisionAdministrativaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaNavieraController.cs" />
+    <Compile Include="Controllers\MovimientosController.cs" />
     <Compile Include="Controllers\OrigenDestinoController.cs" />
     <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Controllers\PasajeController.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Models\Movimiento.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Movimientos.cs" />
     <Compile Include="Models\OrigenDestino.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
@@ -567,6 +569,8 @@
     <Content Include="Views\Account\EditUser.aspx" />
     <Content Include="Views\Account\ListRoles.aspx" />
     <Content Include="Views\Account\ListUsers.aspx" />
+    <Content Include="Views\Movimientos\Movimientos1.aspx" />
+    <Content Include="Views\Movimientos\ResultsPartialM1.ascx" />
     <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Barco\Create.aspx" />
     <Content Include="Views\Barco\Delete.aspx" />
