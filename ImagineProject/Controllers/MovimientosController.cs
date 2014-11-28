@@ -116,6 +116,9 @@ namespace ImagineProject.Controllers
         public List<MovimientosTR> ObtenerDatosMovimientos1(int id_viaje)
         {
             List<MovimientosTR> listaDatos = new List<MovimientosTR>();
+            DateTime fecha_actual = DateTime.Now;
+            DateTime fecha_resta = fecha_actual.AddMinutes(-2);
+
             var movimiento = (from mo in bd.Movimientos
                               join tm in bd.TiposMovimientos on mo.id_tipo_movimiento equals tm.id_tipo_movimiento
                               join po in bd.Porticos on mo.id_portico equals po.id_portico
@@ -125,8 +128,8 @@ namespace ImagineProject.Controllers
                               join ta in bd.TiposAmbientes on re.id_tipo_ambiente equals ta.id_tipo_ambiente
                               join ba in bd.Barcos on re.id_barco equals ba.id_barco
                               join vi in bd.Viajes on ba.id_barco equals vi.id_viaje
-                              where vi.id_viaje == id_viaje
-                              // and datediff(minute,mo.fecha_hora,sysdatetime()) < 2
+                              where vi.id_viaje == id_viaje &&
+                              (mo.fecha_hora >= fecha_resta && mo.fecha_hora <= fecha_actual)
                               group new { tr, ta, re, tm, mo } by new
                               {
                                   tr.tipo_recinto,
