@@ -32,7 +32,7 @@ namespace ImagineProject.Models
         //[ScaffoldColumn(false)]
         [Required(ErrorMessage = "Ingrese el ID de la pulsera")]
         [Display(Name = "Identificador")]
-        [StringLength(24, MinimumLength = 24)]
+        [StringLength(24, MinimumLength = 24)]//, ErrorMessage = "ijijij")]
         public string identificador { get; set; }
 
         [ScaffoldColumn(false)]

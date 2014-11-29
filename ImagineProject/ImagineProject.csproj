@@ -190,7 +190,7 @@
     <Compile Include="Models\Movimiento.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Movimientos.cs" />
+    <Compile Include="Models\MovimientosTR.cs" />
     <Compile Include="Models\OrigenDestino.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>

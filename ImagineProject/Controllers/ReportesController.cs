@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ImagineProject.Models;
+//Permite usar Chart
+using System.Web.Helpers;
 //using System.Text;
 //using System.IO;
 //using System.Web.UI;
@@ -28,6 +30,100 @@ namespace ImagineProject.Controllers
         private static List<Reporte8> reporte8ToExcel { get; set; }
         private static List<Reporte9> reporte9ToExcel { get; set; }
         private static List<Reporte10> reporte10ToExcel { get; set; }
+
+        // Método que crea gráfico de datos. Ejemplo 1.
+        public ActionResult GetGraficoEjemplo1()
+        {
+            var myChart = new Chart(width: 600, height: 400)
+                .AddTitle("Reporte 1")
+                .AddSeries(
+                    name: "Reporte 1",
+                    chartType: "bar",
+                    xValue: new[] { "A" },
+                    yValues: new[] { "1" })
+                .GetBytes("png");
+            return File(myChart, "image/png");
+        }
+        // Método que crea gráfico de datos. Ejemplo 2.
+        public ActionResult GetGraficoEjemplo2()
+        {
+            var myChart = new Chart(width: 600, height: 400)
+                .AddTitle("Reporte 1")
+                .AddSeries(
+                    name: "Reporte 1",
+                    chartType: "bar",
+                    xValue: new[] { "A" },
+                    yValues: new[] { "1" })
+                .Write();
+            return null;
+        }
+
+        public ActionResult GetGraficoRep1()
+        {
+            // En el DataTable se estabalece el conjunto de datos
+            // que será mostrado en el gráfico. Se asigna las columnas.
+            var dt = new System.Data.DataTable();
+            dt.Columns.Add("Pasaporte", typeof(string));
+            dt.Columns.Add("Nombre_recinto", typeof(string));
+            dt.Columns.Add("Cantidad_movimientos", typeof(int));
+
+            // Se recibe la Variable estática de datos.
+            var datos = reporte1ToExcel;
+
+            //Se llena el DataTable con los valores necesarios desde la lista del reporte.
+            foreach (var reg in datos)
+            {
+                dt.Rows.Add(reg.Pasaporte, reg.Nombre_recinto, reg.Cantidad_movimientos);
+            }
+
+            var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Yellow)
+                .AddTitle("Visitas diarias")
+                //.AddSeries(chartType: "Column")
+                // Ejemplo this.chart1.DataBindCrossTable(dt.Rows, "Name", "Day", "BugCount", "");
+                .DataBindCrossTable(dt.Rows, "Pasaporte", "Nombre_recinto", "Cantidad_movimientos", "").Write();// "Label=Cantidad_movimientos").Write();
+
+            return null;
+        }
+
+        public ActionResult GetGraficoRep5()
+        {
+            var dt = new System.Data.DataTable();
+            dt.Columns.Add("Recinto", typeof(string));
+            dt.Columns.Add("Movimientos", typeof(int));
+
+            // Se recibe la Variable estática de datos.
+            var datos = reporte5ToExcel.Select(x => new { x.Recinto, x.MaxMov}).ToList();
+            var grupo_datos = from d in datos
+                              group new { d } by new
+                              {
+                                  d.Recinto,
+                                  d.MaxMov
+                              } into grupo
+                              select new
+                              {
+                                  recinto = grupo.Key.Recinto,
+                                  movimientos = grupo.Sum(m => m.d.MaxMov)
+                              };
+
+            //Se llena el DataTable con los valores necesarios desde la lista del reporte.
+            foreach (var reg in datos)
+            {
+                dt.Rows.Add(reg.Recinto, reg.MaxMov);
+            }
+
+            var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Yellow)
+                .AddTitle("Visitas a recintos por horario")
+                //.AddSeries(chartType: "Column")
+                // Ejemplo this.chart1.DataBindCrossTable(dt.Rows, "Name", "Day", "BugCount", "");
+                .AddSeries(
+                    name: "Reporte 4",
+                    chartType: "Column",
+                    xValue: grupo_datos.Select(d => d.recinto).ToArray(),//recinto,
+                    yValues: grupo_datos.Select(d => d.movimientos).ToArray())//cant_mov)
+                .Write();
+
+            return null;        
+        }
 
         public ActionResult ExportData()
         {
@@ -539,7 +635,7 @@ namespace ImagineProject.Controllers
                              } into query_group
                                select new 
                                { 
-                                   barco = query_group.Key.nombre_recinto,
+                                   barco = query_group.Key.nombre_barco,
 	                               tipo_recinto = query_group.Key.tipo_recinto,
 	                               tipo_ambiente = query_group.Key.tipo_ambiente,
 	                               recinto = query_group.Key.nombre_recinto,
@@ -566,7 +662,7 @@ namespace ImagineProject.Controllers
                                tipo_recinto = query_group.Key.tipo_recinto,
                                tipo_ambiente = query_group.Key.tipo_ambiente,
                                recinto = query_group.Key.recinto,
-                               fecha = query_group.Key.fecha,
+                               fecha = query_group.Key.fecha.Date,
                                hora = query_group.Key.hora,
                                min_mov = query_group.Min(x => x.cantidad_movimentos),
                                max_mov = query_group.Max(x => x.cantidad_movimentos)
@@ -579,10 +675,10 @@ namespace ImagineProject.Controllers
                 r5.TipoRecinto = rep.tipo_recinto;
                 r5.TipoAmbiente = rep.tipo_ambiente;
                 r5.Recinto = rep.recinto;
-                r5.Fecha = rep.fecha.ToString();
+                r5.Fecha = rep.fecha.ToShortDateString();
                 r5.Hora = rep.hora.ToString();
-                r5.MinMov = rep.min_mov.ToString();
-                r5.MaxMov = rep.max_mov.ToString();
+                r5.MinMov = rep.min_mov;
+                r5.MaxMov = rep.max_mov;
                 listaDatos.Add(r5);
             }
 

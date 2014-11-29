@@ -11,10 +11,10 @@ using RfidZControl;
 
 namespace ImagineProject.Controllers
 {
-    [Authorize(Roles = "Administrador")]   
+    [Authorize(Roles = "Administrador")]
     public class TagController : Controller
     {
-        
+
         /************************************************************************************************/
         public bool HaveReferences(int id)
         {
@@ -61,24 +61,23 @@ namespace ImagineProject.Controllers
             if (lastId > 0)
             {
                 ++lastId;
-            }               
+            }
             return lastId;
         }
 
         private void SetStatus(int id_pasajero)
         {
-            var query = db.Tags.Where(t => t.id_pasajero.Equals(id_pasajero));
-            if (query.Count() > 0)
-            {
-                int ultimoId = query.Select(t => t.id_tag).Max();
-                Tag tag = db.Tags.Find(ultimoId);
-                if (ModelState.IsValid)
+                Tag tag = db.Tags.Where(a => a.Pasajero.id_pasajero.Equals(id_pasajero) && a.estado.Equals(true)).First();
+
+                if (!tag.Equals(null))
                 {
-                    tag.estado = false;
-                    db.Entry(tag).State = EntityState.Modified;
-                    db.SaveChanges();
+                    if (ModelState.IsValid)
+                    {
+                        tag.estado = false;
+                        db.Entry(tag).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
-            }
         }
 
         /************************************************************************************************/
@@ -140,7 +139,7 @@ namespace ImagineProject.Controllers
         {
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte");
             return View();
-        } 
+        }
 
         //
         // POST: /Tag/Grabar
@@ -176,7 +175,7 @@ namespace ImagineProject.Controllers
                 }
                 else if (estado.Equals("002"))
                 {
-                    mensaje = "ERROR DE COMUNICACIÓN. El dispositivo de grabación de etiquetas RFID no se encuentra conectado. \n"+
+                    mensaje = "ERROR DE COMUNICACIÓN. El dispositivo de grabación de etiquetas RFID no se encuentra conectado. \n" +
                               "Conecte el dispositivo o ingrese una etiqueta de forma manual presionando el link:";
                 }
                 else if (estado.Equals("003"))
@@ -189,7 +188,7 @@ namespace ImagineProject.Controllers
                 }
                 contrCon.Disconnect();
                 //return RedirectToAction("Index");  
-                
+
                 if (estado.Equals("001"))
                 {
                     Operacion ok = new Operacion();
@@ -204,17 +203,17 @@ namespace ImagineProject.Controllers
                     error.Message = mensaje;
                     error.Action = "Create";
                     error.Controller = "Tag";
-                    return View("~/Views/Shared/Error.aspx", error);   
+                    return View("~/Views/Shared/Error.aspx", error);
                 }
             }
             ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);
             //return View(tag);
         }
-        
+
         //
         // GET: /Tag/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Tag tag = db.Tags.Find(id);
@@ -245,7 +244,7 @@ namespace ImagineProject.Controllers
 
         //
         // GET: /Tag/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Tag tag = db.Tags.Find(id);

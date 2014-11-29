@@ -77,7 +77,7 @@
 </table>
 <p></p>
 <a href="<%: Url.Action("ExportData", "Reportes") %>">
-    <button class="btn btn-primary">Generar PDF</button>
+    <button class="btn btn-primary">Exportar a excel</button>
 </a>
     
 </p>

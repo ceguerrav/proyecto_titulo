@@ -103,5 +103,9 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Repor
 </table>
 <p></p>
 <a href="<%: Url.Action("ExportData", "Reportes") %>">
-    <button class="btn btn-primary">Generar PDF</button>
+    <button class="btn btn-primary">Exportar a excel</button>
 </a>
+
+<div>
+    <img src="/Reportes/GetGraficoRep5" />
+</div>

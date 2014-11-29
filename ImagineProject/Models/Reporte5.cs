@@ -13,7 +13,7 @@ namespace ImagineProject.Models
         public string Recinto { get; set; }
         public string Fecha { get; set; }
         public string Hora { get; set; }
-        public string MinMov { get; set; }
-        public string MaxMov { get; set; }
+        public int MinMov { get; set; }
+        public int MaxMov { get; set; }
     }
 }

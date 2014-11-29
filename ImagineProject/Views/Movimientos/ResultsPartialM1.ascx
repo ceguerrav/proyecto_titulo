@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Movimientos>>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.MovimientosTR>>" %>
 
 <link href="../../Content/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css" />
 <script src="<%: Url.Content("~/Scripts/jquery-1.10.2.min.js") %>" type="text/javascript"></script>
@@ -83,6 +83,12 @@
     </tbody>
 </table>
 <p></p>
-<%--<a href="<%: Url.Action("ExportData", "Reportes") %>">
-    <button class="btn btn-primary">Generar PDF</button>
-</a>--%>
+
+<a href="<%: Url.Action("ExportData", "Movimientos") %>">
+    <button class="btn btn-primary">Exportar a excel</button>
+</a>
+
+
+<div>
+    <img src="/Movimientos/GetGraficoMovimientos" />
+</div>
