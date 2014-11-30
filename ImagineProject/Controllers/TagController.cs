@@ -84,6 +84,21 @@ namespace ImagineProject.Controllers
         private Db_ImagineEntities db = new Db_ImagineEntities();
 
         //
+        // POST: 
+        [HttpPost]
+        public ActionResult BuscarPasajeroPorPasaporte(string txt_pasaporte)
+        {
+            Pasajero resultado = ObtenerPasajeroPorPasaporte(txt_pasaporte);
+
+            return PartialView("PasajeroBuscado", resultado);
+        }
+
+        public Pasajero ObtenerPasajeroPorPasaporte(string pasaporte)
+        {
+            Pasajero pasajero = db.Pasajeros.Where(p => p.pasaporte.Equals(pasaporte)).First();
+            return pasajero;
+        }
+        //
         // GET: /Tag/
 
         public ViewResult Index()
@@ -105,7 +120,7 @@ namespace ImagineProject.Controllers
         // GET: /AgregarTag/Create
         public ActionResult Create()
         {
-            ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte");
+            //ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte");
             return View();
         }
 
@@ -129,7 +144,7 @@ namespace ImagineProject.Controllers
                 return View("~/Views/Shared/Dialog.aspx", ok);
             }
 
-            ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
+            //ViewBag.id_pasajero = new SelectList(db.Pasajeros, "id_pasajero", "pasaporte", tag.id_pasajero);
             return View(tag);
         }
 

@@ -41,7 +41,7 @@ namespace ImagineProject.Models
         [ScaffoldColumn(false)]
         public bool estado { get; set; }
 
-        [Required(ErrorMessage = "Seleccione pasajero")]
+        [Required(ErrorMessage = "Debe buscar un pasajero")]
         [Display(Name = "Pasajero")]
         public int id_pasajero { get; set; }
         public virtual ICollection<Movimiento> Movimiento { get; set; }
