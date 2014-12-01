@@ -1,10 +1,6 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<ImagineProject.Models.Operacion>" %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Operación exitosa</title>
-    	
+﻿<%@ Control Language="C#" 
+Inherits="System.Web.Mvc.ViewUserControl<ImagineProject.Models.Operacion>" %>
+    
     <link rel="stylesheet" href="../../Scripts/Dialog/themes/base/jquery.ui.all.css" />
 	<script src="<%: Url.Content("~/Scripts/Dialog/jquery-1.9.1.js") %>" type="text/javascript"></script>
 	<script src="<%: Url.Content("~/Scripts/Dialog/ui/jquery.ui.core.js") %>" type="text/javascript"></script>
@@ -25,7 +21,7 @@
 	            buttons: {
 	                Ok: function () {
 	                    $(this).dialog("close");
-	                    //location.href = createURL();
+	                    location.href = createURL();
 	                }
 	            }
 	        });
@@ -38,8 +34,6 @@
 	        return url;
 	    }
 	</script>
-</head>
-<body>
     <%: Html.HiddenFor(model => model.Controller, new { id = "controller"} )%>
     <%: Html.HiddenFor(model => model.Action, new { id = "action"} )%>
     <div id="dialog-message" title="Operación exitosa">
@@ -50,6 +44,3 @@
 	    <p>
 	    </p>
     </div>
-</body>
-</html>
-

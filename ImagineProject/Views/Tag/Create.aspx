@@ -11,18 +11,72 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
+<script type="text/javascript">
+    function ValidarTag() {
+        $.ajax({
+            url: "/Tag/ValidaPasaporteTag",
+            data: {
+                txt_pasaporte:      $("#txt_pasaporte").val(),
+            },
+            type: "post",
+            async: true,
+            cache: false,
+            success: function (retorno) {
+                $("#contenido").html(retorno);
+            }
+        });    
+    }
+</script>
+
+<script type="text/javascript">
+    function buscarAjax() {
+        $.ajax({
+            url: "/Tag/BuscarPasajeroPorPasaporte",
+            data: {
+                txt_pasaporte: $("#txt_pasaporte").val()
+            },
+            type: "post",
+            async: true,
+            cache: false,
+            success: function (retorno) {
+                $("#contenido").html(retorno);
+            }
+        });
+    }
+  </script>
+
+<% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "BusquedaPasajero" })) { %>
+    <%:Html.ValidationSummary(false) %>
+    <fieldset>
+            <legend>"Buscar pasajero (Ingrese pasaporte)"</legend>
+        <div class="editor-label">
+            <%: Html.Label("txt_pasaporte", "Pasaporte")%>
+        </div>
+        <div class="editor-field">
+            <input type="text" id="txt_pasaporte"  class="required" />                
+            <!--  Botón Busqueda de Pasajero-->
+            <input type="button" value="Buscar" id="btn_buscar" class="btn btn-default" onclick="javascript:buscarAjax();"/>
+        </div>        
+        
+     </fieldset>
+<% } %>
+
+<div id="contenido">
+</div>
+<!-- Separación entre formularuos-->
+
 <% using (Html.BeginForm()) { %>
     <%: Html.ValidationSummary(true) %>
     <fieldset>
         <legend>Tag</legend>
         
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.id_pasajero, "Pasajero") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("id_pasajero", String.Empty) %>
+         <!--Código antiguo: Carga los pasajeros en un DropDownList -->
+         <!--
+         <div class="editor-field">
+            <%: Html.HiddenFor(model => model.id_pasajero) %>
             <%: Html.ValidationMessageFor(model => model.id_pasajero) %>
-        </div>
+        </div>        
+        -->
 
         <div class="editor-label">
             <%: Html.LabelFor(model => model.identificador) %>
@@ -33,7 +87,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Agregar Tag ID" />
+            <input type="submit" value="Agregar Tag ID" class="btn btn-default" onclick="javascript:ValidarTag();" />
         </p>
     </fieldset>
 <% } %>

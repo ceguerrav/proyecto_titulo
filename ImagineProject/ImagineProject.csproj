@@ -571,6 +571,7 @@
     <Content Include="Views\Account\ListUsers.aspx" />
     <Content Include="Views\Movimientos\Movimientos1.aspx" />
     <Content Include="Views\Movimientos\ResultsPartialM1.ascx" />
+    <Content Include="Views\Shared\Dialog.ascx" />
     <Content Include="Views\Tag\Create.aspx" />
     <Content Include="Views\Barco\Create.aspx" />
     <Content Include="Views\Barco\Delete.aspx" />
@@ -657,6 +658,7 @@
     <Content Include="Views\Tag\Details.aspx" />
     <Content Include="Views\Tag\Edit.aspx" />
     <Content Include="Views\Tag\Index.aspx" />
+    <Content Include="Views\Tag\PasajeroBuscado.ascx" />
     <Content Include="Views\TipoAmbiente\Create.aspx" />
     <Content Include="Views\TipoAmbiente\Delete.aspx" />
     <Content Include="Views\TipoAmbiente\Details.aspx" />
