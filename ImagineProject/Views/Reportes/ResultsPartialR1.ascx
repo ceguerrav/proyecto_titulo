@@ -47,7 +47,7 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Repor
             Fecha
         </th>
         <th>
-            Movimientos
+            Visitas
         </th>
         <th>
             Pasaporte
@@ -112,6 +112,8 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Repor
     <button class="btn btn-primary">Exportar a excel</button>
 </a>
 
-<div>
+<div><% if (Model.Count() > 0 )
+        { %>
     <img src="/Reportes/GetGraficoRep1" />
+    <% } %>
 </div>

@@ -41,7 +41,10 @@
 </p>
 <table class="display" id="tabla">
     <thead>
-    <tr>
+    <tr>  
+        <th>
+            Fecha y hora
+        </th>
         <th>
             Tipo Recinto
         </th>
@@ -52,10 +55,7 @@
             Recinto
         </th>
         <th>
-            Tipo Movimiento
-        </th>
-        <th>
-            Movimientos
+            N° Visitas
         </th>
     </tr>
     </thead>
@@ -63,6 +63,9 @@
     <tbody>
 <% foreach (var item in Model) { %>
     <tr>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Fecha_hora) %>
+        </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Tipo_Recinto) %>
         </td>
@@ -73,10 +76,7 @@
             <%: Html.DisplayFor(modelItem => item.Recinto) %>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.Tipo_Movimiento) %>
-        </td>
-        <td>
-            <%: Html.DisplayFor(modelItem => item.Cant_Movimientos) %>
+            <%: Html.DisplayFor(modelItem => item.Visitas) %>
         </td>
     </tr>
 <% } %>
@@ -89,6 +89,8 @@
 </a>
 
 
-<div>
+<div><% if (Model.Count() > 0)
+        { %>
     <img src="/Movimientos/GetGraficoMovimientos" />
+    <% } %>
 </div>

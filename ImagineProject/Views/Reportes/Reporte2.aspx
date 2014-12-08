@@ -64,14 +64,14 @@
             <%: Html.Label("fecha","Fecha desde") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_fecha_desde" />
+            <input type="text" id="txt_fecha_desde" class="required" maxlength="10" />
         </div>
 
         <div class="editor-label">
             <%: Html.Label("fecha","Fecha hasta") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_fecha_hasta" />
+            <input type="text" id="txt_fecha_hasta" class="required" maxlength="10" />
         </div>
 
         <div class="editor-label">

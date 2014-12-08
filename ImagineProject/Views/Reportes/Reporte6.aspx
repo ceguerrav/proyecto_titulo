@@ -14,20 +14,12 @@
 <script src="<%: Url.Content("~/Scripts/date_picker/ui/i18n/jquery.ui.datepicker-es.js") %>" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(function () {
-        $("#txt_fecha").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1940:' + new Date().getFullYear()
-        });
-    });
-</script>
-<!-- date_picker -->
-
-<script type="text/javascript">
     function buscarAjax() {
         $.ajax({
             url: "/Reportes/Reporte6",
+            data: {
+                linea_naviera: $("#linea_naviera").val()
+            },
             type: "post",
             async: true,
             cache: false,
@@ -38,11 +30,17 @@
     }
 </script> 
 
-<h2>Reporte6</h2>
+<h2>Reporte</h2>
 
 <fieldset>
     <legend>Barcos con Mayor Cantidad de Pasajeros por Viajes</legend>
 
+    <div class="editor-label">
+        <%: Html.Label("linea_naviera","Linea Naviera") %>
+    </div>
+    <div class="editor-field">
+        <%: Html.DropDownList("linea_naviera", ViewBag.linea_naviera as SelectList, "--- Seleccione Linea Naviera ---", new { id = "linea_naviera" })%>
+    </div>
     <p>
        <input type="button" value="Buscar" id="btn_buscar" class="btn btn-default" onclick="javascript:buscarAjax();"/>
     </p>

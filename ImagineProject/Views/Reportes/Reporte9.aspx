@@ -38,7 +38,7 @@
     }
 </script> 
 
-<h2>Reporte9</h2>
+<h2>Reporte</h2>
 
 <fieldset>
     <legend>Pasajeros que no han viajado en el último año</legend>

@@ -12,23 +12,6 @@
 <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
 <script type="text/javascript">
-    function ValidarTag() {
-        $.ajax({
-            url: "/Tag/ValidaPasaporteTag",
-            data: {
-                txt_pasaporte:      $("#txt_pasaporte").val(),
-            },
-            type: "post",
-            async: true,
-            cache: false,
-            success: function (retorno) {
-                $("#contenido").html(retorno);
-            }
-        });    
-    }
-</script>
-
-<script type="text/javascript">
     function buscarAjax() {
         $.ajax({
             url: "/Tag/BuscarPasajeroPorPasaporte",

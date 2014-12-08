@@ -44,7 +44,7 @@
     }
 </script> 
 
-<h2>Reporte7</h2>
+<h2>Reporte</h2>
 
 <fieldset>
     <legend>Barcos con más Viajes</legend>
@@ -60,14 +60,14 @@
             <%: Html.Label("anio","Año Desde") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_anio1" />
+            <input type="text" id="txt_anio1"class="required" maxlength="10" />
         </div>
 
         <div class="editor-label">
             <%: Html.Label("anio","Año Hasta") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_anio2" />
+            <input type="text" id="txt_anio2" class="required" maxlength="10" />
         </div>
 
         <p>

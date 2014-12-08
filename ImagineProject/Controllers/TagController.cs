@@ -100,18 +100,17 @@ namespace ImagineProject.Controllers
 
         //
         // POST: 
+        /*
         [HttpPost]
         public ActionResult ValidaPasaporteTag(string txt_pasaporte)
         {
-            var mensaje = new TagBuilder("span");
-            mensaje.Attributes.Add("class", "field-validation-error");
-            if (txt_pasaporte.Equals(null) || (!txt_pasaporte.Equals(null) && txt_pasaporte.Trim().Equals("")))
+            if (string.IsNullOrEmpty(txt_pasaporte))
             {
-                mensaje.SetInnerText("Ingrese pasaporte");
+                return Content(ObjetosValidacion.Mensaje("Ingrese pasaporte").ToString());
             }
-            return Content(mensaje.ToString());
+            return View();
         }
-        /*
+        
         [HttpPost]
         public ActionResult ValidaTag(string txt_pasaporte, String txt_identificador)
         {
@@ -150,6 +149,11 @@ namespace ImagineProject.Controllers
         public ActionResult BuscarPasajeroPorPasaporte(string txt_pasaporte)
         {
             id_pasajero = 0;
+
+            if (string.IsNullOrEmpty(txt_pasaporte))
+            {
+                return Content(ObjetosValidacion.Mensaje("Ingrese pasaporte").ToString());
+            }
             Pasajero resultado = ObtenerPasajeroPorPasaporte(txt_pasaporte);
             
             if (resultado != null)
@@ -160,11 +164,7 @@ namespace ImagineProject.Controllers
             else 
             {
                 id_pasajero = 0;
-                // Crea Span
-                var mensajeSpan = new TagBuilder("span");
-                mensajeSpan.Attributes.Add("class", "field-validation-error");
-                mensajeSpan.SetInnerText("Pasajero no encontrado. Verifique pasaporte.");
-                return Content(mensajeSpan.ToString());
+                return Content(ObjetosValidacion.Mensaje("Pasajero no encontrado. Verifique pasaporte.").ToString());
             }
         }
 
@@ -201,8 +201,8 @@ namespace ImagineProject.Controllers
         {
             if (id_pasajero == 0)
             {
-                //
-                return Content("Busque un pasajero válidooooooooooooo.");
+                return Content(ObjetosValidacion.Mensaje("Busque un pasajero válidooooooooooooo.").ToString());
+                
             }
             else 
             {

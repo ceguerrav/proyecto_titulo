@@ -42,42 +42,25 @@
     }
 </script> 
 
-<h2>Reporte10</h2>
+<h2>Reporte</h2>
 
 <fieldset>
     <legend>Destinos más y menos visitados</legend>
 
         <div class="editor-label">
-            <%: Html.Label("anio","Año Llegada Desde") %>
+            <%: Html.Label("anio","Año Inicio") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_anio1" />
+            <input type="text" id="txt_anio1" class="required" maxlength="10" />
         </div>
 
         <div class="editor-label">
-            <%: Html.Label("anio","Año Llegada Hasta") %>
+            <%: Html.Label("anio","Año Fin") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_anio2" />
+            <input type="text" id="txt_anio2" class="required" maxlength="10" />
         </div>
-   
-
-        <div class="editor-label">
-            <%: Html.Label("anio","Año Salida Desde") %>
-        </div>
-        <div class="editor-field">
-            <input type="text" id="txt_anio3" />
-        </div>
-
-        <div class="editor-label">
-            <%: Html.Label("anio","Año Salida Hasta") %>
-        </div>
-        <div class="editor-field">
-            <input type="text" id="txt_anio4" />
-        </div>
-
-
-
+  
         <p>
             <input type="button" value="Buscar" id="btn_buscar" class="btn btn-default" onclick="javascript:buscarAjax();"/>
         </p>

@@ -27,10 +27,10 @@
     }
 </script>
 
-<h2>Reporte8</h2>
+<h2>Reporte</h2>
 
 <fieldset>
-    <legend>Pasajeros Importante</legend>
+    <legend>Pasajeros Importantes</legend>
 
         <div class="editor-label">
             <%: Html.Label("linea_naviera","Linea Naviera") %>
@@ -43,7 +43,7 @@
             <%: Html.Label("anio","Año") %>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_anio" />
+            <input type="text" id="txt_anio" class="required" maxlength="10"/>
         </div>
 
         <p>

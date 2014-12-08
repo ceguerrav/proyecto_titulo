@@ -76,7 +76,7 @@
             <%: Html.Label("txt_fecha", "Fecha")%>
         </div>
         <div class="editor-field">
-            <input type="text" id="txt_fecha"  class="required" />    
+            <input type="text" id="txt_fecha"  class="required" maxlength="10" />    
             <span class="field-validation-valid"></span>    
         </div>
 

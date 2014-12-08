@@ -16,7 +16,6 @@ namespace ImagineProject.Controllers
 
         private static List<MovimientosTR> MovimientoToExcel { get; set; }
 
-
         public ActionResult ExportData()
         {
             //string number = "";
@@ -55,35 +54,30 @@ namespace ImagineProject.Controllers
             // que será mostrado en el gráfico. Se asigna las columnas.
             var dt = new System.Data.DataTable();
             dt.Columns.Add("Recinto", typeof(string));
-            dt.Columns.Add("Cant_Movimientos", typeof(int));
+            dt.Columns.Add("Visitas", typeof(int));
             //dt.Columns.Add("Cantidad_movimientos", typeof(int));
 
             // Se recibe la Variable estática de datos.
-            var datos = MovimientoToExcel.Select(x => new { x.Recinto, x.Cant_Movimientos }).ToList();
+            var datos = MovimientoToExcel.Select(x => new { Recinto = x.Recinto, Visitas = x.Visitas }).ToList();
             var grupo_datos = from d in datos
                               group new { d } by new
                               {
-                                d.Cant_Movimientos,
+                                d.Visitas,
                                 d.Recinto
                               } into grupo
                               select new 
                               {
                                 recinto = grupo.Key.Recinto,
-                                movimientos = grupo.Sum(m => m.d.Cant_Movimientos) //grupo.Select(m => m.d.Cant_Movimientos).Sum() //                                                                                                                                                                                    
+                                visitas = grupo.Sum(m => m.d.Visitas)                                                                                                                                                                                  
                               };
 
             var myChart = new Chart(width: 600, height: 400)//, theme: ChartTheme.Yellow)
-                .AddTitle("Movimientos en tiempo real")
-                //.AddSeries(chartType: "Column")
-                // Ejemplo this.chart1.DataBindCrossTable(dt.Rows, "Name", "Day", "BugCount", "");
-                //.DataBindCrossTable(dt.Rows,"Recinto", "Cantidad_movimientos", "").Write();// "Label=Cantidad_movimientos").Write();
-                //.DataBindTable(dt.Rows, "Recinto").Write();
-                
+                .AddTitle("Visitas en tiempo real")               
                 .AddSeries(
-                    name: "Reporte 1",
+                    name: "Visitas en tiempo real",
                     chartType: "Column",
                     xValue: grupo_datos.Select(d => d.recinto).ToArray(),//recinto,
-                    yValues: grupo_datos.Select(d => d.movimientos).ToArray())//cant_mov)
+                    yValues: grupo_datos.Select(d => d.visitas).ToArray())//cant_mov)
                 .Write();
                 
             return null;
@@ -98,11 +92,12 @@ namespace ImagineProject.Controllers
         [HttpPost]
         public ActionResult Movimientos1(string id_viaje)
         {
-            //if (id_viaje == null || id_viaje == "")
-            //{
-            //    return Content("Seleccione viaje");
-            //}
             MovimientoToExcel = null;
+
+            if(string.IsNullOrEmpty(id_viaje))
+            {
+                return Content(ObjetosValidacion.Mensaje("Seleccione viaje").ToString());
+            }
 
             int id_v = Convert.ToInt32(id_viaje);
             ViewBag.id_viaje = new SelectList(bd.Viajes, "id_viaje", "descripcion", id_viaje);
@@ -118,7 +113,9 @@ namespace ImagineProject.Controllers
             List<MovimientosTR> listaDatos = new List<MovimientosTR>();
             DateTime fecha_actual = DateTime.Now;
             DateTime fecha_resta = fecha_actual.AddMinutes(-2);
+            //short tipo_movimiento = 2;
 
+            var query_not_in = (from m in bd.Movimientos select m);
             var movimiento = (from mo in bd.Movimientos
                               join tm in bd.TiposMovimientos on mo.id_tipo_movimiento equals tm.id_tipo_movimiento
                               join po in bd.Porticos on mo.id_portico equals po.id_portico
@@ -128,34 +125,43 @@ namespace ImagineProject.Controllers
                               join ta in bd.TiposAmbientes on re.id_tipo_ambiente equals ta.id_tipo_ambiente
                               join ba in bd.Barcos on re.id_barco equals ba.id_barco
                               join vi in bd.Viajes on ba.id_barco equals vi.id_viaje
-                              where vi.id_viaje == id_viaje &&
-                              (mo.fecha_hora >= fecha_resta && mo.fecha_hora <= fecha_actual)
+                              where (vi.id_viaje == id_viaje) &&
+                              (mo.fecha_hora >= fecha_resta && mo.fecha_hora <= fecha_actual) &&
+                              (mo.id_tipo_movimiento == 1) // Movimiento de entrada
+                              && 
+                              !(from m in bd.Movimientos select m).Any(m => 
+                                        (m.fecha_hora > mo.fecha_hora) &&
+                                        (m.id_movimiento > mo.id_movimiento) &&
+                                        (m.id_tipo_movimiento == 2) && // Movimiento de salida
+                                        (m.id_portico == mo.id_portico) &&
+                                        (m.id_tag == mo.id_tag) ) //Subquery equivalente a Not Exists
                               group new { tr, ta, re, tm, mo } by new
                               {
+                                  mo.fecha_hora,
                                   tr.tipo_recinto,
                                   ta.tipo_ambiente,
-                                  re.nombre_recinto,
-                                  tm.tipo_movimiento
+                                  re.nombre_recinto
+                                  //mo.id_tag
                               } into grupoM
-                              orderby grupoM.Key.nombre_recinto
+                              orderby grupoM.Key.fecha_hora descending, grupoM.Key.tipo_recinto, grupoM.Key.tipo_ambiente, grupoM.Key.nombre_recinto
                               select new
                               {
+                                  fechaHora = grupoM.Key.fecha_hora,
                                   tipoRecinto = grupoM.Key.tipo_recinto,
                                   tipoAmbiente = grupoM.Key.tipo_ambiente,
                                   recinto = grupoM.Key.nombre_recinto,
-                                  tipoMovimiento = grupoM.Key.tipo_movimiento,
-                                  movimientos = grupoM.Select(x => x.mo.id_movimiento).Count()
+                                  visitas = grupoM.Select(x => x.mo.id_tag).Count()
                               }).ToList();
-
+            
 
             for (int i = 0; i < movimiento.Count; i++)
             {
                 MovimientosTR m1 = new MovimientosTR();
+                m1.Fecha_hora = movimiento[i].fechaHora;
                 m1.Tipo_Recinto = movimiento[i].tipoRecinto;
                 m1.Tipo_Ambiente = movimiento[i].tipoAmbiente;
                 m1.Recinto = movimiento[i].recinto;
-                m1.Tipo_Movimiento = movimiento[i].tipoMovimiento;
-                m1.Cant_Movimientos = movimiento[i].movimientos;
+                m1.Visitas = movimiento[i].visitas;
                 listaDatos.Add(m1);
             }
             return listaDatos;
