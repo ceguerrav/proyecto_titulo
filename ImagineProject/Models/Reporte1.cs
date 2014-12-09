@@ -10,7 +10,7 @@ namespace ImagineProject.Models
         [Display(Name = "Fecha")]
         public string Fecha { get; set; }
 
-        public string Cantidad_movimientos { get; set; }
+        public int Cantidad_movimientos { get; set; }
         public string Pasaporte { get; set; }
         public string Nombre_completo { get; set; }
 

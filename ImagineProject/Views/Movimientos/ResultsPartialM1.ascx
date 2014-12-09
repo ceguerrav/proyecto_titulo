@@ -89,8 +89,8 @@
 </a>
 
 
-<div><% if (Model.Count() > 0)
-        { %>
+<div>
+    <% if (Model.Count() > 0) { %>
     <img src="/Movimientos/GetGraficoMovimientos" />
     <% } %>
 </div>

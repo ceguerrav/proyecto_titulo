@@ -114,6 +114,6 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<ImagineProject.Models.Repor
 
 <div><% if (Model.Count() > 0 )
         { %>
-    <img src="/Reportes/GetGraficoRep1" />
+    <img src="/Reportes/GetGraficoRep1" alt="Visitas por día" width="1000" height="1000"  />
     <% } %>
 </div>

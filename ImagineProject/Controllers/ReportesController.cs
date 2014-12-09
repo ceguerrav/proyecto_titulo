@@ -19,18 +19,7 @@ namespace ImagineProject.Controllers
     {
         private DWH_ImagineEntities dwh = new DWH_ImagineEntities();
         private Db_ImagineEntities bd = new Db_ImagineEntities();
-        /*
-        private static TagBuilder ReturnMessage(string texto)
-        {
-            var mensaje = new TagBuilder("span");
-            mensaje.Attributes.Add("class", "field-validation-error");
-            if (!string.IsNullOrEmpty(texto))
-            {
-                mensaje.SetInnerText(texto);
-            }
-            return mensaje;
-        }
-        */
+
         private static List<Reporte1> reporte1ToExcel { get; set; }
         private static List<Reporte2> reporte2ToExcel { get; set; }
         private static List<Reporte3> reporte3ToExcel { get; set; }
@@ -71,6 +60,39 @@ namespace ImagineProject.Controllers
 
         public ActionResult GetGraficoRep1()
         {
+            var datos = reporte1ToExcel.Select(x => new { x.Nombre_recinto,x.Cantidad_movimientos }).ToList();
+            var grupo_datos = (from d in datos
+                               group new { d } by new { d.Nombre_recinto, d.Cantidad_movimientos } into grupo
+                                   select new { recinto = grupo.Key.Nombre_recinto, visitas = grupo.Sum(m => m.d.Cantidad_movimientos) });
+            var myChart = ObjetosHelpers.Grafico(600, 400, "Visitas diarias", "Reporte 1", "Column",
+                grupo_datos.Select(d => d.recinto).ToArray(),
+                grupo_datos.Select(d => d.visitas).ToArray()).GetBytes("png"); ;
+            return File(myChart, "image/png");
+        }
+        /*
+        public ActionResult GetGraficoRep2()
+        { 
+            
+
+        }*/
+
+        public ActionResult GetGraficoRep5()
+        {
+            // Se recibe la Variable estática de datos.
+            var datos = reporte5ToExcel.Select(x => new { x.Recinto, x.MaxMov }).ToList();
+            var grupo_datos = from d in datos
+                              group new { d } by new { d.Recinto, d.MaxMov } into grupo
+                              select new{ recinto = grupo.Key.Recinto, movimientos = grupo.Max(m => m.d.MaxMov)};
+
+            var myChart = ObjetosHelpers.Grafico(600,400,"Visitas a recintos por horario", "Reporte 5", "Column", 
+                grupo_datos.Select(d => d.recinto).ToArray(),
+                grupo_datos.Select(d => d.movimientos).ToArray()).GetBytes("png"); ;
+            return File(myChart, "image/png");
+        }
+
+        /*
+        public ActionResult GetGraficoRep1()
+        {
             // En el DataTable se estabalece el conjunto de datos
             // que será mostrado en el gráfico. Se asigna las columnas.
             var dt = new System.Data.DataTable();
@@ -89,51 +111,10 @@ namespace ImagineProject.Controllers
 
             var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Yellow)
                 .AddTitle("Visitas diarias")
-                .DataBindCrossTable(dt.Rows, "Pasaporte", "Nombre_recinto", "Cantidad_movimientos", "").Write().GetBytes("png");// "Label=Cantidad_movimientos").Write();
-
-            //return null;
+                .DataBindCrossTable(dt.Rows, "Pasaporte", "Nombre_recinto", "Cantidad_movimientos", "")
+                .Write().GetBytes("png");
             return File(myChart, "image/png");
-        }
-
-        public ActionResult GetGraficoRep5()
-        {
-            var dt = new System.Data.DataTable();
-            dt.Columns.Add("Recinto", typeof(string));
-            dt.Columns.Add("Movimientos", typeof(int));
-
-            // Se recibe la Variable estática de datos.
-            var datos = reporte5ToExcel.Select(x => new { x.Recinto, x.MaxMov}).ToList();
-            var grupo_datos = from d in datos
-                              group new { d } by new
-                              {
-                                  d.Recinto,
-                                  d.MaxMov
-                              } into grupo
-                              select new
-                              {
-                                  recinto = grupo.Key.Recinto,
-                                  movimientos = grupo.Sum(m => m.d.MaxMov)
-                              };
-
-            //Se llena el DataTable con los valores necesarios desde la lista del reporte.
-            foreach (var reg in datos)
-            {
-                dt.Rows.Add(reg.Recinto, reg.MaxMov);
-            }
-
-            var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Yellow)
-                .AddTitle("Visitas a recintos por horario")
-                //.AddSeries(chartType: "Column")
-                // Ejemplo this.chart1.DataBindCrossTable(dt.Rows, "Name", "Day", "BugCount", "");
-                .AddSeries(
-                    name: "Reporte 5",
-                    chartType: "Column",
-                    xValue: grupo_datos.Select(d => d.recinto).ToArray(),//recinto,
-                    yValues: grupo_datos.Select(d => d.movimientos).ToArray())//cant_mov)
-                .Write();
-
-            return null;        
-        }
+        }*/
 
         public ActionResult ExportData()
         {
@@ -233,18 +214,18 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(id_barco) && string.IsNullOrEmpty(id_viaje) && string.IsNullOrEmpty(fecha))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda").ToString());
                 if (string.IsNullOrEmpty(id_barco))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione barco").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione barco").ToString());
                 else
                     id_b = Convert.ToInt32(id_barco);
                 if (string.IsNullOrEmpty(id_viaje))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione viaje").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione viaje").ToString());
                 else
                     id_v = Convert.ToInt32(id_viaje);
                 if (string.IsNullOrEmpty(fecha))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese fecha").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese fecha").ToString());
                 }
 
                 try
@@ -253,7 +234,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe)
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato fecha inválido").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Formato fecha inválido").ToString());
                 }
 
                 ViewBag.id_barco = new SelectList(dwh.dim_barcos, "id_barco", "nombre_barco", id_barco);
@@ -266,7 +247,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -290,23 +271,23 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(desde) && string.IsNullOrEmpty(hasta) && string.IsNullOrEmpty(id_barco) && string.IsNullOrEmpty(id_viaje) && string.IsNullOrEmpty(pasaporte))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda").ToString());
                 if (string.IsNullOrEmpty(desde))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese fecha de inicio").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese fecha de inicio").ToString());
                 if (string.IsNullOrEmpty(hasta))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese fecha de termino").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese fecha de termino").ToString());
                 if (string.IsNullOrEmpty(id_barco))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione barco").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione barco").ToString());
                 else
                    in_barco = Convert.ToInt32(id_barco); 
                 
                 if (string.IsNullOrEmpty(id_viaje))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione viaje").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione viaje").ToString());
                 else
                     in_viaje = Convert.ToInt32(id_viaje);
                 if (string.IsNullOrEmpty(pasaporte))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese pasaporte").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese pasaporte").ToString());
                 }
                 try
                 {
@@ -315,7 +296,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe)
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato fecha inválido").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Formato fecha inválido").ToString());
                 }
                 string in_pasaporte = pasaporte.Trim();
 
@@ -329,7 +310,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -350,7 +331,7 @@ namespace ImagineProject.Controllers
             {
                 if (string.IsNullOrEmpty(linea_naviera))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Seleccione línea naviera.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione línea naviera.").ToString());
                 }
 
                 var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
@@ -364,7 +345,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -384,12 +365,12 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(desde) && string.IsNullOrEmpty(hasta))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda").ToString());
                 if (string.IsNullOrEmpty(desde))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese fecha de inicio").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese fecha de inicio").ToString());
                 if (string.IsNullOrEmpty(hasta))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese fecha de termino").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese fecha de termino").ToString());
                 }
                 try
                 {
@@ -398,7 +379,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe)
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato fecha inválido").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Formato fecha inválido").ToString());
                 }
                 var respuesta = ObtenerDatosReporte5(fecha_desde, fecha_hasta);
                 // Se llena la lista temporal
@@ -408,7 +389,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -428,7 +409,7 @@ namespace ImagineProject.Controllers
             {
                 if (string.IsNullOrEmpty(linea_naviera))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Seleccione línea naviera.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione línea naviera.").ToString());
                 }
 
                 var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
@@ -441,7 +422,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -463,16 +444,16 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(linea_naviera) && string.IsNullOrEmpty(anio1) && string.IsNullOrEmpty(anio2))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda.").ToString());
                 if (string.IsNullOrEmpty(linea_naviera))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione línea naviera.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione línea naviera.").ToString());
                 else
                     linea_nav = Convert.ToInt32(linea_naviera);
                 if (string.IsNullOrEmpty(anio1))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese año inicio.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese año inicio.").ToString());
                 if (string.IsNullOrEmpty(anio2))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese año fin.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese año fin.").ToString());
                 }
 
                 try
@@ -482,7 +463,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe)
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato año inválido").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Formato año inválido").ToString());
                 }
                 ViewBag.linea_naviera = new SelectList(bd.LineasNavieras, "id_linea_naviera", "linea_naviera", linea_naviera);
 
@@ -493,7 +474,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -519,14 +500,14 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(linea_naviera) && string.IsNullOrEmpty(anio))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda.").ToString());
                 if (string.IsNullOrEmpty(linea_naviera))
-                    return Content(ObjetosValidacion.Mensaje("Seleccione línea naviera.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Seleccione línea naviera.").ToString());
                 else
                     linea_nav = linea_naviera;
                 if (string.IsNullOrEmpty(anio))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese año.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese año.").ToString());
                 }
                 try
                 {
@@ -534,7 +515,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe) //OverFlowException
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato año inválido.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Formato año inválido.").ToString());
                 }
 
                 var linea = (from ba in dwh.dim_barcos select new { linea_naviera = ba.linea_naviera }).Distinct();
@@ -547,7 +528,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -571,7 +552,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -591,12 +572,12 @@ namespace ImagineProject.Controllers
             try
             {
                 if (string.IsNullOrEmpty(anio1) && string.IsNullOrEmpty(anio2))
-                    return Content(ObjetosValidacion.Mensaje("Ingrese filtros de búsqueda.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese filtros de búsqueda.").ToString());
                 if (string.IsNullOrEmpty(anio1))
-                    return Content(ObjetosValidacion.Mensaje("Ingres año inicio.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingres año inicio.").ToString());
                 if (string.IsNullOrEmpty(anio2))
                 {
-                    return Content(ObjetosValidacion.Mensaje("Ingrese año fin.").ToString());
+                    return Content(ObjetosHelpers.Mensaje("Ingrese año fin.").ToString());
                 }
 
                 try
@@ -606,7 +587,7 @@ namespace ImagineProject.Controllers
                 }
                 catch (FormatException fe)
                 {
-                    return Content(ObjetosValidacion.Mensaje("Formato año inválido.").ToString());                
+                    return Content(ObjetosHelpers.Mensaje("Formato año inválido.").ToString());                
                 }
 
                 var respuesta10 = ObtenerDatosReporte10(anio_desde, anio_hasta).ToList();
@@ -617,7 +598,7 @@ namespace ImagineProject.Controllers
             }
             catch (Exception ex)
             {
-                return Content(ObjetosValidacion.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
+                return Content(ObjetosHelpers.Mensaje("Error inesperado. Favor, intente más tarde."/*+ex.Message*/).ToString());
             }
         }
 
@@ -655,7 +636,7 @@ namespace ImagineProject.Controllers
             for (int i = 0; i < reporte.Count; i++)
             {
                 Reporte1 r1 = new Reporte1();
-                r1.Cantidad_movimientos = reporte[i].cantidad_movimientos.ToString();
+                r1.Cantidad_movimientos = reporte[i].cantidad_movimientos;
                 r1.Fecha = reporte[i].fecha.ToShortDateString();
                 r1.Nombre_barco = reporte[i].nombre_barco;
                 r1.Viaje = reporte[i].viaje;

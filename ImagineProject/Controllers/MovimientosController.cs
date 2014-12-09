@@ -96,7 +96,7 @@ namespace ImagineProject.Controllers
 
             if(string.IsNullOrEmpty(id_viaje))
             {
-                return Content(ObjetosValidacion.Mensaje("Seleccione viaje").ToString());
+                return Content(ObjetosHelpers.Mensaje("Seleccione viaje").ToString());
             }
 
             int id_v = Convert.ToInt32(id_viaje);

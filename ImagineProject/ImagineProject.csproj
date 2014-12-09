@@ -252,7 +252,7 @@
     <Compile Include="Models\TipoZona.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ObjetosValidacion.cs" />
+    <Compile Include="Models\ObjetosHelpers.cs" />
     <Compile Include="Models\Viaje.cs">
       <DependentUpon>ContextModel.tt</DependentUpon>
     </Compile>

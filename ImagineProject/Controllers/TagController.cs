@@ -152,7 +152,7 @@ namespace ImagineProject.Controllers
 
             if (string.IsNullOrEmpty(txt_pasaporte))
             {
-                return Content(ObjetosValidacion.Mensaje("Ingrese pasaporte").ToString());
+                return Content(ObjetosHelpers.Mensaje("Ingrese pasaporte").ToString());
             }
             Pasajero resultado = ObtenerPasajeroPorPasaporte(txt_pasaporte);
             
@@ -164,7 +164,7 @@ namespace ImagineProject.Controllers
             else 
             {
                 id_pasajero = 0;
-                return Content(ObjetosValidacion.Mensaje("Pasajero no encontrado. Verifique pasaporte.").ToString());
+                return Content(ObjetosHelpers.Mensaje("Pasajero no encontrado. Verifique pasaporte.").ToString());
             }
         }
 
@@ -201,7 +201,7 @@ namespace ImagineProject.Controllers
         {
             if (id_pasajero == 0)
             {
-                return Content(ObjetosValidacion.Mensaje("Busque un pasajero válidooooooooooooo.").ToString());
+                return Content(ObjetosHelpers.Mensaje("Busque un pasajero válidooooooooooooo.").ToString());
                 
             }
             else 
